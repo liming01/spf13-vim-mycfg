@@ -1,0 +1,13 @@
+	set guifont=Monaco:h12
+    if has("gui_gtk2")   "GTK2
+        set guifont=Monaco\ 12, Monospace\ 12
+    endif
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions+=e
+    set guitablabel=%M\ %t
+    set showtabline=1
+    set linespace=2
+    set noimd
+    set t_Co=256

@@ -1,0 +1,40 @@
+"cscope key mapping and generate function.
+Bundle 'brookhong/cscope.vim'		
+
+if (has("python") || has("python3"))
+	"auto update tag file
+    Bundle 'craigemery/vim-autotag'  
+endif
+"Bundle 'taglist.vim'
+
+"debug manager
+Bundle 'vim-scripts/gdbmgr'  
+Bundle "gilligan/vim-lldb"
+
+" source code reading 
+Bundle 'hari-rangarajan/CCTree'
+Bundle 'wesleyche/SrcExpl'
+
+" good keymap 
+Bundle 'tpope/vim-unimpaired'
+
+" gitk 
+Bundle 'gregsexton/gitv'
+
+" Auto detect CJK and Unicode file encodings
+Bundle 'mbbill/fencview'
+
+" 显示marks - 方便自己进行标记和跳转
+" m[a-zA-Z] add mark
+" '[a-zA-Z] go to mark
+" m<Space>  del all marks
+Bundle "kshenoy/vim-signature"
+
+" Highlight several words in different colors simultaneously
+Bundle 'dimasg/vim-mark'
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+" keep the key mapping for <S-H> & <S-L> unchanged: for move cursor top/down of the screen
+let g:spf13_no_fastTabs = 1
+
+" Change the color schema for status line, keep same with color scheme in .vimrc.fork
+let g:airline_theme = 'molokai'
+
+" Chose which group of plugin need to be actived.
+let g:spf13_bundle_groups=['general', 'writing', 'programming', 'misc', 'python', 'javascript', 'html']
+"comment out languages:  'php', 'scala', 'haskell', 'ruby', 'puppet', 'go', 'elixir'
+" Just choose one of these Snippets & AutoComplete tools:  'snipmate', 'youcompleteme', 'neocomplcache', 'neocomplete'
+if v:version > 703 || (v:version == 703 && has('patch584'))
+	let g:spf13_bundle_groups += ['youcompleteme']
+endif
+
+
+
+
