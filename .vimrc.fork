@@ -145,6 +145,16 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 	endif
 " }
 
+" vim-mark {
+	if isdirectory(expand("~/.vim/bundle/vim-mark/"))
+		"Unmap '<leader>/' because of '<leader>/' key use in SPF13 conflict with vim-mark plugins
+		nunmap <silent> <leader>/
+		"remove the default overriding of * and #, use: 
+    	nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext 
+    	nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev 
+	endif
+" }
+
 "YouCompleteMe{
 	if count(g:spf13_bundle_groups, 'youcompleteme') 
 		if !empty(glob("~/.ycm_extra_conf.py"))
@@ -240,8 +250,8 @@ endfunction
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+" When you press <leader>vr you can search and replace the selected text
+vnoremap <silent> <leader>vr :call VisualSelection('replace', '')<CR>
 
 "==========================================
 " Automatically jump to a file at the correct line number

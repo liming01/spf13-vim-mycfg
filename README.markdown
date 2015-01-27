@@ -1,7 +1,8 @@
 
 
-** Navigation **
-YouCompleteMe
+Tag Navigation
+-------------
+YouCompleteMe:
 <leader>jd  YcmCompleter GoToDefinitionElseDeclaration
 <leader>gd  YcmCompleter GoToDeclaration
 

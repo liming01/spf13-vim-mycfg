@@ -4,6 +4,9 @@ let g:spf13_no_fastTabs = 1
 " Change the color schema for status line, keep same with color scheme in .vimrc.fork
 let g:airline_theme = 'molokai'
 
+"disable the stripping of whitespace
+let g:spf13_keep_trailing_whitespace = 1
+
 " Chose which group of plugin need to be actived.
 let g:spf13_bundle_groups=['general', 'writing', 'programming', 'misc', 'python', 'javascript', 'html']
 "comment out languages:  'php', 'scala', 'haskell', 'ruby', 'puppet', 'go', 'elixir'
