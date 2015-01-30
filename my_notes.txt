@@ -1,0 +1,146 @@
+VIM/make/gdb/valgrind/profiler
+ - valgrind (Memcheck/Callgrind/Cachegrind/Helgrind多线程竞争检测/Massif堆栈分析器)
+ - GNU profiler(gprof)：类似Callgrind的分析工具，
+----------------------------------------------------------------------
+# install vim on mac:
+http://www.jianshu.com/p/95d8335aeac7
+
+# running on project root dir
+ctags -R
+cscope -Rbq
+
+# move cursor/screen
+H M L zt zb c-f c-b c-u c-d
+
+# 跳转
+C-O/C-I 光标移动前后跳转
+C-]/C-T 函数间前后跳转, 多定义选择：:tnext/:tprev/:tselect ,输到list窗口：:ltag后:lopen      
+:tag /[Dd]o_\=[Ff]ile   tag with regular expression: same as :tag /DoFile\|do_file\|Do_File
+gf/C-W f 打开include的文件 	gF/C-W W-F  打开 “文件:行数”
+C-W-}/ C-W-] 快速预览窗口/新建窗口中显示光标下的Tag定义。,F (vsp open)
+SI: F7/F8 查看整个项目(文件间跳转)/当前文件(文件内跳转)tag <-->
+    Vim: tag（当前窗口查看）/ptag（预览窗口查看） 模糊查找插件：FuzzyFinder
+cscope函数递归调用关系插件CCTree
+[[/]] 上/下一个函数
+[CTRL-I, ]CTRL-I   search keyword from current and include files
+]CTRL-D, [CTRL-D   seach macro ..., list macro: ]d, [d, ]D, [D
+
+# 格式
+<</>> 缩进
+= 结合indent使用
+
+# 查找替换
+/ ? 		search whole word: /\<word\>
+* #
+N/n
+- 行内搜索：wWbBfFtT%以及e和ge。而你在用fFtT的时候，按键;和,可以重复你的搜寻。
+- Search in files:
+       (1)vimgrep: search for the words "house" or "home" in all .txt files
+       :lvimgrep /\<\(house\|home\)\>/gj *.txt
+       :lw
+       :vimgrep /main/gj **/*.c
+       (2)Ack/Ag:
+       Ack 'string' .          = grep 'string'
+       AckFile 'filename'      = find . -name 'filename'
+
+- Replace/Substitute:
+:s#vivian/#sky/#    使用 # 作为分隔符
+
+:1,$s/str1/str2/g   .表示当前行
+:%s/str1/str2/g
+:g/str1/s//str2/g
+                 命令末尾g，表示对搜索字符串的每次出现进行替换；
+                 不加 g，表示只对搜索字符串的首次出现进行替换；
+                 命令开头g，表示对正文中所有包含搜索字符串的行进行替换操作
+- Replace in files:
+:arg **/*.cpp	All *.cpp files in and below current directory
+:argadd *.h	And all *.h files.
+:arg	Optional: Display the current arglist.
+:argdo %s/pattern/replace/ge | update	Search and replace in all files in arglist.
+      pattern is null if it is last search pattern
+other similar cmd: :bufdo (all buffers) :tabdo (all tabs) :windo (all windows in the current tab).
+
+# Buffer
+ls/bd/bn/bp/b num.
+
+# Window
+ctrl+w s     :sp                   水平分割
+ctrl+w v     :vsp                  垂直分割
+ctrl+w w                        切换窗口
+ctrl+w h j k l                  分别向左, 下, 上, 右切换窗口
+ctrl+w q                        关闭窗口
+
+
+-多段文本复制：使用寄存器，“ay2j，“ap，其中，双引号为寄存器引用前缀，a为自定义寄存器名
+（只能为一个字母或数字，或代表系统剪贴板的“+”）
+-宏记录：使用寄存器，qb -> 操作 -> q，其中，q为宏记录开始与结束命令，b为寄存器，
+宏回放使用@b。宏回放可加计数器前缀。可“bp打印宏内容，编辑后再“bY。
+注：复制粘贴和宏记录使用同一套寄存器，所以，同个寄存器的内容即可用于粘贴，也可视为宏记录
+-选择文本块：v、V、CTRL－V。o、O移动光标在文本块四个角的位置。用I或A命令编辑第一行，
+再恢复到普通模式下时，被选择块每行首或尾都会有相同新增内容；r命令单个字符替换文本
+-重新选中上次选择的文本块：gv
+-高效的“操作符”＋“文本对象”的组合有六个：va(、vi(、da(、di(、ca(、ci(。
+说明下，v是选中，d是删除，c是删除后插入，a是包括结对符在内的整个文本对象，
+i是结对符内部的文本对象（inner）。如，va{选中结对符内的字符串，di”清空结对符内的字符串；
+-块操作计数器：数字－操作
+-恢复选项的默认值：set option&
+-字母大小写转换：~
+-VIM提供两种方式执行外部命令，一种是“:!cmd”，一种是“!cmd”，前者完全等同于在shell中执行命令，
+后者相当于同时对命令输入输出重定向，即，将选中的文本块内容作为输入传递给外部命令
+并用执行结果替换选中文本块。后者用途较为广泛，如，对文本内容排序，可先选中待排序
+文本块，再键入”!sort”即可，注意，不要键入冒号。也可以仅重定向外部命令输出，
+即，读取外部命令执行结果：:read !ls，将ls命令执行结果插入当前行。也可以仅重定向外
+部命令输入，即，将选中文本输入给外部命令执行：:write !wc，将对选中文本块进行计数操作。
+
+
+
+# make and quick fix
+:make
+:cw(toggle)/copen/cclose/cnfile/cp/cn
+
+location window
+:lw/lopen
+
+#vimdiff
+vimdiff  FILE_LEFT  FILE_RIGHT
+         = vim -d  FILE_LEFT  FILE_RIGHT
+         = vim FILE_LEFT; :vertical diffsplit FILE_RIGHT
+difference navig:   ]c / [c
+fold control:       za(toggle)/zo(open)/zO(open recursively)/zc(close)/zC/zR(open all)/zM/zd(delete)/zD/:n,mfo(folding line n to m)
+file merge:         dp (diff "put"）| do (diff "get")
+re-diff:            :diffupdate
+quit/write all:     qa/wa/wqa/qa!
+
+------------------------------------------------------------------------------------------
+# taglist
+t/o/enter
+多文件的tag设置
+
+#CtrlP
+C-P 打开
+C-F/C-B 扩展模式前后选择
+C-D/C-R/  匹配模式选择
+CR/C-T/C-V/C-CR open file in current/new tab/vsp/hsp
+
+#fugitive: git
+Gstatus:
+        Open: o(Gsplit)/O(Gtabedit)/S(Gvsplit)
+        Diff: D(Gdiff)/ds(Gsdiff)/dv(Gvdiff)
+#gitv: gitk
+
+
+
+==========================================================================================
+                Eclipse                         SI                      Vim
+search tag:    OpenElement(Ctrl+Shift+T)        ProjWindow/F7/F8        CtrlP/tag/ptag
+search file:   OpenResource(Ctrl+Shift+R)       ProjWindow(Ctrl+O)      CtrlP
+search ref:    Ctrl+Shift+G                     Ctrl+/                  scope
+called ref:    Ctrl+Alt+H
+quick search:  Ctrl+K/Ctrl+Shift+K                                      */#
+highlight:                                      Shift+F8                gd/gD
+gen include:   Ctrl+Shift+O
+
+=======================================================================================
+Vim script
+
+:q/ research at search result
