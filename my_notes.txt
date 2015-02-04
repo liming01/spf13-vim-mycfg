@@ -9,8 +9,14 @@ http://www.jianshu.com/p/95d8335aeac7
 ctags -R
 cscope -Rbq
 
+# query history
+:q/  search history
+:q:  command history
+
 # move cursor/screen
-H M L zt zb c-f c-b c-u c-d
+H M L zt zz zb c-f c-b c-u c-d
+      z<CR> z. z-
++/-：移到下/上一行的行首
 
 # 跳转
 C-O/C-I 光标移动前后跳转
@@ -27,10 +33,10 @@ cscope函数递归调用关系插件CCTree
 
 # 格式
 <</>> 缩进
-= 结合indent使用
+= 结合indent使用, format whole file: gg=G
 
 # 查找替换
-/ ? 		search whole word: /\<word\>
+/ ? 		search whole word: /\<word\>   case sensitive:\C
 * #
 N/n
 - 行内搜索：wWbBfFtT%以及e和ge。而你在用fFtT的时候，按键;和,可以重复你的搜寻。
@@ -62,12 +68,16 @@ other similar cmd: :bufdo (all buffers) :tabdo (all tabs) :windo (all windows in
 
 # Buffer
 ls/bd/bn/bp/b num.
+ctrl+^           快速在最近打开的两个文件间切换
+:only            只显示当前窗口, 关闭所有其他的窗口
+:tabo/tabc      close other/current tab
+gt/gT/num.gt     go to next/previous/num. tab
 
 # Window
 ctrl+w s     :sp                   水平分割
 ctrl+w v     :vsp                  垂直分割
 ctrl+w w                        切换窗口
-ctrl+w h j k l                  分别向左, 下, 上, 右切换窗口
+ctrl+w h j k l  t b p            分别向左, 下, 上, 右, top, bottom, previous切换窗口
 ctrl+w q                        关闭窗口
 
 
@@ -75,6 +85,7 @@ ctrl+w q                        关闭窗口
 （只能为一个字母或数字，或代表系统剪贴板的“+”）
 -宏记录：使用寄存器，qb -> 操作 -> q，其中，q为宏记录开始与结束命令，b为寄存器，
 宏回放使用@b。宏回放可加计数器前缀。可“bp打印宏内容，编辑后再“bY。
+ "2p     粘贴最后第二次的删除的内容
 注：复制粘贴和宏记录使用同一套寄存器，所以，同个寄存器的内容即可用于粘贴，也可视为宏记录
 -选择文本块：v、V、CTRL－V。o、O移动光标在文本块四个角的位置。用I或A命令编辑第一行，
 再恢复到普通模式下时，被选择块每行首或尾都会有相同新增内容；r命令单个字符替换文本
@@ -92,8 +103,10 @@ i是结对符内部的文本对象（inner）。如，va{选中结对符内的�
 即，读取外部命令执行结果：:read !ls，将ls命令执行结果插入当前行。也可以仅重定向外
 部命令输入，即，将选中文本输入给外部命令执行：:write !wc，将对选中文本块进行计数操作。
 
-
-
+:10,20 m 30    把10行到20行的内容，剪切到30行之后
+:10,20 co 30   把10行到20行的内容，复制到30行之后
+'              移动到上一次的修改行
+``             返回到原来行
 # make and quick fix
 :make
 :cw(toggle)/copen/cclose/cnfile/cp/cn
@@ -103,7 +116,7 @@ location window
 
 #vimdiff
 vimdiff  FILE_LEFT  FILE_RIGHT
-         = vim -d  FILE_LEFT  FILE_RIGHT
+         = vim -d  FILE_LEFT  FILE_RIGHT                  -O/o: vsp/sp open files
          = vim FILE_LEFT; :vertical diffsplit FILE_RIGHT
 difference navig:   ]c / [c
 fold control:       za(toggle)/zo(open)/zO(open recursively)/zc(close)/zC/zR(open all)/zM/zd(delete)/zD/:n,mfo(folding line n to m)
@@ -141,6 +154,3 @@ highlight:                                      Shift+F8                gd/gD
 gen include:   Ctrl+Shift+O
 
 =======================================================================================
-Vim script
-
-:q/ research at search result

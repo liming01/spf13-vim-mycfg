@@ -193,6 +193,10 @@ autocmd! bufwritepost vimrc source %
 autocmd! bufwritepost _vimrc source % " vimrc文件修改之后自动加载。 windows。
 autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
 
+if !WINDOWS()
+	" w!! to sudo & write a file
+	cmap w!! w !sudo tee >/dev/null %
+endif
 
 " 定义函数AutoSetFileHead，自动插入文件头
 autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
@@ -260,15 +264,16 @@ vnoremap <silent> <leader>vr :call VisualSelection('replace', '')<CR>
 " you to that line
 
 " use ,gf to go to file in a vertical split
-nnoremap <silent> <leader>gf   :vertical botright wincmd F<CR>
+nnoremap <silent> <leader>gf   :vertical botright wincmd f<CR>
 
 " use to jump to tag definition in a vertical split, similar to horizon split: <C-w>]
-nnoremap <silent> <leader>w] :let word=expand("<cword>")<CR>:vsp<CR>:set noscrollbind<CR>:wincmd w<cr>:exec("tag ". word)<CR>
+nnoremap <buffer> <leader>w] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <silent> <leader>t] :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 "==========================================
 " quickfix-search
 "==========================================
 " Stolen from Steve Losh vimrc: https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
-" Open a Quickfix window for the last search.
+" Open a Quickfix window for the last search. similar to query search history: q/
 nnoremap <silent> <leader>q/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Ag for the last search.
