@@ -30,6 +30,7 @@ colorscheme molokai
 
 " ================ 行号 ============================
 " 相对行号      行号变成相对，可以用 nj  nk   进行跳转 5j   5k 上下跳5行
+if v:version >= 703
 set relativenumber number
 au FocusLost * :set norelativenumber number
 au FocusGained * :set relativenumber
@@ -57,6 +58,8 @@ function! HideNumber()
   set number?
 endfunc
 nnoremap <leader>wn :call HideNumber()<CR>
+endif
+
 nnoremap <leader>el :set list! list?<CR>
 nnoremap <leader>ew :set wrap! wrap?<CR>
 " ================ Search format ============================

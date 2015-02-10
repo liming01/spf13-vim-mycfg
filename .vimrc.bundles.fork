@@ -8,6 +8,7 @@ endif
 "Bundle 'taglist.vim'
 
 "debug manager
+"需在gdbmgr/gdbmgr/src下make，并添加到LD_LIBRARY_PATH
 Bundle 'vim-scripts/gdbmgr'  
 Bundle "gilligan/vim-lldb"
 
