@@ -6,6 +6,8 @@ if (has("python") || has("python3"))
     Bundle 'craigemery/vim-autotag'  
 endif
 "Bundle 'taglist.vim'
+" relativenumber option toggle
+"Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 
 "debug manager
 "需在gdbmgr/gdbmgr/src下make，并添加到LD_LIBRARY_PATH

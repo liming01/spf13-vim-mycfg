@@ -9,9 +9,30 @@ http://www.jianshu.com/p/95d8335aeac7
 ctags -R
 cscope -Rbq
 
+#tab键补齐
+:tag xyz<tab> -- 补齐以xyz开头的tag名，继续按tab键，会显示其他的。
+:tag /xyz<tab> -- 会用名字中含有xyz的tag名补全。
+
+# 模式中r和s的区别
+r=s
+R 进入替换模式，按esc回到正常模式
+S=ss
+
+#启动Vim
+:browse e -- 会打开一个文件浏览器让你选择要编辑的文件。 如果是终端中，则会打开netrw的文件浏览窗口
+:Sex -- 水平分割一个窗口，浏览文件系统；
+:Vex -- 垂直分割一个窗口，浏览文件系统；
+vim + file: 从文件的末尾开始；
+vim +num file: 从第num行开始；
+vim +/string file: 打开file，并将光标停留在第一个找到的string上。
+vim --remote file: 用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。
+:e#或ctrl+^ -- 回到刚才编辑的文件，很实用。
+:f或ctrl+g -- 显示文档名，是否修改，和光标位置。
+
 # query history
 :q/  search history
 :q:  command history
+@： 重复上一次的冒号命令
 
 # move cursor/screen
 H M L zt zz zb c-f c-b c-u c-d
@@ -27,17 +48,47 @@ C-W-}/ C-W-] 快速预览窗口/新建窗口中显示光标下的Tag定义。,F 
 SI: F7/F8 查看整个项目(文件间跳转)/当前文件(文件内跳转)tag <-->
     Vim: tag（当前窗口查看）/ptag（预览窗口查看） 模糊查找插件：FuzzyFinder
 cscope函数递归调用关系插件CCTree
-[[/]] 上/下一个函数
+[[/]] 上/下一个函数块开始，需要有单独一行的{/}  
+[]/][ 上/下一个函数块结束
+[{/]{ 当前块头/尾
+[/ ]/	当前注释块头/尾
+g;/g, 上/下修改过的地方
 [CTRL-I, ]CTRL-I   search keyword from current and include files
 ]CTRL-D, [CTRL-D   seach macro ..., list macro: ]d, [d, ]D, [D
 
 # 格式
 <</>> 缩进
 = 结合indent使用, format whole file: gg=G
+:ce(nter) 本行文字居中
+:le(ft) 本行文字靠左
+:ri(ght) 本行文字靠右
+gq 对选中的文字重排，即对过长的文字进行断行
+gqq 重排当前行
+gqnq 重排n行
+gqap 重排当前段
+gqnap 重排n段
+gqnj 重排当前行和下面n行
+gqQ 重排当前段对文章末尾
+J 拼接当前行和下一行
+gJ 同 J ，不过合并后不留空格。
+
+# 拼写检查
+:set spell－开启拼写检查功能
+:set nospell－关闭拼写检查功能
+]s－移到下一个拼写错误的单词
+[s－作用与上一命令类似，但它是从相反方向进行搜索
+z=－显示一个有关拼写错误单词的列表，可从中选择
+zg－告诉拼写检查器该单词是拼写正确的
+zw－与上一命令相反，告诉拼写检查器该单词是拼写错误的
+
+# 统计字数
+g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上，用字符数减去行数可以粗略统计中文文档的字数。 
+以上对 Mac 或 Unix 的文件格式适用。 如果是 Windows 文件格式（即换行符有两个字节），字数的统计方法为： 字符数 - 行数 * 2。
 
 # 查找替换
-/ ? 		search whole word: /\<word\>   case sensitive:\C
+/ ? 		search whole word: /\<word\>   case sensitive:\C   space:\s non-space:\S  number:\n
 * #
+g* g#  部分符合即可
 N/n
 - 行内搜索：wWbBfFtT%以及e和ge。而你在用fFtT的时候，按键;和,可以重复你的搜寻。
 - Search in files:
@@ -53,11 +104,42 @@ N/n
 :s#vivian/#sky/#    使用 # 作为分隔符
 
 :1,$s/str1/str2/g   .表示当前行
+:s/that, what/\2, \1 	调换二个词的顺序				>\n n = 1~9 -- 引用pattern中的组合
+:s/that/&,&,what/gc -- that替换成that, that, what			& -- 替换为模式的匹配
+:s/his/~/g   	-- his也被替换成that, that, what			~ -- 替换为上一次替换命令所用的replacement
 :%s/str1/str2/g
 :g/str1/s//str2/g
                  命令末尾g，表示对搜索字符串的每次出现进行替换；
                  不加 g，表示只对搜索字符串的首次出现进行替换；
-                 命令开头g，表示对正文中所有包含搜索字符串的行进行替换操作
+                 命令开头g，表示对正文中所有包含搜索字符串的行进行替换操作, :[range]global/{pattern}/{command}  
+                 希望对没匹配上的行执行命令，则使用global!或vglobal命令
+
+- 高级替换
+复制第一行很多遍，然后替换下列行中的数字，按下面的规律进行替换
+#define BIT_MASK_1      (1 << 0)
+#define BIT_MASK_2      (1 << 1)                 
+先选中要修改区，然后可以分两步替换执行：
+:'<,'>s/BIT_MASK_\zs\d*\ze/\=line(".") - line("'<") + 1
+:'<,'>s/\zs\d*\ze)$/\=line(".")-line("'<")                 
+也可以这样，相当于第二句
+:let n=0|g/\zs\d\+\ze)$/s//\=n/g|let n+=1                  
+-格式：
+十进制数字转换为16进制数字	:%s/\d\+/\=printf(“%X”, submatch(0))/g
+以回车排版、以空行分段的文本变成以回车分段 :g/./,/^$/j 或者 :s/\n\n\@!/ /  
+每n行中，删除前/后m行（例如，每10行删除前/后3行）
+    :g/^/,+2 d | ,+6 m -1
+    :g/^/,+6 m -1 | +1,+3 d
+
+把Win32平台下代码提取出来，拷贝到文件末：:g/#ifdef WIN32/+1,/#else\|#endif/-1 t $
+提取上述C程序中的非Win32平台的代码（try用于没有这部分不报错）： :try | g/#ifdef WIN32//#else/+1, /#endif/-1 t $ | endtry   
+    
+- 高级global或者normal命令
+	倒序文件行（用/./则是匹配非空行）：:g/^/m 0                 
+    删除偶数行：:g/^/+1 d		或者 :%norm jdd		区别：global命令是通过偶数行标记的消失实现的，而normal命令是通过行号和后续行的自动前移实现的。
+    删除奇数行：:g/^/d|m.		或者 :%norm jkdd
+    复制所有行：:g/^/t.		或者 :%s/.*/&\r&/   
+    将aaa替换成bbb，除非该行中有ccc或者ddd：		 :v/ccc\|ddd/s/aaa/bbb/g
+    将aaa替换成bbb，条件是该行中有ccc但不能有ddd		:g/ccc/if getline('.') !~ 'ddd' | s/aaa/bbb/g          
 - Replace in files:
 :arg **/*.cpp	All *.cpp files in and below current directory
 :argadd *.h	And all *.h files.
@@ -78,12 +160,41 @@ ctrl+w s     :sp                   水平分割
 ctrl+w v     :vsp                  垂直分割
 ctrl+w w                        切换窗口
 ctrl+w h j k l  t b p            分别向左, 下, 上, 右, top, bottom, previous切换窗口
+ctrl+w H(L,K,J): 将当前窗口移动到最左（右、上、下）面
+ctrl+w r：旋转窗口的位置。
+ctrl+w T: 将当前的窗口移动到新的标签页上。
 ctrl+w q                        关闭窗口
+ctrl+w +/-/_   水平窗口加大一行/减小1行/最大化
+ctrl+w = 所有窗口同样高度
+ctrl+w >/</|   垂直窗口加大一行/减小1行/最大化
+:resize n -- 当前窗口n行高
+n ctrl+w _ -- 当前窗口的高度设定为n行。
 
+#命令行下快捷键
+上下方向键：上一条或者下一条命令。如果已经输入了部分命令，则找上一 条或者下一条匹配的命令。
+左右方向键：左/右移一个字符。
+C-w： 向前删除一个单词。
+C-h： 向前删除一个字符，等同于Backspace。
+C-u： 从当前位置移动到命令行开头。
+C-b： 移动到命令行开头。
+C-e： 移动到命令行末尾。
+Shift-Left： 左移一个单词。
+Shift-Right： 右移一个单词。
+@： 重复上一次的冒号命令。
+q： 正常模式下，q然后按':'，打开命令行历史缓冲区， 可以像编辑文件一样编辑命令。
+q/和q? 可以打开查找历史记录。
+
+#执行外部命令
+:! cmd 执行外部命令。
+:!! 执行上一次的外部命令。
+:sh 调用shell，用exit返回vim。
+:r !cmd 将命令的返回结果插入文件当前位置。 :[n]r filename在第n行插入另一个文件的内容。 :r !date 在光标处插入当前日期与时间
+:m,nw !cmd 将文件的m行到n行之间的内容做为命令输入执行命令。
 
 -多段文本复制：使用寄存器，“ay2j，“ap，其中，双引号为寄存器引用前缀，a为自定义寄存器名
-（只能为一个字母或数字，或代表系统剪贴板的“+”）
- 命令行下粘贴用Ctrl+R+寄存器
+（只能为一个字母或数字，或代表系统剪贴板的+或者*，最近刚yank的“）
+ 命令行下粘贴：用<CTRL-R>寄存器，粘贴光标下的单词用<CTRL-R><CTRL-W> 
+在插入模式下，输入C-r =，然后输入表达式，就能在 光标处得到计算结果 
 -宏记录：使用寄存器，qb -> 操作 -> q，其中，q为宏记录开始与结束命令，b为寄存器，
 宏回放使用@b。宏回放可加计数器前缀。可“bp打印宏内容，编辑后再“bY。
  "2p     粘贴最后第二次的删除的内容
@@ -93,10 +204,14 @@ ctrl+w q                        关闭窗口
 -重新选中上次选择的文本块：gv
 -高效的“操作符”＋“文本对象”的组合有六个：va(、vi(、da(、di(、ca(、ci(。
 说明下，v是选中，d是删除，c是删除后插入，a是包括结对符在内的整个文本对象，
+说明下，v是选中，d是删除，c是删除后插入, v选中，a是包括结对符在内的整个文本对象(还可以是aw词,as句,ap段,ab块)
 i是结对符内部的文本对象（inner）。如，va{选中结对符内的字符串，di”清空结对符内的字符串；
 -块操作计数器：数字－操作
 -恢复选项的默认值：set option&
--字母大小写转换：~
+-字母大小写转换：
+~: 反转光标所在字符的大小写。
+可视模式下的U或u：把选中的文本变为大写或小写。
+gu(U)接范围（如$，或G），可以把从光标当前位置到指定位置之间字母全部 转换成小写或大写。如ggguG，就是把开头到最后一行之间的字母全部变为小 写。再如gu5j，把当前行和下面四行全部变成小写。
 -VIM提供两种方式执行外部命令，一种是“:!cmd”，一种是“!cmd”，前者完全等同于在shell中执行命令，
 后者相当于同时对命令输入输出重定向，即，将选中的文本块内容作为输入传递给外部命令
 并用执行结果替换选中文本块。后者用途较为广泛，如，对文本内容排序，可先选中待排序
@@ -106,11 +221,19 @@ i是结对符内部的文本对象（inner）。如，va{选中结对符内的�
 
 :10,20 m 30    把10行到20行的内容，剪切到30行之后
 :10,20 co 30   把10行到20行的内容，复制到30行之后
-'              移动到上一次的修改行
-``             返回到原来行
+
+
+``: 移动到上次编辑的位置。''也可以，不过``精确到列，而''精确到行 。如果想跳转到更老的位置，可以按C-o，跳转到更新的位置用C-i。
+`": 移动到上次离开的地方。
+`.: 移动到最后改动的地方。
+:delmarks a c-f 删除标记a、c、d、e、f
+:delmarks! -- 删除当前缓冲区的所有标记。
+
 # make and quick fix
+:set makeprg=javac\ abc.java
+:setl efm=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 :make
-:cw(toggle)/copen/cclose/cnfile/cp/cn
+:cw(toggle)/copen/cclose/cnfile/cp/cn/cl(list error)/cr(go to the first error)
 
 location window
 :lw/lopen
@@ -120,11 +243,18 @@ vimdiff  FILE_LEFT  FILE_RIGHT
          = vim -d  FILE_LEFT  FILE_RIGHT                  -O/o: vsp/sp open files
          = vim FILE_LEFT; :vertical diffsplit FILE_RIGHT
 difference navig:   ]c / [c
-fold control:       za(toggle)/zo(open)/zO(open recursively)/zc(close)/zC/zR(open all)/zM/zd(delete)/zD/:n,mfo(folding line n to m)
+fold control:       za(toggle)/zo(open)/zO(open recursively)/zc(close)/zC/zR(open all)/zM/zd(delete)/zD/
+					:n,mfo(folding line n to m)/zf(create fold)/zfap/zj/zk/zi(enable/disable) 
 file merge:         dp (diff "put"）| do (diff "get")
 re-diff:            :diffupdate
 quit/write all:     qa/wa/wqa/qa!
 
+# set encrypt password
+:X 或者 :set key=...  为当前文件设置密码
+:set key=  去除文件的密码
+
+------------------------------------------------------------------------------------------
+						Plugins
 ------------------------------------------------------------------------------------------
 # taglist
 t/o/enter
@@ -143,10 +273,11 @@ Gstatus:
 #gitv: gitk
 
 
-
+==========================================================================================
+						IDEs
 ==========================================================================================
                 Eclipse                         SI                      Vim
-search tag:    OpenElement(Ctrl+Shift+T)        ProjWindow/F7/F8        CtrlP/tag/ptag
+search tag:    OpenElement(Ctrl+Shift+T)        ProjWindow/F7/F8        CtrlP/:tag/:ptag
 search file:   OpenResource(Ctrl+Shift+R)       ProjWindow(Ctrl+O)      CtrlP
 search ref:    Ctrl+Shift+G                     Ctrl+/                  scope
 called ref:    Ctrl+Alt+H
