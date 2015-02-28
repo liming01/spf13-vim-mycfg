@@ -111,11 +111,11 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 " }
 
 
-    " NerdTree {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            let NERDTreeIgnore+=[ '\.pyo$', '\.obj$', '\.o$', '\.so$']
-        endif
-    " }
+" NerdTree {
+    if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        let NERDTreeIgnore+=[ '\.pyo$', '\.obj$', '\.o$', '\.so$']
+    endif
+" }
 
 " SrcExpl {
 	if isdirectory(expand("~/.vim/bundle/SrcExpl/"))
@@ -146,6 +146,14 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 		" //  create/update a tags file                                                " 
 		let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ." 
 	endif
+" }
+
+" YankRing{
+    if isdirectory(expand("~/.vim/bundle/YankRing.vim"))
+        let yankring_min_element_length=4
+        let g:yankring_history_file = '.yankring-history'
+        nnoremap ,yr :YRShow<CR>
+    endif
 " }
 
 " vim-mark {
