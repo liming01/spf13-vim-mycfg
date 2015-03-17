@@ -7,14 +7,25 @@ if (has("python") || has("python3"))
 	"auto update tag file
     Bundle 'craigemery/vim-autotag'  
 endif
+"Same as tagbar
 "Bundle 'taglist.vim'
+"Bundle 'vim-scripts/TaskList.vim'
 " relativenumber option toggle
 "Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+"Alternate Files quickly (.c --> .h etc)
+Bundle 'vim-scripts/a.vim'
 
+"Visually select increasingly larger regions of text using the same key combination
+Bundle 'terryma/vim-expand-region'
+Bundle 'YankRing.vim'
+"Perl/Ruby style regexp
+"Bundle 'othree/eregex.vim'
 "debug manager
 "需在gdbmgr/gdbmgr/src下make，并添加到LD_LIBRARY_PATH
 Bundle 'vim-scripts/gdbmgr'  
-Bundle "gilligan/vim-lldb"
+Bundle 'gilligan/vim-lldb'
+"Multi-language DBGP debugger client for Vim (PHP, Python, Perl, Ruby, etc.)
+"Bundle 'joonty/vdebug'
 
 " source code reading 
 Bundle 'hari-rangarajan/CCTree'
@@ -28,12 +39,12 @@ Bundle 'gregsexton/gitv'
 
 " Auto detect CJK and Unicode file encodings
 Bundle 'mbbill/fencview'
-
+Bundle 'vimim/vimim'
 " 显示marks - 方便自己进行标记和跳转
 " m[a-zA-Z] add mark
 " '[a-zA-Z] go to mark
 " m<Space>  del all marks
-Bundle "kshenoy/vim-signature"
+Bundle 'kshenoy/vim-signature'
 
 
 " Highlight several words in different colors simultaneously

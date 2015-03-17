@@ -183,6 +183,14 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 	endif
 " }
 
+" YankRing{
+    if isdirectory(expand("~/.vim/bundle/YankRing.vim"))
+        let yankring_min_element_length=4
+        let g:yankring_history_file = '.yankring-history'
+        nnoremap ,yr :YRShow<CR>
+    endif
+" }
+
 " vim-mark {
 	if isdirectory(expand("~/.vim/bundle/vim-mark/"))
 		"Unmap '<leader>/' because of '<leader>/' key use in SPF13 conflict with vim-mark plugins
