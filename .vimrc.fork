@@ -110,12 +110,47 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
     endif
 " }
 
+" cscope_dynamic {
+    if isdirectory(expand("~/.vim/bundle/cscope_dynamic"))
+        let g:statusline_cscope_flag = ""
+        set statusline=[%n]%<%f\ %h%m%r\ %=\
+        set statusline+=%(\ [%{g:statusline_cscope_flag}]\ \ \ %)
+        set statusline+=%-14.(%l,%c%V%)\ %P
+        
+        function! Cscope_dynamic_update_hook(updating)
+            if a:updating
+                let g:statusline_cscope_flag = "C"
+            else
+                let g:statusline_cscope_flag = ""
+            endif
+            execute "redrawstatus!"
+        endfunction
+        call Cscope_dynamic_update_hook(0)
 
-    " NerdTree {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            let NERDTreeIgnore+=[ '\.pyo$', '\.obj$', '\.o$', '\.so$']
-        endif
-    " }
+        nmap <F11> <Plug>CscopeDBInit
+        
+        set csto=0
+        set cst				    "search both of scope and tag file
+        set nocsverb                            "no verbose
+        set cscopequickfix=s-,c-,d-,i-,t-,e-    "output to QuickFix window
+        
+        nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>	
+    	nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>	
+    	nmap <leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>	
+    	nmap <leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>	
+    	nmap <leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>	
+    	nmap <leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>	
+    	nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    	nmap <leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>
+    
+    endif
+" }
+
+" NerdTree {
+    if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        let NERDTreeIgnore+=[ '\.pyo$', '\.obj$', '\.o$', '\.so$']
+    endif
+" }
 
 " SrcExpl {
 	if isdirectory(expand("~/.vim/bundle/SrcExpl/"))
@@ -165,11 +200,14 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 		elseif !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
     		let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 		endif   
+        let g:ycm_min_num_of_chars_for_completion = 1
+        let g:ycm_auto_trigger = 1
 		" 跳转到定义处, 分屏打开
 		let g:ycm_goto_buffer_command = 'horizontal-split'
 		" nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-		nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-		nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+		nnoremap <leader>jt :YcmCompleter GoTo<CR>
+		nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+		nnoremap <leader>js :YcmCompleter GoToDeclaration<CR>
 		
 	endif
 "}
