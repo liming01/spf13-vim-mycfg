@@ -79,8 +79,8 @@ nnoremap <silent> g* g*zz
 nnoremap gj j
 nnoremap gk k
 
-" toggle wrap mode
-:nmap <leader>tw :setlocal wrap!<CR> :setlocal wrap? <CR>
+" toggle wrap mode, similar to [ow/]ow in vim-unimpaired 
+:nmap <leader>ow :setlocal wrap!<CR> :setlocal wrap? <CR>
 
 "离开插入模式后自动关闭预览窗口
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -129,10 +129,22 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
         nmap <F11> <Plug>CscopeDBInit
         
-        set csto=0
-        set cst				    "search both of scope and tag file
-        set nocsverb                            "no verbose
-        set cscopequickfix=s-,c-,d-,i-,t-,e-    "output to QuickFix window
+        setlocal noautochdir 
+        "set csto=0
+        "set cst				    "search both of scope and tag file
+        "set nocsverb                            "no verbose
+        "set cscopequickfix=s-,c-,d-,i-,t-,e-    "output to QuickFix window
+        "Change cscope output to quickfix window or not.
+function! s:cscopeChangeOutput()
+    if &cscopequickfix != 's+,c+,d+,i+,t+,e+'
+        set cscopequickfix=s+,c+,d+,i+,t+,e+
+        echo "cscope Quickfix mode is ".&cscopequickfix
+    elseif &cscopequickfix == 's+,c+,d+,i+,t+,e+'
+        set cscopequickfix=""
+        echo "cscope Quickfix mode is Off."
+    endif
+endfunction
+        nmap <silent><leader>fo :call <SID>cscopeChangeOutput()<CR>  " toggle output
         
         nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>	
     	nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>	
@@ -325,8 +337,8 @@ nnoremap <silent> <leader>t] :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Open a Quickfix window for the last search. similar to query search history: q/
 nnoremap <silent> <leader>q/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
-" Ag for the last search.
-nnoremap <silent> <leader>qa/ :execute "Ag! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Ag/Ack for the last search.
+nnoremap <silent> <leader>qa/ :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 "==========================================
 " Use Q to intelligently close a window
 "==========================================
