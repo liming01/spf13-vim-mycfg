@@ -39,7 +39,7 @@ Bundle 'gregsexton/gitv'
 
 " Auto detect CJK and Unicode file encodings
 Bundle 'mbbill/fencview'
-Bundle 'vimim/vimim'
+"Bundle 'vimim/vimim'
 " 显示marks - 方便自己进行标记和跳转
 " m[a-zA-Z] add mark
 " '[a-zA-Z] go to mark
@@ -57,7 +57,8 @@ Bundle 'kshenoy/vim-signature'
 ":Mark				list all marks
 Bundle 'dimasg/vim-mark'
 
-
+"Add support for tmux key conflict with vim 
+Bundle 'christoomey/vim-tmux-navigator'
 
 
 
