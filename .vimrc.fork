@@ -60,8 +60,8 @@ endfunc
 nnoremap <leader>wn :call HideNumber()<CR>
 endif
 
-nnoremap <leader>el :set list! list?<CR>
-nnoremap <leader>ew :set wrap! wrap?<CR>
+nnoremap <leader>ol :set list! list?<CR>
+nnoremap <leader>ow :set wrap! wrap?<CR>
 " ================ Search format ============================
 " 进入搜索Use sane regexes"
 nnoremap / /\v
@@ -79,7 +79,7 @@ nnoremap <silent> g* g*zz
 nnoremap gj j
 nnoremap gk k
 
-" toggle wrap mode, similar to [ow/]ow in vim-unimpaired 
+" toggle wrap mode, similar to [ow/]ow in plugin vim-unimpaired 
 :nmap <leader>ow :setlocal wrap!<CR> :setlocal wrap? <CR>
 
 "离开插入模式后自动关闭预览窗口
@@ -109,6 +109,21 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 		let g:airline_symbols.branch = '⎇'
     endif
 " }
+" cscope {
+	if isdirectory(expand("~/.vim/bundle/cscope.vim"))
+		nnoremap <leader>fa :call cscope#findInteractive(expand('<cword>'))<CR>
+		nnoremap <leader>l :call ToggleLocationList()<CR>
+
+		nnoremap  <leader>fs :call cscope#find('s', expand('<cword>'))<CR>
+		nnoremap  <leader>fg :call cscope#find('g', expand('<cword>'))<CR>
+		nnoremap  <leader>fd :call cscope#find('d', expand('<cword>'))<CR>
+		nnoremap  <leader>fc :call cscope#find('c', expand('<cword>'))<CR>
+		nnoremap  <leader>ft :call cscope#find('t', expand('<cword>'))<CR>
+		nnoremap  <leader>fe :call cscope#find('e', expand('<cword>'))<CR>
+		nnoremap  <leader>ff :call cscope#find('f', expand('<cword>'))<CR>
+		nnoremap  <leader>fi :call cscope#find('i', expand('<cword>'))<CR>
+	endif
+" }
 
 " cscope_dynamic {
     if isdirectory(expand("~/.vim/bundle/cscope_dynamic"))
@@ -135,15 +150,16 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
         "set nocsverb                            "no verbose
         "set cscopequickfix=s-,c-,d-,i-,t-,e-    "output to QuickFix window
         "Change cscope output to quickfix window or not.
-function! s:cscopeChangeOutput()
-    if &cscopequickfix != 's+,c+,d+,i+,t+,e+'
-        set cscopequickfix=s+,c+,d+,i+,t+,e+
-        echo "cscope Quickfix mode is ".&cscopequickfix
-    elseif &cscopequickfix == 's+,c+,d+,i+,t+,e+'
-        set cscopequickfix=""
-        echo "cscope Quickfix mode is Off."
-    endif
-endfunction
+
+		function! s:cscopeChangeOutput()
+		    if &cscopequickfix != 's+,c+,d+,i+,t+,e+'
+        		set cscopequickfix=s+,c+,d+,i+,t+,e+
+		        echo "cscope Quickfix mode is ".&cscopequickfix
+		    elseif &cscopequickfix == 's+,c+,d+,i+,t+,e+'
+		    	set cscopequickfix=""
+		        echo "cscope Quickfix mode is Off."
+		    endif
+		endfunction
         nmap <silent><leader>fo :call <SID>cscopeChangeOutput()<CR>  " toggle output
         
         nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>	
@@ -224,7 +240,7 @@ endfunction
         let g:ycm_auto_trigger = 1
 		" 跳转到定义处, 分屏打开
 		let g:ycm_goto_buffer_command = 'horizontal-split'
-		" nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+
 		nnoremap <leader>jt :YcmCompleter GoTo<CR>
 		nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 		nnoremap <leader>js :YcmCompleter GoToDeclaration<CR>
@@ -237,9 +253,10 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-"Map ; to : and save a million keystrokes
+" Map ; to : and save a million keystrokes
 " ex mode commands made easy 用于快速进入命令行
 nnoremap ; :
+
 " Make 0 go to the first character rather than the beginning
 " of the line. When we're programming, we're almost always
 " interested in working with text rather than empty space. If
@@ -328,7 +345,7 @@ vnoremap <silent> <leader>vr :call VisualSelection('replace', '')<CR>
 nnoremap <silent> <leader>gf   :vertical botright wincmd f<CR>
 
 " use to jump to tag definition in a vertical split, similar to horizon split: <C-w>]
-nnoremap <buffer> <leader>w] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <silent> <leader>w] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <silent> <leader>t] :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 "==========================================
 " quickfix-search
