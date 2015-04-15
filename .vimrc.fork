@@ -211,11 +211,18 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 	endif
 " }
 
+" Because CtrlP and YankRing both use Ctrl+P, we need to remap
 " YankRing{
     if isdirectory(expand("~/.vim/bundle/YankRing.vim"))
         let yankring_min_element_length=4
         let g:yankring_history_file = '.yankring-history'
-        nnoremap ,yr :YRShow<CR>
+        nnoremap <leader>yr :YRShow<CR>
+    endif
+" }
+
+" CtrlP{
+    if isdirectory(expand("~/.vim/bundle/ctrlp.vim"))
+        nnoremap <leader>cp :CtrlP<CR>
     endif
 " }
 
