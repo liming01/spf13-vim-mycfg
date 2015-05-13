@@ -114,6 +114,7 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 " }
 " cscope {
 	if isdirectory(expand("~/.vim/bundle/cscope.vim"))
+        let g:cscope_silent = 1
         nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
         nnoremap <leader>l :call ToggleLocationList()<CR>
 
@@ -176,7 +177,17 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
     
     endif
 " }
-
+" vim-easytags {
+    if isdirectory(expand("~/.vim/bundle/vim-easytags"))
+        let g:easytags_dynamic_files = 1
+        let g:easytags_file = '~/.vim/tags'
+        let g:easytags_async = 1
+        "let g:easytags_autorecurse = 1
+        let g:easytags_include_members = 1
+        let g:easytags_resolve_links = 1
+        let g:easytags_events = ['BufWritePost']
+    endif
+" }
 " NerdTree {
     if isdirectory(expand("~/.vim/bundle/nerdtree"))
         let NERDTreeIgnore+=[ '\.pyo$', '\.obj$', '\.o$', '\.so$']
