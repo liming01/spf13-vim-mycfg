@@ -3,13 +3,13 @@ Bundle 'brookhong/cscope.vim'
 "fast cscope database updates for C/C++
 "Bundle 'vim-scripts/cscope_dynamic'
 
+"auto update tag file
 if (has("python") || has("python3"))
-	"auto update tag file
     "Bundle 'craigemery/vim-autotag'
-    
-    Bundle 'xolox/vim-misc'
-    Bundle 'xolox/vim-easytags'
 endif
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-easytags'
+
 "Same as tagbar
 "Bundle 'taglist.vim'
 "Bundle 'vim-scripts/TaskList.vim'

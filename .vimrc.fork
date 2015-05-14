@@ -182,10 +182,13 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
         let g:easytags_dynamic_files = 1
         let g:easytags_file = '~/.vim/tags'
         let g:easytags_async = 1
-        "let g:easytags_autorecurse = 1
+        let g:easytags_autorecurse = 1
         let g:easytags_include_members = 1
-        let g:easytags_resolve_links = 1
+        let g:easytags_resolve_links = 0
+	let g:easytags_auto_update = 0
+	let g:easytags_auto_highlight = 0
         let g:easytags_events = ['BufWritePost']
+	let g:easytags_on_cursorhold = 0
     endif
 " }
 " NerdTree {
