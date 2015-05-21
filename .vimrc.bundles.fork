@@ -5,10 +5,11 @@ Bundle 'brookhong/cscope.vim'
 
 "auto update tag file
 if (has("python") || has("python3"))
-    "Bundle 'craigemery/vim-autotag'
+    " Need to change the default value of variable maxTagsFileSize in autotags.py
+    Bundle 'craigemery/vim-autotag'
 endif
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-easytags'
+"Bundle 'xolox/vim-misc'
+"Bundle 'xolox/vim-easytags'
 
 "Same as tagbar
 "Bundle 'taglist.vim'
