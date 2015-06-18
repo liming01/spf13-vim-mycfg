@@ -47,7 +47,7 @@ function! NumberToggle()
         set relativenumber
     endif
 endfunc
-nnoremap <leader>en: call NumberToggle()<cr>
+nnoremap <leader>on: call NumberToggle()<cr>
 
 ""为方便复制，用于开启/关闭行号显示:
 function! HideNumber()
@@ -60,7 +60,7 @@ function! HideNumber()
   endif
   set number?
 endfunc
-nnoremap <leader>wn :call HideNumber()<CR>
+nnoremap <leader>hn :call HideNumber()<CR>
 endif
 
 nnoremap <leader>ol :set list! list?<CR>
@@ -239,7 +239,7 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 	endif
 " }
 
-" Because CtrlP and YankRing both use Ctrl+P, we need to remap
+" Because CtrlP, YankRing and vim-multiple-cursors use Ctrl+P, we need to remap
 " YankRing{
     if isdirectory(expand("~/.vim/bundle/YankRing.vim"))
         let yankring_min_element_length=4
@@ -250,10 +250,17 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 " CtrlP{
     if isdirectory(expand("~/.vim/bundle/ctrlp.vim"))
+        let g:ctrlp_by_filename = 1
         nnoremap <leader>cp :CtrlP<CR>
+        nnoremap <leader>bl :CtrlPBuffer<CR>
     endif
 " }
-
+" CtrlP-funky{
+    if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
+        nnoremap <Leader>fu :CtrlPFunky<Cr>
+        nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+    endif
+" }
 " vim-mark {
 	if isdirectory(expand("~/.vim/bundle/vim-mark/"))
 		"Unmap '<leader>/' because of '<leader>/' key use in SPF13 conflict with vim-mark plugins
@@ -275,6 +282,8 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
         let g:ycm_auto_trigger = 1
 		" 跳转到定义处, 分屏打开
 		let g:ycm_goto_buffer_command = 'horizontal-split'
+        " speedup: YCM + Syntastic with gcc 
+        "g:ycm_register_as_syntastic_checker = 0
 
 		nnoremap <leader>jt :YcmCompleter GoTo<CR>
 		nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
@@ -302,14 +311,6 @@ nnoremap ^ 0
 " Quickly edit/reload the vimrc file
 nnoremap <silent> <leader>ev :e  $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
-autocmd! bufwritepost vimrc source %
-autocmd! bufwritepost _vimrc source % " vimrc文件修改之后自动加载。 windows。
-autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
-
-if !WINDOWS()
-	" w!! to sudo & write a file
-	cmap w!! w !sudo tee >/dev/null %
-endif
 
 " 定义函数AutoSetFileHead，自动插入文件头
 autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"

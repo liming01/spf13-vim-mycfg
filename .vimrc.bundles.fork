@@ -13,7 +13,7 @@ endif
 
 "Same as tagbar
 "Bundle 'taglist.vim'
-"Bundle 'vim-scripts/TaskList.vim'
+Bundle 'vim-scripts/TaskList.vim'
 " relativenumber option toggle
 "Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 "Alternate Files quickly (.c --> .h etc)
