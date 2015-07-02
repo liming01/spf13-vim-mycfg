@@ -278,6 +278,7 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 		elseif !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
     		let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 		endif   
+        let g:ycm_confirm_extra_conf=0
         let g:ycm_min_num_of_chars_for_completion = 1
         let g:ycm_auto_trigger = 1
 		" 跳转到定义处, 分屏打开
@@ -285,9 +286,11 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
         " speedup: YCM + Syntastic with gcc 
         "g:ycm_register_as_syntastic_checker = 0
 
-		nnoremap <leader>jt :YcmCompleter GoTo<CR>
+		nnoremap <leader>jw :YcmCompleter GoTo<CR>
 		nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 		nnoremap <leader>js :YcmCompleter GoToDeclaration<CR>
+		nnoremap <leader>jt :YcmCompleter GetType<CR>
+		nnoremap <leader>jh :YcmCompleter GetParent<CR>
 		
 	endif
 "}

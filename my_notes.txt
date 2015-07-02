@@ -4,7 +4,19 @@ VIM/make/gdb/valgrind/profiler
 ----------------------------------------------------------------------
 # install vim on mac:
 http://www.jianshu.com/p/95d8335aeac7
+----------------------------------------------------------------------
+# brew link macvim 
+osascript <<END
 
+  set macvim to POSIX file "/usr/local/Cellar/macvim/7.4-76/MacVim.app" 
+  set applications_folder to POSIX file "/Applications"
+
+  tell application "Finder"
+    make alias file to macvim at applications_folder
+  end tell
+
+END
+----------------------------------------------------------------------
 # running on project root dir
 ctags -R
 cscope -Rbq
@@ -12,11 +24,18 @@ cscope -Rbq
 #tab键补齐
 :tag xyz<tab> -- 补齐以xyz开头的tag名，继续按tab键，会显示其他的。
 :tag /xyz<tab> -- 会用名字中含有xyz的tag名补全。
+:tag /regexp<tab> --search tag with regular expression
+:tag /[Dd]o_\=[Ff]ile   tag with regular expression: same as :tag /DoFile\|do_file\|Do_File
 
 # 模式中r和s的区别
-r=s
-R 进入替换模式，按esc回到正常模式
-S=ss
+x  			X del previous char
+r 替换一个字符，不进入插入模式   R 进入替换模式，按esc回到正常模式
+s 替换一个字符，进入插入模式     S 替换一行，并进入插入模式
+
+d 删除到动作处，不进入插入模式	dd 一行  D行末
+c 删除到动作处，进入插入模式   cc 一行  C行末
+
+【注】S=cc，s/S只删除一个字符或者一行, c/C可以删除到动作处，与d/D操作相似，但最后进入插入模式。
 
 #启动Vim
 :browse e -- 会打开一个文件浏览器让你选择要编辑的文件。 如果是终端中，则会打开netrw的文件浏览窗口
@@ -30,19 +49,21 @@ vim --remote file: 用已有的vim进程打开指定的文件。 如果你不想
 :f或ctrl+g -- 显示文档名，是否修改，和光标位置。
 
 # query history
+:bro ol  browse old
 :q/  search history
 :q:  command history
 @： 重复上一次的冒号命令
 
 # move cursor/screen
+e/E的反方向是ge/E，不是E/e， e/E与w/W, b/B的关系一样
 H M L zt zz zb c-f c-b c-u c-d
       z<CR> z. z-
-+/-：移到下/上一行的行首
++/-：移到下/上一行的行首，region select插件：选定区的扩张、缩小。
 
 # 跳转
 C-O/C-I 光标移动前后跳转
-C-]/C-T 函数间前后跳转, 多定义选择：:tnext/:tprev/:tselect ,输到list窗口：:ltag后:lopen      
-:tag /[Dd]o_\=[Ff]ile   tag with regular expression: same as :tag /DoFile\|do_file\|Do_File
+C-]/C-T 函数间前后跳转, 多定义选择：g]/:tselect, 之后:tnext/:tprev/ ,输到list窗口：:ltag后:lopen      
+:tags 列出tag的堆栈     [N]C-T/:[N]pop 在堆栈中往前N行选择旧的tag  :[N]tag 在堆栈中往后N行选择新的tag
 gf/C-W f 打开include的文件 	gF/C-W W-F  打开 “文件:行数”
 C-W-}/ C-W-] 快速预览窗口/新建窗口中显示光标下的Tag定义。,F (vsp open)
 SI: F7/F8 查看整个项目(文件间跳转)/当前文件(文件内跳转)tag <-->
@@ -57,8 +78,8 @@ g;/g, 上/下修改过的地方
 ]CTRL-D, [CTRL-D   seach macro ..., list macro: ]d, [d, ]D, [D
 
 # 格式
-<</>> 缩进
-= 结合indent使用, format whole file: gg=G
+<</>> 缩进, 在插入模式下的缩进：CTRL-D/CTRL-T
+= 结合indent使用, format whole file: gg=G，format whole line: == 
 :ce(nter) 本行文字居中
 :le(ft) 本行文字靠左
 :ri(ght) 本行文字靠右
@@ -208,10 +229,10 @@ q/和q? 可以打开查找历史记录。
 i是结对符内部的文本对象（inner）。如，va{选中结对符内的字符串，di”清空结对符内的字符串；
 -块操作计数器：数字－操作
 -恢复选项的默认值：set option&
--字母大小写转换：
+-字母大小写转换：~/u/U
 ~: 反转光标所在字符的大小写。
 可视模式下的U或u：把选中的文本变为大写或小写。
-gu(U)接范围（如$，或G），可以把从光标当前位置到指定位置之间字母全部 转换成小写或大写。如ggguG，就是把开头到最后一行之间的字母全部变为小 写。再如gu5j，把当前行和下面四行全部变成小写。
+gu(U)接范围（如$，或G），可以把从光标当前位置到指定位置之间字母全部 转换成小写或大写。如ggguG，就是把开头到最后一行之间的字母全部变为小 写。再如gu5j，把当前行和下面四行全部变成小写。guaW
 -VIM提供两种方式执行外部命令，一种是“:!cmd”，一种是“!cmd”，前者完全等同于在shell中执行命令，
 后者相当于同时对命令输入输出重定向，即，将选中的文本块内容作为输入传递给外部命令
 并用执行结果替换选中文本块。后者用途较为广泛，如，对文本内容排序，可先选中待排序
@@ -265,6 +286,7 @@ C-P 打开
 C-F/C-B 扩展模式前后选择
 C-D/C-R/  匹配模式选择
 CR/C-T/C-V/C-CR open file in current/new tab/vsp/hsp
+C-\ 复制到命令行
 
 #fugitive: git
 Gstatus:
