@@ -308,3 +308,280 @@ highlight:                                      Shift+F8                gd/gD
 gen include:   Ctrl+Shift+O
 
 =======================================================================================
+
+
+
+------------------------------------------------------------------------------------------------------------------
+delete blocks
+:g/first/,/last/d
+empty
+:g/^$/d
+squeeze empty lines
+:v/./.,/./-1join
+
+"spellcheck
+!ispell %
+:%!sort -u
+
+K [look identifier]
+#searches back *searches forward
+^a - > increment the number under cursor
+^x - > decrement the number under cursor
+
+/^r^w -> pull word under cursor to cmdline
+'. -> move to last modification line
+`. -> exact spot
+:make
+errorformat
+ga -> seee the hex
+^k -> :digraphs
+
+#easy movement
+f -> find next char [input]
+F -> revfind next char [input]
+t -> find next char just prev [input]
+
+#go to column
+15|
+#substitute
+
+#delete end of line blanks
+:%s=  *$==
+:%s=  \+$==
+
+#compress empty lines
+:%s/^\n\+/\r/
+
+#multiple lines
+/begin.*\_.*end
+/begin.*\_s*end/i "any whitespace including newline
+
+:s/\(.*\):\(.*\)/\2 : \1/   : reverse fields separated by :
+:%s/^\(.*\)\n\1/\1$/        : delete duplicate lines
+:%s/<!--\_.\{-}-->//        : delete possibly multi-line comments
+
+:se expandtab
+" real tab is C-V<TAB>
+insert 4 spaces for tab
+:se tabstop=4
+:se shiftwidth=4 for changing indentation
+:se softtabstop=4 "makes spaces feel like tabs
+
+
+
+:retab #to change the tabs to use current settings
+
+:[range]:g/<pattern>/[cmd]
+Delete all lines matching a pattern 
+    :g/<pattern>/d 
+Delete all blank lines (just an example for above) 
+    :g/^\s*$/d
+
+Copy all lines matching a pattern to end of file 
+    :g/<pattern>/t$ 
+Yank all lines matching a pattern to register 'a' 
+    0"ay0:g/<pattern>/y A
+Reverse a file (just to show the power of 'g') 
+    :g/^/m0
+Display context (5 lines) for all occurences of a pattern 
+    :g/<pattern>/z#.5 
+    :g/<pattern>/z#.5|echo "=========="
+
+The command 
+
+:g/^/pu _ 
+
+is the global command with ^ as search pattern. The ^ matches the beginning of a line and 
+therefore each line of the file is a match. 
+The pu _ command is the :put command putting the contents of the _ blackhole register 
+after the current line followed by a newline. The blackhole register _ never contains anything 
+and therefore it can be used to insert an empty line. This is like doing cp /dev/nul empty.file 
+to create an empty file. 
+What the entire command does is putting an empty line after each line of the file.
+
+Suppose you have 
+let a=2 
+let b=3 
+let c=4 
+
+You want to make these variables script-wise. Then you move to over a, hit <C-v>, press jj and now press I. 
+You will be in insert mode before a 
+Now enter s:<Esc>, and when you press <Esc>, b and c will have the s: prefix too. 
+See |v_b_I|
+
+:g/pattern/normal dd
+:v/antipattern/normal dd
+
+# incrementing numbers (type <c-a> as 5 characters <c-x> subtract)
+:.,$g/^\d/exe "norm! \<c-a>": increment numbers
+:'a,'bg/\d\+/norm! ^A       : increment numbers
+# storing glob results (note must use APPEND)
+:g/fred/y A                 : append all lines fred to register a
+:'a,'b g/^Error/ . w >> errors.txt
+command line editing
+q: -edit ex commands
+q/ -edit search commands
+q?
+
+or when you are in ex, ^f will do the same
+
+text objects
+       "dl"    delete character (alias: "x")           |dl|
+        "diw"   delete inner word                       *diw*
+        "daw"   delete a word                           *daw*
+        "diW"   delete inner WORD (see [|WORD|])          *diW*
+        "daW"   delete a WORD (see |WORD|)              *daW*
+        "dd"    delete one line                         |dd|
+        "dis"   delete inner sentence                   *dis*
+        "das"   delete a sentence                       *das*
+        "dib"   delete inner '(' ')' block              *dib*
+        "dab"   delete a '(' ')' block                  *dab*
+        "dip"   delete inner paragraph                  *dip*
+        "dap"   delete a paragraph                      *dap*
+        "diB"   delete inner '{' '}' block              *diB*
+        "daB"   delete a '{' '}' block                  *daB*
+i],a),a>,a},a",a',a`,
+
+others da> da]
+the motion does not have to start from the begining, ie daw in the middle of a word deletes the word
+
+deleting with marks
+
+d't => delete upto mark 't from .
+
+list lines matching a pattern
+g/regexp/#
+
+copy
+g/fred/t$ [copy to last]
+g/fred/t'a [copy to mark a]
+g/frred/y A [copy to register A]
+
+list the lines matching word unde cursor [I
+
+shift blocks of code
+>i{
+>a{
+or >%
+<%
+
+on diffs 
+-------
+dp =>diffput
+do =>diffget
+
+g_ ->last nonblank char in a line
+g0 -> first char on wraped line
+g^ -> wrapping, first nonblank
+g$
+
+yankring
+----------
+:h yankring-tutorial
+:h yankring.txt
+:h yankring.txt
+:YRShow
+
+----to fold all execept the myregexp
+:set foldmethod=expr
+:set foldexpr=getline(v:lnum)!~\"myregex\"
+
+^T ^D -> indent in the insert mode
+
+=a} -> format outer block
+>a} -> indent outer block
+
+" register contains the recent yank/delete
+--------
+use ^O for insertmode movements
+------
+gv brings back the previously selectd visual block
+--------
+
+copy all output to a buffer
+-----
+:redir @*
+:history
+:g/regexp/
+:redir End
+
+you have the output of all commands in "* now
+--------
+
+:g/block/y A -> append all lines block to regester "a
+
+--------
+'[ -> move to the start of pasted text '] to the end
+
+-------
+to indent just recently pasted text
+=']
+
+--------
+d$30|p    [use set virtualedit=all]
+delete to end of line, move to column 30 and print
+
+v75|r-
+----------
+
+\{-}  ->match as few as possible
+eg.
+/<!--\_p\{-}-->  -> match comments across \n's
+
+----------------
+:g commands
+:g/^/pu =\"\n\" ->put \n in between all lines
+:g/regexp/t$        copy all lines matching regexp 't'o $[eof]
+
+To repeat a non-Ex command, you can use the ":normal" command: >
+:g/pat/normal {commands}
+
+
+-----------------
+take is same as copy
+ie t is co
+'a.'b t 'c #moves text between 'a and 'b to the mark 'c
+
+------------------
+L,H,M for screen page movement [l-bottom H-top , M-middle]
+
+-------------------
+use g* and g# to find words under cursor inside other words too [like * and # but part of other words ]
+
+------------------
+vG selects the whole file in Visual mode
+
+-------------------
+vim eval
+
+:%s/,/\="\n"/g  'notice the \=
+:%s/,/\=3+4/g
+-------------------
+global indent
+gg
+=G
+until a mark
+='a
+multiple lines
+100==
+all file
+:%=
+---------------------
+spell
+z= ->find suggestions
+s] next error
+
+
+
+How do you indent the current brace-delimited block *and* the one enclosing this?
+>2iB
+How do you delete & copy to the clipboard the function call that starts in the current cursor pos, with its argument list?
+d%
+How do you re-auto-indent the current block (you've pasted from somewhere else and indentation is wrong)?
+=aB
+How do you delete the current word (no matter where in it the cursor is) *and* the next one?
+d2aw
+
+---------------
+delete from current to next ^diff -1
+.,/^diff/-1d

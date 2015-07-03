@@ -3,10 +3,12 @@ Bundle 'brookhong/cscope.vim'
 "fast cscope database updates for C/C++
 "Bundle 'vim-scripts/cscope_dynamic'
 
-"auto update tag file
 if (has("python") || has("python3"))
+    "auto update tag file
     " Need to change the default value of variable maxTagsFileSize in autotags.py
     Bundle 'craigemery/vim-autotag'
+    " Generate config for YouCompleteMe, support make/cmake/qmake/autotools
+    Bundle 'rdnetto/YCM-Generator'
 endif
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-easytags'
