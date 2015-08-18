@@ -95,8 +95,8 @@ set tabstop=4
 set lbr
 set tw=500
 
-set autoindent          " auto indenting
-set si "Smart indent
+set noautoindent          " auto indenting
+set nosi "Smart indent
 set wrap "Wrap lines
 
 
@@ -108,7 +108,7 @@ map j gj
 map k gk
 
 " keep cursor in the middle of the screen while scrolling up and down.
-set scrolloff=999
+"set scrolloff=999
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -123,3 +123,4 @@ set statusline+=\ [%{&ff}/%Y]            " Filetype
 set statusline+=\ [%{getcwd()}]          " Current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
+set tags=tags;/  "search tag file in ancestor dirs.
