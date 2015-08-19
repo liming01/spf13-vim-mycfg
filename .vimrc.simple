@@ -110,6 +110,13 @@ map k gk
 " keep cursor in the middle of the screen while scrolling up and down.
 "set scrolloff=999
 
+"Keep search pattern at the center of the screen."
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""

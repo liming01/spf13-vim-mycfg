@@ -23,7 +23,7 @@ set formatoptions+=B
 
 "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
 "好处：误删什么的，如果以前屏幕打开，可以找回
-set t_ti= t_te=
+"set t_ti= t_te=
 
 " 00x增减数字时使用十进制
 set nrformats=
@@ -102,7 +102,15 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 		set viewoptions=cursor,folds,slash,unix 
 	endif
 " }
-
+" indentLine {
+	if isdirectory(expand("~/.vim/bundle/indentLine/"))
+        let g:indentLine_color_term = 239
+        "let g:indentLine_color_gui = '#A4E57E'
+        "let g:indentLine_color_tty_light = 7 " (default: 4)
+        "let g:indentLine_color_dark = 1 " (default: 2)
+        "let g:indentLine_char = '¦'
+    endif
+" }
 " vim-airline {
 	if isdirectory(expand("~/.vim/bundle/vim-airline/"))
 		if !exists('g:airline_symbols')
