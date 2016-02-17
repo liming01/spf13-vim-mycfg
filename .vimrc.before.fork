@@ -2,7 +2,8 @@
 let g:spf13_no_fastTabs = 1
 
 " Change the color schema for status line, keep same with color scheme in .vimrc.fork
-let g:airline_theme = 'molokai'
+"let g:airline_theme = 'molokai'
+let g:airline_theme = 'dark'
 
 "disable the stripping of whitespace
 let g:spf13_keep_trailing_whitespace = 1

@@ -70,5 +70,6 @@ Bundle 'dimasg/vim-mark'
 Bundle 'christoomey/vim-tmux-navigator'
 
 
-
+" neovim related bundle
+Bundle 'junegunn/fzf'
 
