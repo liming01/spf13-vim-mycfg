@@ -185,6 +185,25 @@ cnoremap <C-k> <t_ku>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
+"==========================================
+" Automatically jump to a file at the correct line number
+"==========================================
+" i.e. if your cursor is over /some/path.rb:50 then using 'gf' on it will take
+" you to that line
+
+" use ,gf to go to file in a vertical split
+nnoremap <silent> <leader>gf   :vertical botright wincmd f<CR>
+
+" use to jump to tag definition in a vertical split, similar to horizon split: <C-w>]
+nnoremap <silent> <leader>w] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <silent> <leader>t] :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+"==========================================
+" quickfix-search
+"==========================================
+" Stolen from Steve Losh vimrc: https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
+" Open a Quickfix window for the last search. similar to query search history: q/
+nnoremap <silent> <leader>q/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
 " ============================ specific file type ===========================
 
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
