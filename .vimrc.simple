@@ -46,6 +46,9 @@ set showmatch
 " turn on syntax hightlighting.
 syntax on
 
+
+" colorscheme solarized
+" colorscheme molokai
 colorscheme desert
 set background=dark
 
@@ -55,10 +58,37 @@ if has("gui_running")
     set guioptions+=e
     set t_Co=256
     set guitablabel=%M\ %t
+else
+	" 设置标记一列的背景颜色和数字一行颜色一致
+	hi! link SignColumn   LineNr
+	hi! link ShowMarksHLl DiffAdd
+	hi! link ShowMarksHLu DiffChange
+
+	" for error highlight，防止错误整行标红导致看不清
+	highlight clear SpellBad
+	highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+	highlight clear SpellCap
+	highlight SpellCap term=underline cterm=underline
+	highlight clear SpellRare
+	highlight SpellRare term=underline cterm=underline
+	highlight clear SpellLocal
+	highlight SpellLocal term=underline cterm=underline
 endif
+
+" quickfix window  s/v to open in split window,  ,gd/,jd => quickfix window => open it
+autocmd BufReadPost quickfix nnoremap <buffer> v <C-w><Enter><C-w>L
+autocmd BufReadPost quickfix nnoremap <buffer> s <C-w><Enter><C-w>K
+
+" 打开自动定位到最后编辑的位置, 需要确认 .viminfo 当前用户可写
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
+
+set wildignore=*.swp,*.bak,*.pyc,*.class,.svn,.git,.cvs
 
 " show auto complete menus.
 set wildmenu
@@ -136,12 +166,31 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" http://stackoverflow.com/questions/13194428/is-better-way-to-zoom-windows-in-vim-than-zoomwin
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <Leader>z :ZoomToggle<CR>
+
 nnoremap <F2> :set nu! nu?<CR>
 nnoremap <F3> :set list! list?<CR>
 nnoremap <F4> :set wrap! wrap?<CR>
 set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
-                                "                                    "    that won't be autoindented
+								"    that won't be autoindented
+" F6 语法开关，关闭语法可以加快大文件的展示
+nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+
 au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
