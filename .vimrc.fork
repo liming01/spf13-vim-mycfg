@@ -28,6 +28,10 @@ set formatoptions+=B
 " 00x增减数字时使用十进制
 set nrformats=
 
+set nospell
+" not set autochdir, use ,cd when you want to change PWD
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
 "set default color schema    
 colorscheme molokai
 
@@ -164,6 +168,8 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 " }
 " vim-airline {
 	if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+		" do not display trailing/mixed-indent/mixed-indent-file
+		let g:airline#extensions#whitespace#enabled = 0
 		if !exists('g:airline_symbols')
     		let g:airline_symbols = {}
 		endif

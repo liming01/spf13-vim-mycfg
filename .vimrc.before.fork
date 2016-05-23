@@ -16,6 +16,6 @@ if v:version > 703 || (v:version == 703 && has('patch584'))
 	let g:spf13_bundle_groups += ['youcompleteme']
 endif
 
-
+let g:spf13_no_autochdir = 1
 
 

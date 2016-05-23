@@ -21,6 +21,10 @@ let g:mapleader = ','
 " Set to auto read when a file is changed from the outside
 set autoread
 
+"set autochdir
+" not set autochdir, use ,cd when you want to change PWD
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
 " number the lines.
 set number
 
