@@ -50,8 +50,8 @@ vim --remote file: 用已有的vim进程打开指定的文件。 如果你不想
 
 # query history
 :bro ol  browse old
-:q/  search history
-:q:  command history
+q/  search history
+q:  command history
 @： 重复上一次的冒号命令
 
 # move cursor/screen
