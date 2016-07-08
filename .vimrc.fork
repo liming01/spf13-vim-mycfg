@@ -32,6 +32,9 @@ set nospell
 " not set autochdir, use ,cd when you want to change PWD
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
+" fix location window report: E924: Current window was closed
+let g:syntastic_auto_loc_list = 3
+
 "set default color schema    
 colorscheme molokai
 
