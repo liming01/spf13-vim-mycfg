@@ -26,9 +26,9 @@ ln -sf $SCRIPT_PATH/.ycm_extra_conf.py ~/
 
 vim +BundleInstall! +BundleClean +q
 
-
-
-
+# change default vimrc to .vimrc.simple
+mv ~/.vimrc ~/.vimrc.complex
+mv ~/.vimrc.simple ~/.vimrc
 
 ################
 cd $CURRENT_DIR

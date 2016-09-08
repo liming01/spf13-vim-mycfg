@@ -37,8 +37,8 @@ Bundle 'gilligan/vim-lldb'
 "Bundle 'joonty/vdebug'
 
 " source code reading 
-Bundle 'hari-rangarajan/CCTree'
-Bundle 'wesleyche/SrcExpl'
+" Bundle 'hari-rangarajan/CCTree'
+" Bundle 'wesleyche/SrcExpl'
 
 " good keymap 
 Bundle 'tpope/vim-unimpaired'

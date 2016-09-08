@@ -20,5 +20,8 @@ call mklink "%HOME%\.ycm_extra_conf.py" "%FILE_DIR%\.ycm_extra_conf.py"
 
 call vim -u "%HOME%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
 
+mv "%HOME%/.vimrc" "%HOME%/.vimrc.complex"
+mv "%HOME%/.vimrc.simple" "%HOME%/.vimrc"
+
 @cd %CURRENT_DIR%
 @pause
