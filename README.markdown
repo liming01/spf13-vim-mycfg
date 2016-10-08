@@ -43,6 +43,7 @@ source/edit vimrc         :  <leader>sv, <leader>ev
 sudo write                : : w!!
 quite all buffers         : Q
 re-search last search/ack : <leader>q/, <leader>qa/
-go file with line         : <leader>gf
+go file with line         : gF
+go file in vertical split : <leader>gf
 visual block search/replace: *, #, <leader>vr
 ```
