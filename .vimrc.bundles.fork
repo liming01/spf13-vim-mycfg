@@ -30,9 +30,13 @@ Bundle 'YankRing.vim'
 "Perl/Ruby style regexp
 "Bundle 'othree/eregex.vim'
 "debug manager
-"需在gdbmgr/gdbmgr/src下make，并添加到LD_LIBRARY_PATH
-Bundle 'vim-scripts/gdbmgr'  
-Bundle 'gilligan/vim-lldb'
+if executable('gdb')
+	"需在gdbmgr/gdbmgr/src下make，并添加到LD_LIBRARY_PATH
+	Bundle 'vim-scripts/gdbmgr'  
+elseif executable('lldb')
+	Bundle 'gilligan/vim-lldb'
+endif
+
 "Multi-language DBGP debugger client for Vim (PHP, Python, Perl, Ruby, etc.)
 "Bundle 'joonty/vdebug'
 
