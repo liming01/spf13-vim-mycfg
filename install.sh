@@ -24,11 +24,10 @@ ln -sf $SCRIPT_PATH/.vimrc.local ~/
 ln -sf $SCRIPT_PATH/.vimrc.simple ~/
 ln -sf $SCRIPT_PATH/.ycm_extra_conf.py ~/
 
-vim +BundleInstall! +BundleClean +q
-
 # change default vimrc to .vimrc.simple
-mv ~/.vimrc ~/.vimrc.complex
-mv ~/.vimrc.simple ~/.vimrc
+ln -sf $SCRIPT_PATH/.vimrc.simple ~/.vimrc
+ln -sf ~/.spf13-vim-3/.vimrc ~/.vimrc.complex
 
+vim -u ~/.vimrc.complex +BundleInstall! +BundleClean +q
 ################
 cd $CURRENT_DIR

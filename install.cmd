@@ -18,10 +18,11 @@ call mklink "%HOME%\.vimrc.fork" "%FILE_DIR%\.vimrc.fork"
 call mklink "%HOME%\.vimrc.local" "%FILE_DIR%\.vimrc.local"
 call mklink "%HOME%\.ycm_extra_conf.py" "%FILE_DIR%\.ycm_extra_conf.py"
 
-call vim -u "%HOME%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
+call mklink "%HOME%\.vimrc" "%FILE_DIR%\.vimrc.simple"
+@set APP_PATH=%HOME%\.spf13-vim-3
+call mklink /J "%HOME%\.vim.complex" "%APP_PATH%\.vim"
 
-mv "%HOME%/.vimrc" "%HOME%/.vimrc.complex"
-mv "%HOME%/.vimrc.simple" "%HOME%/.vimrc"
+call vim -u "%HOME%/.vimrc.complex" +BundleInstall! +BundleClean +qall
 
 @cd %CURRENT_DIR%
 @pause
