@@ -16,6 +16,9 @@ endif
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-easytags'
 
+"Support ctags and gtags, generate and update tags file
+"Bundle 'jsfaint/gen_tags.vim'
+
 "Same as tagbar
 "Bundle 'taglist.vim'
 Bundle 'vim-scripts/TaskList.vim'

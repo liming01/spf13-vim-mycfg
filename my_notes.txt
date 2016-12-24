@@ -17,6 +17,11 @@ osascript <<END
 
 END
 ----------------------------------------------------------------------
+终端里使用 Vim 编辑当前行命令
+	快捷键: 		Ctrl-X + Ctrl-E
+	shell command: 	fc
+	config: 		set -o vi
+----------------------------------------------------------------------
 # running on project root dir
 ctags -R
 cscope -Rbq
