@@ -28,6 +28,12 @@ set formatoptions+=B
 " 00x增减数字时使用十进制
 set nrformats=
 
+" disable bracketed paste mode in iterm2
+execute "set <f28>=\<Esc>[200~"
+execute "set <f29>=\<Esc>[201~"
+cmap <f28> <nop>
+cmap <f29> <nop>
+
 set nospell
 " not set autochdir, use ,cd when you want to change PWD
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>

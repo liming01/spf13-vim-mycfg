@@ -50,6 +50,11 @@ set showmatch
 " turn on syntax hightlighting.
 syntax on
 
+" disable bracketed paste mode in iterm2
+execute "set <f28>=\<Esc>[200~"
+execute "set <f29>=\<Esc>[201~"
+cmap <f28> <nop>
+cmap <f29> <nop>
 
 " colorscheme solarized
 " colorscheme molokai
