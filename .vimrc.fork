@@ -78,6 +78,7 @@ endif
 
 " NOT to use spaces instead of tabs
 set noexpandtab
+set mouse=v
 
 " ================ 行号 ============================
 " 相对行号      行号变成相对，可以用 nj  nk   进行跳转 5j   5k 上下跳5行

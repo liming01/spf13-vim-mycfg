@@ -286,10 +286,11 @@ function! AutoSetFileHead()
     normal o
 endfunc
 
+fun! <SID>StripTrailingWhitespaces()
+	let l = line(".")
+	let c = col(".")
+	%s/\s\+$//e
+	call cursor(l, c)
+endfun
 " autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-" fun! <SID>StripTrailingWhitespaces()
-"     let l = line(".")
-"     let c = col(".")
-"     %s/\s\+$//e
-"     call cursor(l, c)
-" endfun
+nnoremap <leader>t<space> : call <SID>StripTrailingWhitespaces() <CR>
