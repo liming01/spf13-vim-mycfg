@@ -77,7 +77,7 @@ if has("autocmd")
 endif
 
 " NOT to use spaces instead of tabs
-set noexpandtab
+set expandtab
 set mouse=v
 
 " ================ 行号 ============================

@@ -24,26 +24,27 @@ g], <C-]>, <C-w>], <leader>w], <leader>t]
 ```
 - other plugins:
 ```
-CtrlP                     : <leader>cp, <leader>bl, <D-r>, <leader>fu, <leader>fU
-YankRing                  : <leader>yr
-nerdcommenter             : <leader>c<space>, <leader>cc, <leader>cu
-multiple-cursor           : <C-N>, <C-P>, <C-X>
-nerdtree                  : <C-e>, <leader>e
-tagbar                    : <leader>tt
-vim-easymotion            : <leader><leader>w, <leader><leader>fe
-tabular                   : <leader>a=
-vim-expand-region         : +, -
-vim-mark                  : <Leader>m,<Leader>n, <Leader>r, <Leader>*, <Leader># , <Leader>/, <Leader>?
-mark                      :  m<Space>  del all marks
-TaskList.vim              : <leader>td
+CtrlP                       : <leader>cp, <leader>bl, <D-r>, <leader>fu, <leader>fU
+YankRing                    : <leader>yr
+nerdcommenter               : <leader>c<space>, <leader>cc, <leader>cu
+multiple-cursor             : <C-N>, <C-P>, <C-X>
+nerdtree                    : <C-e>, <leader>e
+tagbar                      : <leader>tt
+vim-easymotion              : <leader><leader>w, <leader><leader>fe
+tabular                     : <leader>a=
+vim-expand-region           : +, -
+vim-mark                    : <Leader>m,<Leader>n, <Leader>r, <Leader>*, <Leader># , <Leader>/, <Leader>?
+mark                        : m<Space>  del all marks
+TaskList.vim                : <leader>td
 ```
-* others commands:      
-```           
-source/edit vimrc         :  <leader>sv, <leader>ev
-sudo write                : : w!!
-quite all buffers         : Q
-re-search last search/ack : <leader>q/, <leader>qa/
-go file with line         : gF
-go file in vertical split : <leader>gf
-visual block search/replace: *, #, <leader>vr
+* others commands:
+```
+source/edit vimrc           : <leader>sv, <leader>ev
+sudo write                  :                                                                             : w!!
+quite all buffers           : Q
+re-search last search/ack   : <leader>q/, <leader>qa/
+go file with line           : gF
+go file in vertical split   : <leader>gf
+visual block search/replace : *, #, <leader>vr
+trim space                  : <leader>t<space>
 ```

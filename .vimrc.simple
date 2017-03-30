@@ -128,7 +128,7 @@ set noswapfile
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NOT to use spaces instead of tabs
-set noexpandtab
+set expandtab
 
 " Be smart when using tabs ;)
 set smarttab
