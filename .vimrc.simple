@@ -18,182 +18,21 @@ filetype indent on
 let mapleader = ','
 let g:mapleader = ','
 
-" Set to auto read when a file is changed from the outside
-set autoread
-
-"set autochdir
-" not set autochdir, use ,cd when you want to change PWD
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" number the lines.
-set number
-
-"Always show current position
-set ruler
-" show location of cursor using a horizontal line.
-set cursorline
-
-set magic                       " For regular expressions turn magic on
-set title                       " change the terminal's title
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-set incsearch                   " do incremental searching, search as you type
-" Show matching brackets when text indicator is over them
-set showmatch
-
-" turn on syntax hightlighting.
-syntax on
-
-" disable bracketed paste mode in iterm2
-execute "set <f28>=\<Esc>[200~"
-execute "set <f29>=\<Esc>[201~"
-cmap <f28> <nop>
-cmap <f29> <nop>
 
 " colorscheme solarized
 " colorscheme molokai
 " colorscheme desert
 " set background=dark
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-else
-	" 设置标记一列的背景颜色和数字一行颜色一致
-	hi! link SignColumn   LineNr
-	hi! link ShowMarksHLl DiffAdd
-	hi! link ShowMarksHLu DiffChange
-
-	" for error highlight，防止错误整行标红导致看不清
-	highlight clear SpellBad
-	highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-	highlight clear SpellCap
-	highlight SpellCap term=underline cterm=underline
-	highlight clear SpellRare
-	highlight SpellRare term=underline cterm=underline
-	highlight clear SpellLocal
-	highlight SpellLocal term=underline cterm=underline
-endif
-
-" quickfix window  s/v to open in split window,  ,gd/,jd => quickfix window => open it
-autocmd BufReadPost quickfix nnoremap <buffer> v <C-w><Enter><C-w>L
-autocmd BufReadPost quickfix nnoremap <buffer> s <C-w><Enter><C-w>K
-
-" 打开自动定位到最后编辑的位置, 需要确认 .viminfo 当前用户可写
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-set wildignore=*.swp,*.bak,*.pyc,*.class,.svn,.git,.cvs
-
-" show auto complete menus.
-set wildmenu
-
-" Make wildmenu behave like bash completion. Finding commands are so easy now.
-set wildmode=list:longest
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
 
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NOT to use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs ;)
-set smarttab
-
-" 1 tab == 4 spaces
-set autoindent smartindent shiftround
-set shiftwidth=4
-set tabstop=4
-
-" Linebreak on 500 characters
-set lbr
-set tw=500
-
-" movement
-set scrolloff=7                 " keep 3 lines when scrolling
-
-set wrap "Wrap lines
 
 " show
 set showcmd                     " display incomplete commands
 set showmode                    " display current modes
 set matchtime=2                 " tenths of a second to show the matching parenthesis
 
-" select & complete
-set selection=inclusive
-set selectmode=mouse,key
-
-set completeopt=longest,menu
-set wildmenu                           " show a navigable menu for tab completion"
-set wildmode=longest,list,full
-set wildignore=*.o,*~,*.pyc,*.class
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Treat long lines as break lines (useful when moving around in them)
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j
-
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" http://stackoverflow.com/questions/13194428/is-better-way-to-zoom-windows-in-vim-than-zoomwin
-" Zoom / Restore window.
-function! s:ZoomToggle() abort
-    if exists('t:zoomed') && t:zoomed
-        execute t:zoom_winrestcmd
-        let t:zoomed = 0
-    else
-        let t:zoom_winrestcmd = winrestcmd()
-        resize
-        vertical resize
-        let t:zoomed = 1
-    endif
-endfunction
-command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <Leader>z :ZoomToggle<CR>
-
-nnoremap <F2> :set nu! nu?<CR>
-nnoremap <F3> :set list! list?<CR>
-nnoremap <F4> :set wrap! wrap?<CR>
 set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
 								"    that won't be autoindented
@@ -202,22 +41,6 @@ nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-
-" keep cursor in the middle of the screen while scrolling up and down.
-"set scrolloff=999
-
-"Keep search pattern at the center of the screen."
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
-" remove highlight
-noremap <silent><leader>/ :nohls<CR>
-"
-" "Reselect visual block after indent/outdent.调整缩进后自动选中，方便再次操作
-vnoremap < <gv
-vnoremap > >gv
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -232,65 +55,11 @@ set statusline+=\ [%{&ff}/%Y]            " Filetype
 set statusline+=\ [%{getcwd()}]          " Current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
+
 set tags=tags;/  "search tag file in ancestor dirs.
 
-" save
-cmap w!! w !sudo tee >/dev/null %
-
-" command mode, ctrl-a to head， ctrl-e to tail
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-
-"==========================================
-" Automatically jump to a file at the correct line number
-"==========================================
-" i.e. if your cursor is over /some/path.rb:50 then using 'gF' on it will take
-" you to that line
-
-" use ,gf to go to file in a vertical split
-nnoremap <silent> <leader>gf   :vertical botright wincmd f<CR>
-
-" use to jump to tag definition in a vertical split, similar to horizon split: <C-w>]
-nnoremap <silent> <leader>w] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-nnoremap <silent> <leader>t] :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-"==========================================
-" quickfix-search
-"==========================================
-" Stolen from Steve Losh vimrc: https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
-" Open a Quickfix window for the last search. similar to query search history: q/
-nnoremap <silent> <leader>q/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-
-" ============================ specific file type ===========================
-
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
-autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
-
-autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
-function! AutoSetFileHead()
-    " .sh
-    if &filetype == 'sh'
-        call setline(1, "\#!/bin/bash")
+" Use common config for complex and simple vimrc{
+    if filereadable(expand("~/.vimrc.common"))
+       source ~/.vimrc.common
     endif
-
-    " python
-    if &filetype == 'python'
-        call setline(1, "\#!/usr/bin/env python")
-        call append(1, "\# encoding: utf-8")
-    endif
-
-    normal G
-    normal o
-    normal o
-endfunc
-
-fun! <SID>StripTrailingWhitespaces()
-	let l = line(".")
-	let c = col(".")
-	%s/\s\+$//e
-	call cursor(l, c)
-endfun
-" autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-nnoremap <leader>t<space> : call <SID>StripTrailingWhitespaces() <CR>
+" }

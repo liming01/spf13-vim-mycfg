@@ -16,6 +16,8 @@ call mklink "%HOME%\.vimrc.before.fork" "%FILE_DIR%\.vimrc.before.fork"
 call mklink "%HOME%\.vimrc.bundles.fork" "%FILE_DIR%\.vimrc.bundles.fork"
 call mklink "%HOME%\.vimrc.fork" "%FILE_DIR%\.vimrc.fork"
 call mklink "%HOME%\.vimrc.local" "%FILE_DIR%\.vimrc.local"
+call mklink "%HOME%\.vimrc.common" "%FILE_DIR%\.vimrc.common"
+call mklink "%HOME%\.vimrc.simple" "%FILE_DIR%\.vimrc.simple"
 call mklink "%HOME%\.ycm_extra_conf.py" "%FILE_DIR%\.ycm_extra_conf.py"
 
 call mklink "%HOME%\.vimrc" "%FILE_DIR%\.vimrc.simple"
