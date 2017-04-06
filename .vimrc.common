@@ -63,7 +63,7 @@ set hlsearch
 set incsearch                   " do incremental searching, search as you type
 " Show matching brackets when text indicator is over them
 set showmatch
-
+set clipboard=unnamed
 " turn on syntax hightlighting.
 syntax on
 
@@ -110,7 +110,13 @@ inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
 inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
-set wildignore=*.swp,*.bak,*.pyc,*.class,.svn,.git,.cvs,*.o,*~
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc,*.swp,*.bak,*.class,
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
 
 "show a navigable menu for tab completion
 set completeopt=longest,menu
@@ -202,6 +208,7 @@ nnoremap <leader>on :set nu! nu?<CR>
 nnoremap <leader>oh :set hlsearch! hlsearch?<CR> " remove highlight
 nnoremap <leader>ol :set list! list?<CR>
 nnoremap <leader>ow :set wrap! wrap?<CR>
+nnoremap <leader>op :set spell! spell?<CR>
 " ================ Search format ============================
 " 进入搜索Use sane regexes"
 nnoremap / /\v
@@ -232,6 +239,9 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " save
+" :W sudo saves the file 
+" " (useful for handling the permission-denied error)
+"command W w !sudo tee % > /dev/null
 cmap w!! w !sudo tee >/dev/null %
 
 " command mode, ctrl-a to head， ctrl-e to tail
@@ -335,6 +345,12 @@ nnoremap <silent> <leader>gf   :vertical botright wincmd f<CR>
 " use to jump to tag definition in a vertical split, similar to horizon split: <C-w>]
 nnoremap <silent> <leader>w] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <silent> <leader>t] :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+" copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
+" this is helpful to paste someone the path you're looking at
+nnoremap <silent> ,cf :let @* = expand("%:~")<CR>
+nnoremap <silent> ,cr :let @* = expand("%")<CR>
+nnoremap <silent> ,cn :let @* = expand("%:t")<CR>
 
 " http://stackoverflow.com/questions/13194428/is-better-way-to-zoom-windows-in-vim-than-zoomwin
 " Zoom / Restore window.

@@ -40,11 +40,12 @@ TaskList.vim                : <leader>td
 * others commands:
 ```
 source/edit vimrc           : <leader>sv, <leader>ev
-sudo write                  :                                                                             : w!!
+sudo write                  :                                    : w!!
 quite all buffers           : Q
 re-search last search/ack   : <leader>q/, <leader>qa/
 go file with line           : gF
 go file in vertical split   : <leader>gf
 visual block search/replace : *, #, <leader>vr
 trim space                  : <leader>t<space>
+copy file name              : <leader>cf, <leader>cr, <leader>cn
 ```
