@@ -391,7 +391,7 @@ function! CloseWindowOrKillBuffer()
     endif
 
     " Don't need to save temp file for ListLeaders()
-    if matchstr(expand("%"), 'tmpfile4vim.tmp') == 'tmpfile4vim.tmp'
+    if matchstr(expand("%"), '\[List Map\]') == '[List Map]'
         bdelete!
         return
     endif
@@ -414,19 +414,20 @@ nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 "==========================================
 " better tracking my usage of the <leader> namespace for my key mappings
 "==========================================
-function! ListLeaders()
+function! ListMap()
     silent! redir @a
-    silent! nmap <LEADER>
+    silent! map
     silent! redir END
-    silent! new tmpfile4vim.tmp
+    silent! new [List Map]
     silent! put! a
     silent! g/^s*$/d
     silent! %s/^.*,/,/
     silent! normal ggVG
     silent! sort
     silent! let lines = getline(1,"$")
+    silent! normal ESC
 endfunction
-nnoremap <silent> <leader>ll :call ListLeaders()<CR>
+nnoremap <silent> <leader>lm :call ListMap()<CR>
 
 "==========================================
 " Trip trailing whitespace

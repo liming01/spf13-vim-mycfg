@@ -54,5 +54,5 @@ go file in vertical split   : <leader>gf
 visual block search/replace : *, #, <leader>vr
 trim space                  : <leader>t<space>
 copy file name              : <leader>cf, <leader>cr, <leader>cn
-list key map with leader    : <leader>ll
+list keymap in sorted order : <leader>lm
 ```
