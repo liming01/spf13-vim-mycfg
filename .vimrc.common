@@ -208,7 +208,7 @@ nnoremap <leader>on :set nu! nu?<CR>
 nnoremap <leader>oh :set hlsearch! hlsearch?<CR> " remove highlight
 nnoremap <leader>ol :set list! list?<CR>
 nnoremap <leader>ow :set wrap! wrap?<CR>
-nnoremap <leader>op :set spell! spell?<CR>
+nnoremap <leader>os :set spell! spell?<CR>
 " ================ Search format ============================
 " 进入搜索Use sane regexes"
 nnoremap / /\v
@@ -239,7 +239,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " save
-" :W sudo saves the file 
+" :W sudo saves the file
 " " (useful for handling the permission-denied error)
 "command W w !sudo tee % > /dev/null
 cmap w!! w !sudo tee >/dev/null %
@@ -296,9 +296,10 @@ endfunc
 nnoremap <buffer> <lead>rp :exec '!python' shellescape(@%, 1)<cr>
 
 
-"==========================================
-" Search in visual model
-"==========================================
+"====================================================================================
+" Search in visual model: searching for the whole
+" selection instead of just the word under the cursor.
+"====================================================================================
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -389,6 +390,18 @@ function! CloseWindowOrKillBuffer()
         return
     endif
 
+    " Don't need to save temp file for ListLeaders()
+    if matchstr(expand("%"), 'tmpfile4vim.tmp') == 'tmpfile4vim.tmp'
+        bdelete!
+        return
+    endif
+
+    " Command Line windows can not be :wincmd c or : bdelete
+    if matchstr(expand("%"), '\[Command Line\]') == '[Command Line]'
+        quit!
+        return
+    endif
+
     if number_of_windows_to_this_buffer > 1
         wincmd c
     else
@@ -405,7 +418,7 @@ function! ListLeaders()
     silent! redir @a
     silent! nmap <LEADER>
     silent! redir END
-    silent! new
+    silent! new tmpfile4vim.tmp
     silent! put! a
     silent! g/^s*$/d
     silent! %s/^.*,/,/
@@ -413,7 +426,7 @@ function! ListLeaders()
     silent! sort
     silent! let lines = getline(1,"$")
 endfunction
-nnoremap <silent> <leader>ll :call ListLeaders()<CR> 
+nnoremap <silent> <leader>ll :call ListLeaders()<CR>
 
 "==========================================
 " Trip trailing whitespace
