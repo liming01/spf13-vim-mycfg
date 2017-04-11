@@ -55,4 +55,5 @@ visual block search/replace : *, #, <leader>vr
 trim space                  : <leader>t<space>
 copy file name              : <leader>cf, <leader>cr, <leader>cn
 list keymap in sorted order : <leader>lm
+Zoom current windows        : <leader>z
 ```
