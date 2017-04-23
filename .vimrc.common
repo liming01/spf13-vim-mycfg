@@ -48,7 +48,7 @@ set nospell
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " NOT to use spaces instead of tabs
-set expandtab
+set noexpandtab
 
 " Be smart when using tabs ;)
 set smarttab

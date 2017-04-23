@@ -14,6 +14,8 @@ popd  > /dev/null
 CURRENT_DIR=`pwd`
 
 ################
+# Symlink dotfiles
+ln -sf $SCRIPT_PATH/dotfiles/.* ~/
 
 # Symlink the configuration files into their appropriate homes
 ln -sf $SCRIPT_PATH/.gvimrc.local ~/

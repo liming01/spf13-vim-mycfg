@@ -1,0 +1,17 @@
+authors:
+  # <initials>: <Firstname> <Lastname>[; <email-id>]
+  mli1: Ming Li; mli
+  ivan1: Ivan Weng; iweng
+  amy: Amy Bai; abai
+email:
+  domain: pivotal.io
+
+global: false  # Set to true for git-pair to change git configuration for all your projects
+
+# email addresses on different domains for each member
+authors:
+  mli: Ming Li
+  ivan: Ivan Weng
+email_addresses:
+  mli: mli@apache.org
+  ivan: iweng@apache.org

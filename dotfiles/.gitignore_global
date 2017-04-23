@@ -1,0 +1,19 @@
+*~
+.DS_Store
+
+.autotools
+
+# vim and emacs 
+tags
+GPATH
+GRTAGS
+GTAGS
+.ycm_extra_conf.py
+
+# vscode setting
+.vscode/
+
+# clion generated files
+.idea/
+CMakeLists.txt
+cmake-build-debug/
