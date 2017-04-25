@@ -79,4 +79,5 @@ Bundle 'christoomey/vim-tmux-navigator'
 
 " neovim related bundle
 Bundle 'junegunn/fzf'
+Bundle 'junegunn/fzf.vim'
 
