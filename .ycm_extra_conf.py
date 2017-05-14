@@ -51,12 +51,11 @@ flags = [
     '-Wno-old-style-cast',
     '-x',
     'c++',
-    '-I',
-    '.',
-    '-I',
-    '/usr/include/',
-    '-I',
-    '/usr/include/c++/4.2.1/'
+    '-I.',
+    '-I./src/include',
+    '-I/usr/local/include',
+    '-I/usr/include/',
+    '-I/usr/include/c++/4.2.1/'
 ]
 
 
