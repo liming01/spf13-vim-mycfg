@@ -375,7 +375,7 @@ vnoremap <silent> <leader>vr :call VisualSelection('replace', '')<CR>
 nnoremap <silent> <leader>gf   :vertical botright wincmd f<CR>
 
 " use to jump to tag definition in a vertical split, similar to horizon split: <C-w>]
-nnoremap <silent> <leader>w] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <silent> <leader>w] :vsp <CR>: wincmd h <CR>: exec("tag ".expand("<cword>"))<CR>
 nnoremap <silent> <leader>t] :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
