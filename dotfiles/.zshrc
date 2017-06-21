@@ -100,17 +100,18 @@ alias lnvim="nvim -u ~/.vimrc.complex"
 alias pp="ps -ef | grep postgres | grep -v grep"
 alias pj="ps -ef | grep java | grep -v grep"
 
-[ -f ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh ] && source ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh
+########### env setting for HAWQ ##############
+#[ -f ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh ] && source ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh
 #export PATH=/Users/gpadmin/workspace/postgresql/install/cdb/bin:$PATH
 #export PATH=/Users/gpadmin/workspace/postgresql/install/postgres-xl/bin:$PATH
 #export PATH=/Users/gpadmin/workspace/postgresql/install/postgres/bin:$PATH
 
-export GPHD_ROOT=/Users/gpadmin/workspace/install/singlecluster-HDP
-export HADOOP_ROOT=$GPHD_ROOT/hadoop
-export HBASE_ROOT=$GPHD_ROOT/hbase
-export HIVE_ROOT=$GPHD_ROOT/hive
-export ZOOKEEPER_ROOT=$GPHD_ROOT/zookeeper
-export PATH=$PATH:$GPHD_ROOT/bin:$HADOOP_ROOT/bin:$HBASE_ROOT/bin:$HIVE_ROOT/bin:$ZOOKEEPER_ROOT/bin
+#export GPHD_ROOT=/Users/gpadmin/workspace/install/singlecluster-HDP
+#export HADOOP_ROOT=$GPHD_ROOT/hadoop
+#export HBASE_ROOT=$GPHD_ROOT/hbase
+#export HIVE_ROOT=$GPHD_ROOT/hive
+#export ZOOKEEPER_ROOT=$GPHD_ROOT/zookeeper
+#export PATH=$PATH:$GPHD_ROOT/bin:$HADOOP_ROOT/bin:$HBASE_ROOT/bin:$HIVE_ROOT/bin:$ZOOKEEPER_ROOT/bin
 
 #export PYTHONPATH=/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7
 #export PYTHONHOME=/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7
@@ -118,6 +119,15 @@ export PATH=$PATH:$GPHD_ROOT/bin:$HADOOP_ROOT/bin:$HBASE_ROOT/bin:$HIVE_ROOT/bin
 # Add awscli path to $PATH
 #export PATH=~/Library/Python/2.7/bin:$PATH
 
+########### End of env setting for HAWQ ##############
 
+########### env setting for gpdb ##############
+#[ -f ~/workspace/install/gpdb/greenplum_path.sh ] && source ~/workspace/install/gpdb/greenplum_path.sh
+#export MASTER_DATA_DIRECTORY=/Users/gpadmin/workspace/gpdb/gpAux/gpdemo/datadirs/qddir/demoDataDir-1
+
+[ -f ~/workspace/install/gpdb4/greenplum_path.sh ] && source ~/workspace/install/gpdb4/greenplum_path.sh
+export MASTER_DATA_DIRECTORY=/Users/gpadmin/workspace/gpdb4/gpAux/gpdemo/datadirs/qddir/demoDataDir-1
+
+########### End of env setting for gpdb ##############
 export LC_ALL=en_US.UTF-8
 export PGDATESTYLE=postgres,MDY
