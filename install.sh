@@ -17,6 +17,10 @@ CURRENT_DIR=`pwd`
 # Symlink dotfiles
 ln -sf $SCRIPT_PATH/dotfiles/.* ~/
 
+# add common setting for shell
+grep '.common.sh' ~/.zshrc 2>&1 >/dev/null || echo "[ -f ~/.common.sh ] && source ~/.common.sh" >> ~/.zshrc
+grep '.common.sh' ~/.bashrc 2>&1 >/dev/null || echo "[ -f ~/.common.sh ] && source ~/.common.sh" >> ~/.bashrc
+
 # Symlink the configuration files into their appropriate homes
 ln -sf $SCRIPT_PATH/.gvimrc.local ~/
 ln -sf $SCRIPT_PATH/.vimrc.before.fork ~/
