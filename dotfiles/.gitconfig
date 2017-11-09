@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/gpadmin/.gitignore_global
+	excludesfile = $HOME/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -10,4 +10,4 @@
 	name = Ming LI
 	email = mli@apache.org
 [commit]
-	template = /Users/gpadmin/.stCommitMsg
+	template = $HOME/.stCommitMsg
