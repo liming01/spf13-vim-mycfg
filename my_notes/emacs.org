@@ -1,0 +1,263 @@
+# info:
+ -C/C++ Development Environment for Emacs:  http://tuhdo.github.io/c-ide.html
+ -From Vim to Emacs+Evil chaotic migration guide:  http://juanjoalvarez.net/es/detail/2014/sep/19/vim-emacsevil-chaotic-migration-guide/
+
+emacs -nw  # start in terminal	
+
+- Killing (cut) Yanking(copy)	
+	
+	==========================================================
+	
+	Vim => Spacemacs
+	
+	Terms:
+  
+
+ - Using spacemacs 
+
+| Key Binding | Comment                                    | Vim counterpart |
+|-------------+--------------------------------------------+-----------------|
+| <SPC> :     | M-x 跳出命令面板                           | :               |
+| spc-spc :   | 跳出命令列表，可运行命令，也可以查找快捷键 |                 |
+| spc-h-spc : | 查找layer/包的用途与定义                   |                 |
+| <SPC> h d f | help define function                       | :help func()    |
+| <SPC> h d k | help define key                            | :map            |
+| SPC b b     | 列出最近使用 buffer                        |                 |
+| SPC TAB     | 在最近使用的两个buffer中切换               |                 |
+| spc-f-t     | 左边栏打开neotree                          |                 |
+| spc-f-j     | dired文件浏览                              |                 |
+| SPC f L     | 调用全盘快速搜索程序                       |                 |
+| spc-f-f     | 打开文件                                   |                 |
+| spc-p-f     | fuzzfind 类似于 ctrlp                      |                 |
+| spc-s-g-p   | grep 搜索项目                              |                 |
+| spc-s-a-p   | ag 搜索项目                                |                 |
+| SPC s j     | 在 minibuffer 中列出该文件所有函数列表     |                 |
+| SPC s s     | 在 minibuffer 中列出该字符串出现的所有列   |                 |
+| C-z         | 切换evil模式                               |                 |
+
+Plugins:
+| Emacs          | Vim                              |
+|----------------+----------------------------------|
+| Nerdtree       | neotree                          |
+| CtrlP          | helmß                            |
+| tagbar/taglist | helm-semaßtic-or-imenu (SPC s l) |
+
+
+	==========================================================
+	spacemacs键绑定
+
+	2.1 文本相关(SPC x)
+
+	SPC x u: 选中的部分小写
+	SPC x U: 选中的部分大写
+	SPC x m j: 当前行向下移动
+	SPC x m k: 当前行向上移动
+	SPC x d w: 删除所有行的末尾的空格
+	2.2 文件相关(SPC f)
+
+	SPC f f: ido open
+	SPC f F: helm open
+	SPC f r: open a recent file
+	SPC f o: open a file with external program
+	SPC f s: save current file
+	SPC f S: save all files
+	
+	
+	
+	
+	2.3 buffer相关(SPC b)
+
+	SPC b d: delete current buffer
+	SPC b m h/j/k/l : move to left/below/above/right buffer
+	SPC b s: 用helm来切换buffer，类似于C-x b
+	SPC b r: 重命名当前buffer
+	
+	2.4 Window相关(SPC w)
+
+	SPC w v/V: 纵向分割窗口
+	SPC w s/S: 横向分割窗口
+	SPC w h/H: 跳到 左边/最左边 的窗口
+	SPC w j/J
+	SPC w k/K
+	SPC w l/L
+	SPC w c: 关闭当前窗口
+	SPC w m: 最大化或者最小化当前窗口
+	SPC w 0/1/2/../9:　每一个窗口都有编号，该命令跳转到编号的窗口
+	
+	
+	2.5 ace-jump:
+	SPC SPC: ace word mode
+	SPC l: ace line mode
+	
+	2.6 expand-region:
+	SPC v：接着按ｖ就可以不断的扩大选择区域, 按V可以缩小区域
+	
+	SPC ft: 打开NeoTree
+	SPC s /: 用helm来搜索
+	
+	SPC c l: 注释当前行，如果要注释多行，那么在命令前加数字
+	SPC i j: 在当前行的下面插入一个空行
+	SPC i k: 在当前行的上面插入一个空行
+	
+	==========================================================
+	
+	1.3 auto-complete   complete
+
+	一个补全的包,实际可以看作是一个补全选项的展示界面,支持很多后端,这是文档
+
+	ac-trigger-commands: 一个变量用来指定启动自动补全的命令,默认是self-insert-command
+	TAB(ac-expand):有几种行为:如果只有一个候选项,那么直接补全,如果有多个候选 项而且候选项有相同的部分,那么补全相同的部分,如果不是以上两种情况,那么就 在各个候选项上循环
+	RET(ac-complete) : 会补全当前的候选项,如果该候选项有action(如yas),那么执 行该action
+	M-n(ac-next)
+	M-p(ac-previous)
+	有用的变量:
+
+	ac-auto-start: 如果设置为nil, 那么当运行ac-trigger-command中指定的命令时,不 会启动自动补全,如果为正数值,那么只有但你输入的字符大于该值时才自动补全,比 如 (setq ac-auto-start 4),那么只有你输入了4个字符时才会启动自动补全
+	ac-auto-show-menu: 自动弹出显示补全菜单,可以设为nil,或者一个数值(延迟妙 数)
+	ac-completing-map: 显示了补全菜单后的map,可以设置快捷键
+	ac-dwim: dwim ⟶ do what I mean:一般设为nil -After selecting candidates, TAB will behave as RET -TAB will behave as RET only on candidate remains
+	
+	1.4 grep   grep
+
+	如果是想搜索当前buffer，那么你可以是occur，如果你想搜索多个文件，那么可以使 用grep，推荐两个命令
+
+	lgrep：只会搜索当前目录(不搜索子目录)
+	rgrep：它会递归搜索子目录
+	wgrep包可以是emacs在grep buffer中直接修改文件内容
+
+	C-c C-p: 在grep buffer中只要按该快捷键，就可以在grep buffer直接编辑文件
+	C-c C-k: 放弃所有修改
+	M-x wgrep-save-all-buffers
+	1.5 isearch   isearch
+
+	Increment Search.当你搜索时,你每输入一个字符,它会实时的向你展示基于目前的输 入所得到的所有匹配项,并自动将光标跳到第一个匹配项 C-x C-x:可以在isearch之后回到原来的位置
+
+	1.6 dired   dired
+
+	dired是一个强大的文件管理器,dired的标记方式有很多种，如标记删除（D标记，用于 删除）， 如标记为*（m所做的标记就是*标记），默认如果有被*标记的文件，那么所 有的文件操作就是在这些标记的文件上进行的，否则就在当前行代表的文件上进行操作， 当然还可以有其他类型的标记如t标记，k标记，只是这些标记没有快捷键，一般D标记 和*标记用的多，其他标记一般用于临时的转换一下。*c命令可以修改标记，eg：*c D t将D标记修改为t标记，*c t *将t标记修改为*标记
+
+	"#": 标记所有自动保存的文件（D标记）
+	～：标记所有的备份文件（D标记）
+	&： 标记所有的垃圾文件(D标记)
+	d: mark D标记
+	x：执行删除
+	m: mark *标记
+	t: 将所有*标记的文件变为未标记，所有未标记的变为*标记
+	**：标记所有可执行文件
+	*@：标记所有符号链接
+	*s: 标记所有文件
+	*/：标记所有目录（不包括. ..)
+	%m or *%: 正则匹配文件名
+	%g：正则匹配所有文件的内容
+	u: unmark
+	常用的文件操作：
+	U: unmark all
+	D: 立即删除
+	R：rename
+	C：copy
+	A: 正则搜索
+	Q：正则替换
+	Z：解压文件
+	L：把lisp文件加载进emacs
+	B：byte compile
+	O：chown
+	G：chgrp
+	M：chmod
+	+：create a directory
+	!: 可以显示打开文件的命令（对pdf等文件不要RET）
+	1.6.1 wdired(批量改名)
+
+	C-x C-q : (wdired-change-to-wdired-mode) 进入wdired mode, 进入后就可以像普 通的buffer一样编辑文件名(用multiple cursor来编辑多个文件名), 完成后C-c C-c 或者C-x C-s
+	
+	1.9 mutiple cursors多光标   multiple cursor
+
+	C-<: mc/mark-previous-like-this
+	C->: mc/mark-next-like-this
+	C-c <: mc/mark-all-like-this (上面三项功能以word为单位，必须先mark-word)
+	C-c c a:在所有行的开头加入光标
+	C-c c e:在所有行的结尾加入光标
+	C-c c c:在所有的行加入一个光标(上面的三项功能以行为单位，必须先mark数行)
+	在multiple cursors中isearch是失效的,为了实现C-s, C-r增量搜索,有以下两种方法:
+	
+	
+	1.12 paredit   paredit
+
+	该模式下你不能直接编辑括号,而只能通过命令来调整程序结构,主要用于lisp编程
+
+	M-r: 这个命令可以将紧跟着光标后的sexp( 不是当前的sexp, 所以建议将光标放在 要操作sexp的左括号的前面)在树中的位置向上提一层,比如对 let 中的sexp应用 该命令,那么就可以直接删除 (let ([] ...)) 因此该sexp在语法树中的位置就上 升了一层,默认该命令会删除该sexp平级的兄弟sexp. 可以通过C-u来指定要将跟着的 几个sexp提一层,默认是一个
+	M-( : 会用新建() 将跟着光标的sexp包起来
+	C-) C-<right> : 会将光标所在的当前表达式的紧挨着的兄弟表达式吞进来
+	C-} C-<left> : 将当前sexp包含的最后一个sexp移出去, 可以看作是C-)的逆命令
+	M-S : 将一个sexp分成两个sexp,效果就是在光标处添加 ")("
+	M-J : 将两个sexp合并成一个sexp, 比如 (a b) (c d) 变成 (a b c d) 注意 光标要放在两个sexp之间,上例中要放在 (a b) 与 (c d) 之间
+	
+	1.13 ido(Interactively Do Things)   ido
+
+	使用 C-x b 来切换 buffer,或者使用 C-x C-f 来打开文件时,会自动在 minibuffer 展示可能的补全项,下面是几个快捷键:
+
+	C-s:后退
+	C-r: 前进
+	当打开文件时(C-x C-f)时,有以下几个特殊的快捷键
+
+	C-f: 进入emacs内置的find-file
+	C-p: 会启动部分匹配，而前面是严格的前缀匹配
+	C-t: 正则表达式匹配 eg:*.py$匹配所有python源文件
+	C-d: 会使用 dired 打开当前目录
+	C-j: 创建新文件(因为当前输入的字符有匹配项时,默认是打开匹配项)
+	//: 进入根目录
+	~/: 当前用户的家目录
+	M-p: history中的前一条目录
+	M-n: history中的后一条目录
+	1.13.1 用于编程的命令
+
+	ido-read-file-name: 可以用来读取一个文件名
+	ido-read-directory-name: 可以用于获得一个目录名
+	idio-read-buffer: 可以用来获得一个buffer name
+	ido-completion-read: 这是一个通用的补全命令,需要提供一个列表
+	1.13.2 smex   smex
+
+	构建于 ido 之上, 在你使用 M-x 运行命令时会提供自动补全
+
+	1.14 helm(a good alternative to ido)   helm
+
+	一个比较好的可以替换ido,smex的包,功能非常强大, 基本上emacs中出现选择的地方, 他都可以用,比如打开文件,切换buffer,kill buffer, M-x等等,下面来说说它的的几 个重点功能
+
+	1.14.1 打开文件
+
+	TAB :打开Action buffer, 对每一个文件可以有许多动作, 比如copy, 比如用外部 程序打开,那么这些操作都在这个action buffer中
+	C-z: 扩展当前的候选项, 比如你的当前候选项是一个目录, 那么C-z就会进入该目 录,不要按 Enter, 因为那会以 dired 打开这个目录
+	M-<space> : mark 当前的文件
+	C-<backspace>: 会禁止自动补全,这在创建新文件与新目录时特别有用(因为如果 新的文件名与现在存在的文件名很相似的话,那么helm会自动补全为已存在的文件 或目录,因此你也就无法创建新目录)
+	新建目录: 在 minibuffer 中正常输入,只是最后要以 / 结尾, helm会提示创建 新目录
+	复制文件: 先mark文件,然后TAB 选择copy file, 选择目的地就好
+	移动文件: 和复制文件类似
+	1.14.2 ediff   ediff
+
+	第一个文件TAB上选择ediff action,自动弹出第二个helm-find-files选择第二个文 件, 强力推荐
+
+	1.14.3 grep(increment grep)   grep
+
+	helm-do-grep : helm中执行grep的命令,你也可以使用 helm-find-files然后TAB 选择grep, 如果使用 C-u M-x helm-do-grep, 那么就会递归的在目录中搜索
+	
+	1.16 ansi-term   shell term
+
+	终端模拟器,基本上terminal的所有功能.
+
+	C-c C-j: 进入line mode， 可以复制
+	C-c C-k: 回到character mod
+	1.17 magit   magit
+
+	一个git扩展,功能强大.这是一篇介绍文章, 这是一份命令列表
+
+	M-x magit-status(我的快捷键 M-f12): 进入magit的buffer
+	M-[1-4]: 其中我用 M-2 与 M-4,前者只显示文件,后者会显示diff
+	1 2 3 4: 和上面类似,只是前面带M则会应用到所有的entry, 而单独按数字只会应用 到当前的entry
+	s : stage
+	c : commit
+	i : 将文件添加到.gitignore
+	C-u i : 提示你输入要加入.gitignore的文件或者目录
+	b : 切换到一个已存在的分支
+	B : 创建并切换到新分支
+	
+
+	

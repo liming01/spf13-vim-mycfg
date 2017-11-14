@@ -19,6 +19,8 @@ END
 ----------------------------------------------------------------------
 - ag：比grep、ack更快的递归搜索文件内容。  --> rg
 - tig：字符模式下交互查看git项目，可以替代git命令。
+- Vmail = Vim + Gmail
+- mutt: client client
 - mosh：基于UDP的终端连接，可以替代ssh，连接更稳定，即使IP变了，也能自动重连。
 - fzf：命令行下模糊搜索工具，能够交互式智能搜索并选取文件或者内容，配合终端ctrl-r历史命令搜索简直完美。
 - htop: 提供更美观、更方便的进程监控工具，替代top命令。
@@ -309,7 +311,9 @@ C-\ 复制到命令行
 Gstatus:
         Open: o(Gsplit)/O(Gtabedit)/S(Gvsplit)
         Diff: D(Gdiff)/ds(Gsdiff)/dv(Gvdiff)
-#gitv: gitk
+#gitv: gitv %
+#vim like shell tool: !tig %
+#built-in gui tool: gitk
 
 
 ==========================================================================================
@@ -376,6 +380,9 @@ t -> find next char just prev [input]
 :s/\(.*\):\(.*\)/\2 : \1/   : reverse fields separated by :
 :%s/^\(.*\)\n\1/\1$/        : delete duplicate lines
 :%s/<!--\_.\{-}-->//        : delete possibly multi-line comments
+最小匹配（非贪婪）
+/a.\{-}b                    : 它会匹配到"axbxb"中的"axb". 如果模式是: normal mode command
+/a.*b                       : 它就会尽可能多地匹配了. 所以匹配到的是整个"axbxb"
 
 :se expandtab
 " real tab is C-V<TAB>
