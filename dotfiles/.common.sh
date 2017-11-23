@@ -16,7 +16,8 @@ else
 fi
 
 ulimit -c unlimited
-export PATH=".:$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+#export PATH=.:$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH=.:/usr/local/opt/python/libexec/bin:$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 if [ "`uname -s`" = "Darwin" ]; then
 	#echo "On Darwin"
@@ -69,6 +70,7 @@ pg_env(){
 	export LC_ALL=en_US.UTF-8
 	export PGDATESTYLE=postgres,MDY
 	export PGPORT=15432
+	export PGHOST=localhost
 }
 alicloud_env(){
 	[ -f /usr/local/bin/aliyun_zsh_complete.sh ] && source /usr/local/bin/aliyun_zsh_complete.sh
