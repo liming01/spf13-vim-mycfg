@@ -16,22 +16,22 @@ else
 fi
 
 ulimit -c unlimited
-#export PATH=.:$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export PATH=.:/usr/local/opt/python/libexec/bin:$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 if [ "`uname -s`" = "Darwin" ]; then
 	#echo "On Darwin"
 	alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+	export PATH=.:/usr/local/opt/python/libexec/bin:$PATH
 else
 	#echo "Not On Darwin"
 	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+	# docker images: new gcc
+	export PATH=.:/opt/gcc-6.2.0/bin:$PATH
+	export LD_LIBRARY_PATH=/opt/gcc-6.2.0/lib6:$LD_LIBRARY_PATH
 fi
 
 alias lvim="vim -u ~/.vimrc.complex"
 alias lnvim="nvim -u ~/.vimrc.complex"
-alias pp="ps -ef | grep postgres | grep -v grep"
-alias pj="ps -ef | grep java | grep -v grep"
 
 hawq_env(){
 	[ -f ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh ] && source ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh
@@ -55,13 +55,15 @@ hawq_env(){
 }
 
 gpdb_env(){
-	[ -f ~/workspace/install/gpdb/greenplum_path.sh ] && source ~/workspace/install/gpdb/greenplum_path.sh
+	GPDIR=~/workspace/install/gpdb
+	[ -f ${GPDIR}/greenplum_path.sh ] && source ${GPDIR}/greenplum_path.sh
 	export MASTER_DATA_DIRECTORY=~/workspace/gpdb/gpAux/gpdemo/datadirs/qddir/demoDataDir-1
 	pg_env
 }
 
 gpdb4_env(){
-	[ -f ~/workspace/install/gpdb4/greenplum_path.sh ] && source ~/workspace/install/gpdb4/greenplum_path.sh
+	GPDIR=~/workspace/install/gpdb4
+	[ -f ${GPDIR}/greenplum_path.sh ] && source ${GPDIR}/greenplum_path.sh
 	export MASTER_DATA_DIRECTORY=~/workspace/gpdb4/gpAux/gpdemo/datadirs/qddir/demoDataDir-1
 	pg_env
 }
@@ -71,6 +73,11 @@ pg_env(){
 	export PGDATESTYLE=postgres,MDY
 	export PGPORT=15432
 	export PGHOST=localhost
+	
+	alias pp="ps -ef | grep postgres | grep -v grep"
+	alias pj="ps -ef | grep java | grep -v grep"
+	alias pk="ps -ef | grep postgres | grep -v grep| awk '{print \$2}'| xargs kill -9; rm -rf /tmp/.s.PGSQL.*;"
+	alias gpstop='pk'
 }
 alicloud_env(){
 	[ -f /usr/local/bin/aliyun_zsh_complete.sh ] && source /usr/local/bin/aliyun_zsh_complete.sh
@@ -81,5 +88,4 @@ _main(){
 	gpdb_env
 	#gpdb4_env
 }
-
 _main "$@"
