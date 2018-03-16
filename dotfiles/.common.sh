@@ -22,6 +22,9 @@ if [ "`uname -s`" = "Darwin" ]; then
 	alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	export PATH=.:/usr/local/opt/python/libexec/bin:$PATH
+
+	#ulimit -n 65535
+	#ulimit -n 7500
 else
 	#echo "Not On Darwin"
 	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -70,21 +73,27 @@ gpdb4_env(){
 
 pg_env(){
 	export LC_ALL=en_US.UTF-8
-	export PGDATESTYLE=postgres,MDY
+	#export PGDATESTYLE=postgres,MDY
+	#export PGDATESTYLE=ISO, MDY
 	export PGPORT=15432
 	export PGHOST=localhost
 	
 	alias pp="ps -ef | grep postgres | grep -v grep"
 	alias pj="ps -ef | grep java | grep -v grep"
 	alias pk="ps -ef | grep postgres | grep -v grep| awk '{print \$2}'| xargs kill -9; rm -rf /tmp/.s.PGSQL.*;"
-	alias gpstop='pk'
+	if [ "`uname -s`" = "Darwin" ]; then
+		alias gpstop='pk'
+	fi
 }
 alicloud_env(){
 	[ -f /usr/local/bin/aliyun_zsh_complete.sh ] && source /usr/local/bin/aliyun_zsh_complete.sh
 }
-
+go_env(){
+	export PATH=$PATH:$(go env GOPATH)/bin
+}
 _main(){
 	alicloud_env
+	go_env
 	gpdb_env
 	#gpdb4_env
 }

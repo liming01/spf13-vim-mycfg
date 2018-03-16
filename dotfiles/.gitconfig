@@ -8,6 +8,8 @@
 	trustExitCode = true
 [user]
 	name = Ming LI
-	email = mli@apache.org
+	email = liming01@gmail.com
 [commit]
 	template = ~/.stCommitMsg
+[icdiff]
+	options = --highlight --line-numbers
