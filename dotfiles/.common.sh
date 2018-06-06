@@ -21,7 +21,7 @@ if [ "`uname -s`" = "Darwin" ]; then
 	#echo "On Darwin"
 	alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-	export PATH=.:/usr/local/opt/python/libexec/bin:$PATH
+	export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
 
 	#ulimit -n 65535
 	#ulimit -n 7500
@@ -58,6 +58,7 @@ hawq_env(){
 }
 
 gpdb_env(){
+	export PATH="/usr/local/opt/python@2/bin:$PATH"
 	GPDIR=~/workspace/install/gpdb
 	[ -f ${GPDIR}/greenplum_path.sh ] && source ${GPDIR}/greenplum_path.sh
 	export MASTER_DATA_DIRECTORY=~/workspace/gpdb/gpAux/gpdemo/datadirs/qddir/demoDataDir-1
@@ -85,6 +86,14 @@ pg_env(){
 		alias gpstop='pk'
 	fi
 }
+
+postgres_env(){
+	export PATH=$HOME/workspace/postgresql/install/postgres/bin:$PATH
+	export MANPATH=$HOME/workspace/postgresql/install/postgres/share/man:$MANPATH
+	export LD_LIBRARY_PATH=$HOME/workspace/postgresql/install/postgres/lib:$LD_LIBRARY_PATH
+	export PGDATA=$HOME/workspace/postgresql/install/pgdata/postgres
+}
+
 alicloud_env(){
 	[ -f /usr/local/bin/aliyun_zsh_complete.sh ] && source /usr/local/bin/aliyun_zsh_complete.sh
 }
@@ -97,4 +106,51 @@ _main(){
 	gpdb_env
 	#gpdb4_env
 }
+
+function _opengit_open()
+{
+  local open_cmd='huh?'
+  if [ -z `echo $MACHTYPE | grep linux` ]; then
+    open_cmd='open'
+  else
+    open_cmd='xdg-open'
+  fi
+  $open_cmd $1
+}
+
+function opengit() {
+  if [ -d .git ]; then
+	echo "Usage: opengit [repo] [remote_branch]"
+
+    if [ -z "$(git remote -v)" ]; then
+      echo "Hum....there are no remotes here"
+	elif [ -z "$1" ]; then
+	  echo "No repo name passed as param, using \"origin\" repo"
+	  repoName="origin"
+    else
+	  repoName=$1
+    fi
+
+	where="https://github.com/" # default location to github
+	remotes=$(git remote -v | grep "$repoName" | awk -F 'git@github.com:' '{print $2}' | cut -d" " -f1 | uniq)
+	if [ -z "$remotes" ]; then
+	remotes=$(git remote -v | grep "$repoName" | awk -F 'https://github.com/' '{print $2}' | cut -d" " -f1| uniq)
+	fi
+
+	if [ -z "$remotes" ]; then
+	remotes=$(git remote -v | grep "$repoName" | awk -F'git@bitbucket.org/' '{print $2}' | cut -d" " -f1| uniq)
+	where="https://bitbucket.org/"
+	fi
+
+	if [ -z "$2" ];then
+	url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)"
+	else
+	url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/tree/${2}"
+	fi
+	_opengit_open $url
+  else
+    echo "Crap, ain't no git repo"
+  fi;
+}
+
 _main "$@"

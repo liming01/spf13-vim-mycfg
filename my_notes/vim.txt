@@ -17,6 +17,8 @@ osascript <<END
 
 END
 ----------------------------------------------------------------------
+https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
+
 - ag      : 比grep、ack更快的递归搜索文件内容。  --> rg
 - axel    : 多线程下载工具，下载文件时可以替代curl、wget。
 - ccache  : 高速C/C++编译缓存工具，反复编译内核非常有用。

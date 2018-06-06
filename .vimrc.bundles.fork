@@ -81,3 +81,5 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'junegunn/fzf'
 Bundle 'junegunn/fzf.vim'
 
+"golang
+Bundle 'fatih/vim-go'

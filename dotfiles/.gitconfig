@@ -1,5 +1,6 @@
 [core]
 	excludesfile = ~/.gitignore_global
+	hooksPath = /Users/gpadmin/workspace/git-hooks-core
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

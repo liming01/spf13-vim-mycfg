@@ -17,9 +17,14 @@ CURRENT_DIR=`pwd`
 # Symlink dotfiles
 ln -sf $SCRIPT_PATH/dotfiles/.* ~/
 
+mkdir -p $HOME/.oh-my-zsh/custom/themes
+mkdir -p $HOME/.oh-my-zsh/custom/plugins
+ln -sf $SCRIPT_PATH/dotfiles/zsh/plugins/* $HOME/.oh-my-zsh/custom/plugins/
+ln -sf $SCRIPT_PATH/dotfiles/zsh/themes/* $HOME/.oh-my-zsh/custom/themes/
+
 # add common setting for shell
 if [ -f ~/.zshrc ]; then
-	grep '.common.sh' ~/.zshrc 2>&1 >/dev/null || echo "[ -f ~/.common.sh ] && source ~/.common.sh" >> ~/.zshrc
+	grep '.common.sh' ~/.zshrc 2>&1 >/dev/null || cat $SCRIPT_PATH/dotfiles/zsh/zshrc >> ~/.zshrc
 fi
 if [ -f ~/.bashrc ]; then
 	grep '.common.sh' ~/.bashrc 2>&1 >/dev/null || echo "[ -f ~/.common.sh ] && source ~/.common.sh" >> ~/.bashrc

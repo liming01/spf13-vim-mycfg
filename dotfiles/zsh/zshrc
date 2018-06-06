@@ -1,0 +1,5 @@
+ZSH_THEME="my_robbyrussell"
+plugins=(git opengit)
+source $ZSH/oh-my-zsh.sh
+
+[ -f ~/.common.sh ] && source ~/.common.sh
