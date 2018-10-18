@@ -1,0 +1,14 @@
+
+
+* Keymap
+
+CMD+Shift+A       : Search commands
+Shift+shift+shift : Go to Everything
+
+CMD+B             : Referrences
+CMD+Y             : Definition
+CMD+F12           : Functions in file
+CMD+Shift+F12     : toggle editor to max size.
+ALT+Enter         : Auto add include file for this element
+CTRL+ALT+H        : Call Hierarchy
+

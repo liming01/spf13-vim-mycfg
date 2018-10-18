@@ -24,8 +24,14 @@ colorscheme molokai
 " }
 " vim-airline {
 	if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+
 		" do not display trailing/mixed-indent/mixed-indent-file
-		let g:airline#extensions#whitespace#enabled = 0
+		let g:airline#extensions#whitespace#enabled = 1
+		let g:airline#extensions#whitespace#trailing_format = 'E[%s]'
+		let g:airline#extensions#whitespace#mixed_indent_format = 'B[%s]'
+		let g:airline#extensions#whitespace#long_format = 'L[%s]'
+		let g:airline#extensions#whitespace#mixed_indent_file_format = 'F[%s]'
+
 		if !exists('g:airline_symbols')
     		let g:airline_symbols = {}
 		endif

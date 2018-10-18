@@ -21,7 +21,8 @@ if [ "`uname -s`" = "Darwin" ]; then
 	#echo "On Darwin"
 	alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-	export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
+	#export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
+	export PATH=.:${HOME}/bin:/usr/local/sbin:$PATH
 
 	#ulimit -n 65535
 	#ulimit -n 7500
@@ -35,6 +36,7 @@ fi
 
 alias lvim="vim -u ~/.vimrc.complex"
 alias lnvim="nvim -u ~/.vimrc.complex"
+which ccat > /dev/null && alias cat="ccat"
 
 hawq_env(){
 	[ -f ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh ] && source ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh
@@ -59,9 +61,13 @@ hawq_env(){
 
 gpdb_env(){
 	export PATH="/usr/local/opt/python@2/bin:$PATH"
+
 	GPDIR=~/workspace/install/gpdb
-	[ -f ${GPDIR}/greenplum_path.sh ] && source ${GPDIR}/greenplum_path.sh
 	export MASTER_DATA_DIRECTORY=~/workspace/gpdb/gpAux/gpdemo/datadirs/qddir/demoDataDir-1
+	#GPDIR=~/workspace/install/gpdb-postgres-merge
+	#export MASTER_DATA_DIRECTORY=~/workspace/gpdb-postgres-merge/gpAux/gpdemo/datadirs/qddir/demoDataDir-1
+
+	[ -f ${GPDIR}/greenplum_path.sh ] && source ${GPDIR}/greenplum_path.sh
 	pg_env
 }
 
@@ -83,10 +89,32 @@ pg_env(){
 	alias pj="ps -ef | grep java | grep -v grep"
 	alias pk="ps -ef | grep postgres | grep -v grep| awk '{print \$2}'| xargs kill -9; rm -rf /tmp/.s.PGSQL.*;"
 	if [ "`uname -s`" = "Darwin" ]; then
-		alias gpstop='pk'
+		#alias gpstop='pk'
 	fi
 }
+gen_cmakefile(){
+	if [ ! -f ./CMakeLists.txt ]; then
+	cat >> CMakeLists.txt <<'EOF'
+cmake_minimum_required(VERSION 3.9)
+project(gpdb)
 
+set(CMAKE_CXX_STANDARD 11)
+
+include_directories(src/include src/backend/gp_libpq_fe src/interfaces/libpq)
+
+file(GLOB_RECURSE SOURCE_FILES "src" "*.c" "*.h")
+
+add_custom_target(build_gpdb COMMAND make -C ${gpdb_SOURCE_DIR}
+        CLION_EXE_DIR=${PROJECT_BINARY_DIR})
+
+add_executable(gpdb ${SOURCE_FILES})
+EOF
+
+else
+	echo "Warning: ./CMakeLists.txt already exists!"
+fi
+
+}
 postgres_env(){
 	export PATH=$HOME/workspace/postgresql/install/postgres/bin:$PATH
 	export MANPATH=$HOME/workspace/postgresql/install/postgres/share/man:$MANPATH
@@ -105,6 +133,8 @@ _main(){
 	go_env
 	gpdb_env
 	#gpdb4_env
+	#postgres_env
+	pg_env
 }
 
 function _opengit_open()
