@@ -16,6 +16,7 @@ else
 fi
 
 ulimit -c unlimited
+#export GIT_DUET_CO_AUTHORED_BY=1
 
 if [ "`uname -s`" = "Darwin" ]; then
 	#echo "On Darwin"
@@ -88,9 +89,6 @@ pg_env(){
 	alias pp="ps -ef | grep postgres | grep -v grep"
 	alias pj="ps -ef | grep java | grep -v grep"
 	alias pk="ps -ef | grep postgres | grep -v grep| awk '{print \$2}'| xargs kill -9; rm -rf /tmp/.s.PGSQL.*;"
-	if [ "`uname -s`" = "Darwin" ]; then
-		#alias gpstop='pk'
-	fi
 }
 gen_cmakefile(){
 	if [ ! -f ./CMakeLists.txt ]; then
@@ -135,6 +133,9 @@ _main(){
 	#gpdb4_env
 	#postgres_env
 	pg_env
+
+	# Reset it to skip error message 'no config file'
+	export OPENSSL_CONF=/usr/local/etc/openssl/openssl.cnf
 }
 
 function _opengit_open()
