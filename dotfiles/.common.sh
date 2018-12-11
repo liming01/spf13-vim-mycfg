@@ -85,7 +85,7 @@ pg_env(){
 	#export PGDATESTYLE=ISO, MDY
 	export PGPORT=15432
 	export PGHOST=localhost
-	
+
 	alias pp="ps -ef | grep postgres | grep -v grep"
 	alias pj="ps -ef | grep java | grep -v grep"
 	alias pk="ps -ef | grep postgres | grep -v grep| awk '{print \$2}'| xargs kill -9; rm -rf /tmp/.s.PGSQL.*;"
@@ -149,6 +149,9 @@ function _opengit_open()
   $open_cmd $1
 }
 
+#
+# Open git repo in web browser
+#
 function opengit() {
   if [ -d .git ]; then
 	echo "Usage: opengit [repo] [remote_branch]"
@@ -182,6 +185,26 @@ function opengit() {
   else
     echo "Crap, ain't no git repo"
   fi;
+}
+
+#
+# Function to backup my written logs to specific dir
+#
+my-backup(){
+	local cur_dir=`pwd`
+
+	now=`date +%Y%m%d%H%M%S`
+
+	cd $HOME/workspace/
+	name=mybackup-${now}.tar.gz
+	tar -cvzf ${name} mybackup
+
+	mkdir -p $HOME/Private/backup_tar/
+	mv ${name} $HOME/Private/backup_tar/
+
+	echo "done: bak_name: $name"
+
+	cd ${cur_dir}
 }
 
 _main "$@"
