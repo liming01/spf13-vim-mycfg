@@ -127,7 +127,7 @@ go_env(){
 	export PATH=$PATH:$(go env GOPATH)/bin
 }
 _main(){
-	alicloud_env
+	#alicloud_env
 	go_env
 	gpdb_env
 	#gpdb4_env
@@ -153,7 +153,10 @@ function _opengit_open()
 # Open git repo in web browser
 #
 function opengit() {
-  if [ -d .git ]; then
+  # test: in directory has git repo
+  git remote >/dev/null 2>&1
+
+  if [ $? = 0 ]; then
 	echo "Usage: opengit [repo] [remote_branch]"
 
     if [ -z "$(git remote -v)" ]; then
@@ -182,8 +185,9 @@ function opengit() {
 	url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/tree/${2}"
 	fi
 	_opengit_open $url
+	echo "Opening in browser for URL: $url"
   else
-    echo "Crap, ain't no git repo"
+    echo "Not in git repo"
   fi;
 }
 

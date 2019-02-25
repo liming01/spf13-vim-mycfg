@@ -1,6 +1,8 @@
 function _opengit() {
-    git status>/dev/null 2>&1
+    git remote >/dev/null 2>&1
+
     if [ $? != 0 ];then
+        echo "\nNot in git repo"
         return
     fi
     count=${#words}
