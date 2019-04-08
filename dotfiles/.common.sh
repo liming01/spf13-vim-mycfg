@@ -24,6 +24,7 @@ if [ "`uname -s`" = "Darwin" ]; then
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	#export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
 	export PATH=.:${HOME}/bin:/usr/local/sbin:$PATH
+	alias python="/usr/local/bin/python"
 
 	#ulimit -n 65535
 	#ulimit -n 7500
@@ -80,6 +81,10 @@ gpdb4_env(){
 }
 
 pg_env(){
+	# skip warning on centos: "Setting locale failed"
+	export LANG="en_US.UTF-8"
+	export LC_CTYPE="en_US.UTF-8"
+	# set config for pg test
 	export LC_ALL=en_US.UTF-8
 	#export PGDATESTYLE=postgres,MDY
 	#export PGDATESTYLE=ISO, MDY
