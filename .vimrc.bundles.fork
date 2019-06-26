@@ -2,14 +2,19 @@
 UnBundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Yggdroot/indentLine'
 "cscope key mapping and generate function.
-Bundle 'brookhong/cscope.vim'		
+" Replaced by Plug 'skywind3000/gutentags_plus'
+" Bundle 'brookhong/cscope.vim'		
+" ctag auto generate
+Bundle 'ludovicchabant/vim-gutentags'
+Bundle 'skywind3000/gutentags_plus'
 "fast cscope database updates for C/C++
 "Bundle 'vim-scripts/cscope_dynamic'
 
 if (has("python") || has("python3"))
     "auto update tag file
     " Need to change the default value of variable maxTagsFileSize in autotags.py
-    Bundle 'craigemery/vim-autotag'
+	" Replaced by Bundle 'ludovicchabant/vim-gutentags'
+    "Bundle 'craigemery/vim-autotag'
     " Generate config for YouCompleteMe, support make/cmake/qmake/autotools
     Bundle 'rdnetto/YCM-Generator'
 endif
