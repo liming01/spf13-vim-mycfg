@@ -6,7 +6,7 @@ UnBundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Yggdroot/indentLine'
 "cscope key mapping and generate function.
 " Replaced by Plug 'skywind3000/gutentags_plus'
-" Bundle 'brookhong/cscope.vim'		
+Bundle 'brookhong/cscope.vim'
 " ctag auto generate
 Bundle 'ludovicchabant/vim-gutentags'
 Bundle 'skywind3000/gutentags_plus'
@@ -43,7 +43,7 @@ Bundle 'terryma/vim-expand-region'
 "debug manager
 if executable('gdb')
 	"需在gdbmgr/gdbmgr/src下make，并添加到LD_LIBRARY_PATH
-	Bundle 'vim-scripts/gdbmgr'  
+	Bundle 'vim-scripts/gdbmgr'
 elseif executable('lldb')
 	"Bundle 'gilligan/vim-lldb'
 endif
@@ -51,14 +51,14 @@ endif
 "Multi-language DBGP debugger client for Vim (PHP, Python, Perl, Ruby, etc.)
 "Bundle 'joonty/vdebug'
 
-" source code reading 
+" source code reading
 " Bundle 'hari-rangarajan/CCTree'
 " Bundle 'wesleyche/SrcExpl'
 
-" good keymap 
+" good keymap
 Bundle 'tpope/vim-unimpaired'
 
-" gitk 
+" gitk
 Bundle 'gregsexton/gitv'
 
 " Auto detect CJK and Unicode file encodings
@@ -81,7 +81,7 @@ Bundle 'kshenoy/vim-signature'
 ":Mark				list all marks
 Bundle 'dimasg/vim-mark'
 
-"Add support for tmux key conflict with vim 
+"Add support for tmux key conflict with vim
 Bundle 'christoomey/vim-tmux-navigator'
 
 

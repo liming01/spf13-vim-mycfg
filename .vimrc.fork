@@ -1,16 +1,16 @@
 " fix location window report: E924: Current window was closed
 let g:syntastic_auto_loc_list = 3
 
-"set default color schema    
+"set default color schema
 colorscheme molokai
 
-" toggle wrap mode, similar to [ow/]ow in plugin vim-unimpaired 
+" toggle wrap mode, similar to [ow/]ow in plugin vim-unimpaired
 :nmap <leader>ow :setlocal wrap!<CR> :setlocal wrap? <CR>
 
 " disable store option for scrollbind setting problem
 " restore_view.vim {
 	if isdirectory(expand("~/.vim/bundle/restore_view.vim/"))
-		set viewoptions=cursor,folds,slash,unix 
+		set viewoptions=cursor,folds,slash,unix
 	endif
 " }
 " indentLine {
@@ -51,6 +51,37 @@ colorscheme molokai
     endif
 " }
 " cscope {
+	if isdirectory(expand("~/.vim/bundle/gutentags_plus"))
+		" enable gtags module
+		let g:gutentags_modules = ['ctags', 'gtags_cscope']
+
+		" config project root markers.
+		let g:gutentags_project_root = ['.root']
+
+		" generate datebases in my cache directory, prevent gtags files polluting my project
+		let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+		" change focus to quickfix window after search (optional).
+		let g:gutentags_plus_switch = 1
+
+		" disable the default keymaps
+		let g:gutentags_plus_nomap = 1
+
+		noremap <silent> <leader>gs :GscopeFind s <C-R><C-W><cr>
+		noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
+		noremap <silent> <leader>gc :GscopeFind c <C-R><C-W><cr>
+		noremap <silent> <leader>gt :GscopeFind t <C-R><C-W><cr>
+		noremap <silent> <leader>ge :GscopeFind e <C-R><C-W><cr>
+		noremap <silent> <leader>gf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+		noremap <silent> <leader>gi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+		noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
+		noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
+
+		" debug error
+		"let g:gutentags_define_advanced_commands = 1
+
+	endif
+
 	if isdirectory(expand("~/.vim/bundle/cscope.vim"))
         let g:cscope_silent = 1
         nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
@@ -73,7 +104,7 @@ colorscheme molokai
         set statusline=[%n]%<%f\ %h%m%r\ %=\
         set statusline+=%(\ [%{g:statusline_cscope_flag}]\ \ \ %)
         set statusline+=%-14.(%l,%c%V%)\ %P
-        
+
         function! Cscope_dynamic_update_hook(updating)
             if a:updating
                 let g:statusline_cscope_flag = "C"
@@ -85,8 +116,8 @@ colorscheme molokai
         call Cscope_dynamic_update_hook(0)
 
         nmap <F11> <Plug>CscopeDBInit
-        
-        setlocal noautochdir 
+
+        setlocal noautochdir
         "set csto=0
         "set cst				    "search both of scope and tag file
         "set nocsverb                            "no verbose
@@ -103,16 +134,16 @@ colorscheme molokai
 		    endif
 		endfunction
         nmap <silent><leader>fo :call <SID>cscopeChangeOutput()<CR>  " toggle output
-        
-        nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>	
-    	nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>	
-    	nmap <leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>	
-    	nmap <leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>	
-    	nmap <leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>	
-    	nmap <leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>	
+
+        nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>
+    	nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>
+    	nmap <leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>
+    	nmap <leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>
+    	nmap <leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>
+    	nmap <leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>
     	nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     	nmap <leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>
-    
+
     endif
 " }
 " vim-easytags {
@@ -137,32 +168,32 @@ colorscheme molokai
 
 " SrcExpl {
 	if isdirectory(expand("~/.vim/bundle/SrcExpl/"))
-		nmap <leader>se :SrcExplToggle<CR> 
+		nmap <leader>se :SrcExplToggle<CR>
 
-		let g:SrcExpl_winHeight = 8 
-		let g:SrcExpl_refreshTime = 100 
-		let g:SrcExpl_searchLocalDef = 1 
-		let g:SrcExpl_isUpdateTags = 0 
+		let g:SrcExpl_winHeight = 8
+		let g:SrcExpl_refreshTime = 100
+		let g:SrcExpl_searchLocalDef = 1
+		let g:SrcExpl_isUpdateTags = 0
 
-		let g:SrcExpl_jumpKey = "<ENTER>" 
-		let g:SrcExpl_gobackKey = "<SPACE>" 
-		let g:SrcExpl_updateTagsKey = "<F11>u" 
-		let g:SrcExpl_prevDefKey = "<F11>b" 
-		let g:SrcExpl_nextDefKey = "<F11>f" 
+		let g:SrcExpl_jumpKey = "<ENTER>"
+		let g:SrcExpl_gobackKey = "<SPACE>"
+		let g:SrcExpl_updateTagsKey = "<F11>u"
+		let g:SrcExpl_prevDefKey = "<F11>b"
+		let g:SrcExpl_nextDefKey = "<F11>f"
 		"
-		" // In order to avoid conflicts, the Source Explorer should know what plugins " 
-		" // except itself are using buffers. And you need add their buffer names into " 
-		" // below listaccording to the command ":buffers!"                            " 
-		 let g:SrcExpl_pluginList = [ 
-				 \ "__Tag_List__", 
-				 \ "__Tagbar__", 
+		" // In order to avoid conflicts, the Source Explorer should know what plugins "
+		" // except itself are using buffers. And you need add their buffer names into "
+		" // below listaccording to the command ":buffers!"                            "
+		 let g:SrcExpl_pluginList = [
+				 \ "__Tag_List__",
+				 \ "__Tagbar__",
 				 \ "NERD_tree_",
-				 \ "Quickfix List" 
-			 \ ] 
-		"                                                                              " 
-		" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to " 
-		" //  create/update a tags file                                                " 
-		let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ." 
+				 \ "Quickfix List"
+			 \ ]
+		"                                                                              "
+		" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to "
+		" //  create/update a tags file                                                "
+		let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
 	endif
 " }
 
@@ -192,25 +223,25 @@ colorscheme molokai
 	if isdirectory(expand("~/.vim/bundle/vim-mark/"))
 		"Unmap '<leader>/' because of '<leader>/' key use in SPF13 conflict with vim-mark plugins
 		nunmap <silent> <leader>/
-		"remove the default overriding of * and #, use: 
-    	nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext 
-    	nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev 
+		"remove the default overriding of * and #, use:
+    	nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext
+    	nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
 	endif
 " }
 
 "YouCompleteMe{
-	if count(g:spf13_bundle_groups, 'youcompleteme') 
+	if count(g:spf13_bundle_groups, 'youcompleteme')
 		if !empty(glob("~/.ycm_extra_conf.py"))
 			let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 		elseif !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
     		let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-		endif   
+		endif
         let g:ycm_confirm_extra_conf=0
         let g:ycm_min_num_of_chars_for_completion = 1
         let g:ycm_auto_trigger = 1
 		" 跳转到定义处, 分屏打开
 		let g:ycm_goto_buffer_command = 'horizontal-split'
-        " speedup: YCM + Syntastic with gcc 
+        " speedup: YCM + Syntastic with gcc
         "g:ycm_register_as_syntastic_checker = 0
 
 		nnoremap <leader>jw :YcmCompleter GoTo<CR>
@@ -218,7 +249,7 @@ colorscheme molokai
 		nnoremap <leader>js :YcmCompleter GoToDeclaration<CR>
 		nnoremap <leader>jt :YcmCompleter GetType<CR>
 		nnoremap <leader>jh :YcmCompleter GetParent<CR>
-		
+
 	endif
 "}
 "==========================================
