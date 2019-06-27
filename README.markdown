@@ -27,7 +27,7 @@ g], <C-]>, <C-w>], <leader>w], <leader>t]
 - cscope navigation:
 ```
 <leader>f (c|d|e|f|g|i|s|t)  # for cscope
-<leader>g (c|d|e|f|g|i|s|t)  # for gnu global, gtags
+<leader>h (c|d|e|f|g|i|s|t)  # for gnu global, gtags
 ```
 - other plugins:
 ```
