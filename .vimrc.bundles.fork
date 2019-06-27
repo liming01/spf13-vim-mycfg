@@ -1,3 +1,6 @@
+" git repo not exiting any more, replaced with existing one
+"UnBundle 'amirh/HTML-AutoCloseTag'
+"Bundle 'vim-scripts/HTML-AutoCloseTag'
 "Using indentLine to replace vim-indent-guides because terminal visual block is urgly
 UnBundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Yggdroot/indentLine'

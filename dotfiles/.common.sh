@@ -211,7 +211,7 @@ my-backup(){
 	mkdir -p $HOME/Private/backup_tar/
 	mv ${name} $HOME/Private/backup_tar/
 
-	echo "done: bak_name: $name"
+	echo "Done: backup $HOME/workspace/mybackup directory to: $HOME/Private/backup_tar/$name"
 
 	cd ${cur_dir}
 }

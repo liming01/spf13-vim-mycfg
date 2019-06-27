@@ -1,6 +1,6 @@
 [core]
-	excludesfile = ~/.gitignore_global
-	hooksPath = /Users/gpadmin/workspace/git-hooks-core
+	excludesfile = ${HOME}/.gitignore_global
+	hooksPath = ${HOME}/workspace/git-hooks-core
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -9,7 +9,7 @@
 	trustExitCode = true
 [user]
 	name = Ming LI
-	email = liming01@gmail.com
+	email = mli@apache.org
 [commit]
 	template = ~/.stCommitMsg
 [icdiff]

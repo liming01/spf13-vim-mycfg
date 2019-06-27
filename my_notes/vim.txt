@@ -5,10 +5,10 @@ VIM/make/gdb/valgrind/profiler
 # install vim on mac:
 http://www.jianshu.com/p/95d8335aeac7
 ----------------------------------------------------------------------
-# brew link macvim 
+# brew link macvim
 osascript <<END
 
-  set macvim to POSIX file "/usr/local/Cellar/macvim/7.4-76/MacVim.app" 
+  set macvim to POSIX file "/usr/local/Cellar/macvim/7.4-76/MacVim.app"
   set applications_folder to POSIX file "/Applications"
 
   tell application "Finder"
@@ -19,30 +19,36 @@ END
 ----------------------------------------------------------------------
 https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
 
-- ag      : 比grep、ack更快的递归搜索文件内容。  --> rg
-- axel    : 多线程下载工具，下载文件时可以替代curl、wget。
-- ccache  : 高速C/C++编译缓存工具，反复编译内核非常有用。
-- ccat    : 高亮语法显示的cat
-- cloc    : 代码统计工具，能够统计代码的空行数、注释行、各种编程语言。
-- figlet  : 将输入字符转换成艺术字体
-- fzf     : 命令行下模糊搜索工具，能够交互式智能搜索并选取文件或者内容，配合终端ctrl-r历史命令搜索简直完美。
-- glances : 更强大的 htop / top 代替者
-- htop    : 提供更美观、更方便的进程监控工具，替代top命令。
-- icdiff  : 分屏显示 diff
-- lnav    : 过滤大日志
-- mc      : 内容浏览/预览
-- mosh    : 基于UDP的终端连接，可以替代ssh，连接更稳定，即使IP变了，也能自动重连。
-- mutt    : email client
-- ncdu    : 可视化的空间分析程序
-- peco    : quickly filter the output of commands, 用于任何命令的输出的实时过滤
-- ranger  : VIM类内容浏览/预览，类似：vifm
-- realpath: 打印全路径，若是连接则是源文件
-- stat    : vmstat iostat dastat
-- sz/rz   : 交互式文件传输，在多重跳板机下传输文件非常好用，不用一级一级传输。
-- tig     : 字符模式下交互查看git项目，可以替代git命令。
-- tldr    : 如果你经常不想详读man文档，那么你应该试试这个小工具
-- tmux    : 终端复用工具，替代screen、nohup。
-- vmail   : = Vim + Gmail
+- ag                  : 比grep、ack更快的递归搜索文件内容。  --> rg
+- axel                : 多线程下载工具，下载文件时可以替代curl、wget。
+- ccache              : 高速C/C++编译缓存工具，反复编译内核非常有用。
+- ccat                : 高亮语法显示的cat
+- cloc                : 代码统计工具，能够统计代码的空行数、注释行、各种编程语言。
+- diff-so-fancy       : 显示字符串级别的差异
+- figlet              : 将输入字符转换成艺术字体
+- fkill               : fuzzy finding before kill
+- fzf                 : 命令行下模糊搜索工具，能够交互式智能搜索并选取文件或者内容，配合终端ctrl-r历史命令搜索简直完美。
+- glances             : 更强大的 htop / top 代替者
+- htop                : 提供更美观、更方便的进程监控工具，替代top命令。vtop
+- icdiff              : 分屏显示 diff
+- lnav                : 过滤大日志
+- jq                  : jason query, 类似的还有yaml文件的：yq
+- mc                  : 内容浏览/预览
+- mosh                : 基于UDP的终端连接，可以替代ssh，连接更稳定，即使IP变了，也能自动重连。
+- mutt                : email client
+- ncdu                : 可视化的空间分析程序
+- pbcopy / pbpaste    : copy and paste using system clipboard
+- peco                : quickly filter the output of commands, 用于任何命令的输出的实时过滤
+- ranger              : VIM类内容浏览/预览，类似：vifm, nnn
+- realpath            : 打印全路径，若是连接则是源文件
+- stat                : vmstat iostat dastat
+- sz/rz               : 交互式文件传输，在多重跳板机下传输文件非常好用，不用一级一级传输。
+- tig                 : 字符模式下交互查看git项目，可以替代git命令。
+- tldr                : 如果你经常不想详读man文档，那么你应该试试这个小工具
+- tmux                : 终端复用工具，替代screen、nohup。
+- trash / empty-trash : rm files/dirs and put them in your system Trash
+- vmail               : = Vim + Gmail
+- wifi-password       : print wifi-password
 
 MacOS工具：
 - caffeinate sleep 5: prevent the system from sleeping on behalf of a utility
@@ -98,14 +104,14 @@ H M L zt zz zb c-f c-b c-u c-d
 
 # 跳转
 C-O/C-I 光标移动前后跳转
-C-]/C-T 函数间前后跳转, 多定义选择：g]/:tselect, 之后:tnext/:tprev/ ,输到list窗口：:ltag后:lopen      
+C-]/C-T 函数间前后跳转, 多定义选择：g]/:tselect, 之后:tnext/:tprev/ ,输到list窗口：:ltag后:lopen
 :tags 列出tag的堆栈     [N]C-T/:[N]pop 在堆栈中往前N行选择旧的tag  :[N]tag 在堆栈中往后N行选择新的tag
 gf/C-W f 打开include的文件 	gF/C-W W-F  打开 “文件:行数”
 C-W-}/ C-W-] 快速预览窗口/新建窗口中显示光标下的Tag定义。,F (vsp open)
 SI: F7/F8 查看整个项目(文件间跳转)/当前文件(文件内跳转)tag <-->
     Vim: tag（当前窗口查看）/ptag（预览窗口查看） 模糊查找插件：FuzzyFinder
 cscope函数递归调用关系插件CCTree
-[[/]] 上/下一个函数块开始，需要有单独一行的{/}  
+[[/]] 上/下一个函数块开始，需要有单独一行的{/}
 []/][ 上/下一个函数块结束
 [{/]{ 当前块头/尾
 [/ ]/	当前注释块头/尾
@@ -115,7 +121,7 @@ g;/g, 上/下修改过的地方
 
 # 格式
 <</>> 缩进, 在插入模式下的缩进：CTRL-D/CTRL-T
-= 结合indent使用, format whole file: gg=G，format whole line: == 
+= 结合indent使用, format whole file: gg=G，format whole line: ==
 :ce(nter) 本行文字居中
 :le(ft) 本行文字靠左
 :ri(ght) 本行文字靠右
@@ -139,7 +145,7 @@ zg－告诉拼写检查器该单词是拼写正确的
 zw－与上一命令相反，告诉拼写检查器该单词是拼写错误的
 
 # 统计字数
-g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上，用字符数减去行数可以粗略统计中文文档的字数。 
+g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上，用字符数减去行数可以粗略统计中文文档的字数。
 以上对 Mac 或 Unix 的文件格式适用。 如果是 Windows 文件格式（即换行符有两个字节），字数的统计方法为： 字符数 - 行数 * 2。
 
 # 查找替换
@@ -168,35 +174,35 @@ N/n
 :g/str1/s//str2/g
                  命令末尾g，表示对搜索字符串的每次出现进行替换；
                  不加 g，表示只对搜索字符串的首次出现进行替换；
-                 命令开头g，表示对正文中所有包含搜索字符串的行进行替换操作, :[range]global/{pattern}/{command}  
+                 命令开头g，表示对正文中所有包含搜索字符串的行进行替换操作, :[range]global/{pattern}/{command}
                  希望对没匹配上的行执行命令，则使用global!或vglobal命令
 
 - 高级替换
 复制第一行很多遍，然后替换下列行中的数字，按下面的规律进行替换
 #define BIT_MASK_1      (1 << 0)
-#define BIT_MASK_2      (1 << 1)                 
+#define BIT_MASK_2      (1 << 1)
 先选中要修改区，然后可以分两步替换执行：
 :'<,'>s/BIT_MASK_\zs\d*\ze/\=line(".") - line("'<") + 1
-:'<,'>s/\zs\d*\ze)$/\=line(".")-line("'<")                 
+:'<,'>s/\zs\d*\ze)$/\=line(".")-line("'<")
 也可以这样，相当于第二句
-:let n=0|g/\zs\d\+\ze)$/s//\=n/g|let n+=1                  
+:let n=0|g/\zs\d\+\ze)$/s//\=n/g|let n+=1
 -格式：
 十进制数字转换为16进制数字	:%s/\d\+/\=printf(“%X”, submatch(0))/g
-以回车排版、以空行分段的文本变成以回车分段 :g/./,/^$/j 或者 :s/\n\n\@!/ /  
+以回车排版、以空行分段的文本变成以回车分段 :g/./,/^$/j 或者 :s/\n\n\@!/ /
 每n行中，删除前/后m行（例如，每10行删除前/后3行）
     :g/^/,+2 d | ,+6 m -1
     :g/^/,+6 m -1 | +1,+3 d
 
 把Win32平台下代码提取出来，拷贝到文件末：:g/#ifdef WIN32/+1,/#else\|#endif/-1 t $
-提取上述C程序中的非Win32平台的代码（try用于没有这部分不报错）： :try | g/#ifdef WIN32//#else/+1, /#endif/-1 t $ | endtry   
-    
+提取上述C程序中的非Win32平台的代码（try用于没有这部分不报错）： :try | g/#ifdef WIN32//#else/+1, /#endif/-1 t $ | endtry
+
 - 高级global或者normal命令
-	倒序文件行（用/./则是匹配非空行）：:g/^/m 0                 
+	倒序文件行（用/./则是匹配非空行）：:g/^/m 0
     删除偶数行：:g/^/+1 d		或者 :%norm jdd		区别：global命令是通过偶数行标记的消失实现的，而normal命令是通过行号和后续行的自动前移实现的。
     删除奇数行：:g/^/d|m.		或者 :%norm jkdd
-    复制所有行：:g/^/t.		或者 :%s/.*/&\r&/   
+    复制所有行：:g/^/t.		或者 :%s/.*/&\r&/
     将aaa替换成bbb，除非该行中有ccc或者ddd：		 :v/ccc\|ddd/s/aaa/bbb/g
-    将aaa替换成bbb，条件是该行中有ccc但不能有ddd		:g/ccc/if getline('.') !~ 'ddd' | s/aaa/bbb/g          
+    将aaa替换成bbb，条件是该行中有ccc但不能有ddd		:g/ccc/if getline('.') !~ 'ddd' | s/aaa/bbb/g
 - Replace in files:
 :arg **/*.cpp	All *.cpp files in and below current directory
 :argadd *.h	And all *.h files.
@@ -250,8 +256,8 @@ q/和q? 可以打开查找历史记录。
 
 -多段文本复制：使用寄存器，“ay2j，“ap，其中，双引号为寄存器引用前缀，a为自定义寄存器名
 （只能为一个字母或数字，或代表系统剪贴板的+或者*，最近刚yank的“）
- 命令行下粘贴：用<CTRL-R>寄存器，粘贴光标下的单词用<CTRL-R><CTRL-W> 
-在插入模式下，输入C-r =，然后输入表达式，就能在 光标处得到计算结果 
+ 命令行下粘贴：用<CTRL-R>寄存器，粘贴光标下的单词用<CTRL-R><CTRL-W>
+在插入模式下，输入C-r =，然后输入表达式，就能在 光标处得到计算结果
 -宏记录：使用寄存器，qb -> 操作 -> q，其中，q为宏记录开始与结束命令，b为寄存器，
 宏回放使用@b。宏回放可加计数器前缀。可“bp打印宏内容，编辑后再“bY。
  "2p     粘贴最后第二次的删除的内容
@@ -301,7 +307,7 @@ vimdiff  FILE_LEFT  FILE_RIGHT
          = vim FILE_LEFT; :vertical diffsplit FILE_RIGHT
 difference navig:   ]c / [c
 fold control:       za(toggle)/zo(open)/zO(open recursively)/zc(close)/zC/zR(open all)/zM/zd(delete)/zD/
-					:n,mfo(folding line n to m)/zf(create fold)/zfap/zj/zk/zi(enable/disable) 
+					:n,mfo(folding line n to m)/zf(create fold)/zfap/zj/zk/zi(enable/disable)
 file merge:         dp (diff "put"）| do (diff "get")
 re-diff:            :diffupdate
 quit/write all:     qa/wa/wqa/qa!
@@ -413,41 +419,41 @@ insert 4 spaces for tab
 :retab #to change the tabs to use current settings
 
 :[range]:g/<pattern>/[cmd]
-Delete all lines matching a pattern 
-    :g/<pattern>/d 
-Delete all blank lines (just an example for above) 
+Delete all lines matching a pattern
+    :g/<pattern>/d
+Delete all blank lines (just an example for above)
     :g/^\s*$/d
 
-Copy all lines matching a pattern to end of file 
-    :g/<pattern>/t$ 
-Yank all lines matching a pattern to register 'a' 
+Copy all lines matching a pattern to end of file
+    :g/<pattern>/t$
+Yank all lines matching a pattern to register 'a'
     0"ay0:g/<pattern>/y A
-Reverse a file (just to show the power of 'g') 
+Reverse a file (just to show the power of 'g')
     :g/^/m0
-Display context (5 lines) for all occurences of a pattern 
-    :g/<pattern>/z#.5 
+Display context (5 lines) for all occurences of a pattern
+    :g/<pattern>/z#.5
     :g/<pattern>/z#.5|echo "=========="
 
-The command 
+The command
 
-:g/^/pu _ 
+:g/^/pu _
 
-is the global command with ^ as search pattern. The ^ matches the beginning of a line and 
-therefore each line of the file is a match. 
-The pu _ command is the :put command putting the contents of the _ blackhole register 
-after the current line followed by a newline. The blackhole register _ never contains anything 
-and therefore it can be used to insert an empty line. This is like doing cp /dev/nul empty.file 
-to create an empty file. 
+is the global command with ^ as search pattern. The ^ matches the beginning of a line and
+therefore each line of the file is a match.
+The pu _ command is the :put command putting the contents of the _ blackhole register
+after the current line followed by a newline. The blackhole register _ never contains anything
+and therefore it can be used to insert an empty line. This is like doing cp /dev/nul empty.file
+to create an empty file.
 What the entire command does is putting an empty line after each line of the file.
 
-Suppose you have 
-let a=2 
-let b=3 
-let c=4 
+Suppose you have
+let a=2
+let b=3
+let c=4
 
-You want to make these variables script-wise. Then you move to over a, hit <C-v>, press jj and now press I. 
-You will be in insert mode before a 
-Now enter s:<Esc>, and when you press <Esc>, b and c will have the s: prefix too. 
+You want to make these variables script-wise. Then you move to over a, hit <C-v>, press jj and now press I.
+You will be in insert mode before a
+Now enter s:<Esc>, and when you press <Esc>, b and c will have the s: prefix too.
 See |v_b_I|
 
 :g/pattern/normal dd
@@ -506,7 +512,7 @@ shift blocks of code
 or >%
 <%
 
-on diffs 
+on diffs
 -------
 dp =>diffput
 do =>diffget
