@@ -1,74 +1,71 @@
-" git repo not exiting any more, replaced with existing one
-"UnBundle 'amirh/HTML-AutoCloseTag'
-"Bundle 'vim-scripts/HTML-AutoCloseTag'
 "Using indentLine to replace vim-indent-guides because terminal visual block is urgly
-UnBundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Yggdroot/indentLine'
+UnPlug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
 "cscope key mapping and generate function.
 " Replaced by Plug 'skywind3000/gutentags_plus'
-Bundle 'brookhong/cscope.vim'
+Plug 'brookhong/cscope.vim'
 " ctag auto generate
-Bundle 'ludovicchabant/vim-gutentags'
-Bundle 'skywind3000/gutentags_plus'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
 "fast cscope database updates for C/C++
-"Bundle 'vim-scripts/cscope_dynamic'
+"Plug 'vim-scripts/cscope_dynamic'
 
 if (has("python") || has("python3"))
     "auto update tag file
     " Need to change the default value of variable maxTagsFileSize in autotags.py
-	" Replaced by Bundle 'ludovicchabant/vim-gutentags'
-    "Bundle 'craigemery/vim-autotag'
+	" Replaced by Plug 'ludovicchabant/vim-gutentags'
+    "Plug 'craigemery/vim-autotag'
     " Generate config for YouCompleteMe, support make/cmake/qmake/autotools
-    Bundle 'rdnetto/YCM-Generator'
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 endif
-"Bundle 'xolox/vim-misc'
-"Bundle 'xolox/vim-easytags'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-easytags'
 
 "Support ctags and gtags, generate and update tags file
-"Bundle 'jsfaint/gen_tags.vim'
+"Plug 'jsfaint/gen_tags.vim'
 
 "Same as tagbar
-"Bundle 'taglist.vim'
-Bundle 'vim-scripts/TaskList.vim'
+"Plug 'taglist.vim'
+Plug 'vim-scripts/TaskList.vim'
 " relativenumber option toggle
-"Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+"Plug 'jeffkreeftmeijer/vim-numbertoggle'
 "Alternate Files quickly (.c --> .h etc)
-Bundle 'vim-scripts/a.vim'
+Plug 'vim-scripts/a.vim'
 
 "Visually select increasingly larger regions of text using the same key combination
-Bundle 'terryma/vim-expand-region'
-"Bundle 'YankRing.vim'
+Plug 'terryma/vim-expand-region'
+"Plug 'YankRing.vim'
 "Perl/Ruby style regexp
-"Bundle 'othree/eregex.vim'
+"Plug 'othree/eregex.vim'
 "debug manager
 if executable('gdb')
 	"需在gdbmgr/gdbmgr/src下make，并添加到LD_LIBRARY_PATH
-	Bundle 'vim-scripts/gdbmgr'
+	Plug 'vim-scripts/gdbmgr'
 elseif executable('lldb')
-	"Bundle 'gilligan/vim-lldb'
+	"Plug 'gilligan/vim-lldb'
 endif
 
 "Multi-language DBGP debugger client for Vim (PHP, Python, Perl, Ruby, etc.)
-"Bundle 'joonty/vdebug'
+"Plug 'joonty/vdebug'
 
 " source code reading
-" Bundle 'hari-rangarajan/CCTree'
-" Bundle 'wesleyche/SrcExpl'
+" Plug 'hari-rangarajan/CCTree'
+" Plug 'wesleyche/SrcExpl'
 
 " good keymap
-Bundle 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
 " gitk
-Bundle 'gregsexton/gitv'
+Plug 'gregsexton/gitv'
 
 " Auto detect CJK and Unicode file encodings
-Bundle 'mbbill/fencview'
-"Bundle 'vimim/vimim'
+Plug 'mbbill/fencview'
+"Plug 'vimim/vimim'
 " 显示marks - 方便自己进行标记和跳转
 " m[a-zA-Z] add mark
 " '[a-zA-Z] go to mark
 " m<Space>  del all marks
-Bundle 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 
 
 " Highlight several words in different colors simultaneously
@@ -79,15 +76,15 @@ Bundle 'kshenoy/vim-signature'
 "[count]<Leader>/ 	[count]<Leader>? 	 Any mark navigtaion
 "<k1> .. <k9>  		<C-k1> .. <C-k9>  	 highlight group 1..9 navigation
 ":Mark				list all marks
-Bundle 'dimasg/vim-mark'
+Plug 'dimasg/vim-mark'
 
 "Add support for tmux key conflict with vim
-Bundle 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 
-" neovim related bundle
-Bundle 'junegunn/fzf'
-Bundle 'junegunn/fzf.vim'
+" neovim related Plug
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 "golang
-Bundle 'fatih/vim-go'
+Plug 'fatih/vim-go'

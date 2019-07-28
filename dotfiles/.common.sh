@@ -24,7 +24,7 @@ if [ "`uname -s`" = "Darwin" ]; then
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	#export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
 	export PATH=.:${HOME}/bin:/usr/local/sbin:$PATH
-	alias python="/usr/local/bin/python"
+	#alias python="/usr/local/bin/python"
 
 	#ulimit -n 65535
 	#ulimit -n 7500
@@ -133,7 +133,7 @@ go_env(){
 }
 _main(){
 	#alicloud_env
-	go_env
+	#go_env
 	gpdb_env
 	#gpdb4_env
 	#postgres_env

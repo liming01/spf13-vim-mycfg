@@ -1,6 +1,6 @@
 # My vim config #
 
-Need to firstly install spf13[https://github.com/spf13/spf13-vim],
+Need to firstly install spf13[https://github.com/liming01/spf13-vim],
 after that git clone this repo, and run shell install.cmd on Windows
 or install.sh on Mac/Linux.
 
@@ -43,11 +43,12 @@ vim-expand-region           : +, -
 vim-mark                    : <Leader>m,<Leader>n, <Leader>r, <Leader>*, <Leader># , <Leader>/, <Leader>?
 mark                        : m<Space>  del all marks
 TaskList.vim                : <leader>td
+sessionman                  : <leader>sl, <leader>ss, <leader>sc
 ```
 * others commands:
 ```
 source/edit vimrc           : <leader>sv, <leader>ev
-sudo write                  : : w!!
+sudo write                  : :w!!
 quite all buffers           : Q
 re-search last search/ack   : <leader>q/, <leader>qa/
 go file with line           : gF

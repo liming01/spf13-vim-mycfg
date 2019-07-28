@@ -15,7 +15,7 @@ filetype plugin on
 filetype indent on 
 
 " leader
-let mapleader = ','
+let mapleader = ' '
 let g:mapleader = ','
 
 
