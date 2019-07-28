@@ -10,6 +10,10 @@ Plug 'skywind3000/gutentags_plus'
 "fast cscope database updates for C/C++
 "Plug 'vim-scripts/cscope_dynamic'
 
+"rtags, llvm/clang based c++ code indexer
+Plug 'Andersbakken/rtags'
+Plug 'lyuts/vim-rtags' "Vim bindings for rtags
+
 if (has("python") || has("python3"))
     "auto update tag file
     " Need to change the default value of variable maxTagsFileSize in autotags.py
@@ -87,4 +91,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 "golang
-Plug 'fatih/vim-go'
+if executable('go')
+    Plug 'fatih/vim-go'
+endif
