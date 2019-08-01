@@ -78,3 +78,26 @@ bind generic <C-w><C-w> view-next
 # jump easily between diff/status view to the history of the file
 bind diff H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
 bind status H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+
+################ Added from: https://github.com/jonas/tig/wiki/Bindings ################
+
+# Add/edit notes for the current commit used during a review
+bind generic T !git notes edit %(commit)
+# Open the commit on Github
+bind generic B @sh -c "xdg-open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
+
+# Interactive rebase
+bind main B !git rebase -i %(commit)
+# Revert
+bind main ! !git revert %(commit)
+# Tag the selected commit
+bind main T !@git tag %(prompt) %(commit)
+
+
+# Intent to add: might be useful if you want to add-patch a newly created file
+bind status N !@git add -N %(file)
+# Stash the unstaged changes
+bind status S !?git stash save --keep-index %(prompt)
+
+# Create a new branch
+bind refs n !@git branch "%(prompt Enter branch name: )"
