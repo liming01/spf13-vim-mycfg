@@ -22,7 +22,7 @@ Tag Navigation
 ```
 - tag navigation:
 ```
-g], <C-]>, <C-w>], <leader>w], <leader>t]
+g], <C-]>, <C-w>], <C-w>}, <leader>w], <leader>t]
 ```
 - cscope navigation:
 ```

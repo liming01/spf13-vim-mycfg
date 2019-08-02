@@ -20,8 +20,7 @@ ulimit -c unlimited
 
 if [ "`uname -s`" = "Darwin" ]; then
 	#echo "On Darwin"
-	alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
-	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+	alias vi="vim"
 	#export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
 	export PATH=.:${HOME}/bin:/usr/local/sbin:$PATH
 	#alias python="/usr/local/bin/python"

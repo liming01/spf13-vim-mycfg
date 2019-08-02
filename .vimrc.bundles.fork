@@ -10,17 +10,21 @@ Plug 'skywind3000/gutentags_plus'
 "fast cscope database updates for C/C++
 "Plug 'vim-scripts/cscope_dynamic'
 
-"rtags, llvm/clang based c++ code indexer
-Plug 'Andersbakken/rtags'
-Plug 'lyuts/vim-rtags' "Vim bindings for rtags
 
 if (has("python") || has("python3"))
     "auto update tag file
     " Need to change the default value of variable maxTagsFileSize in autotags.py
 	" Replaced by Plug 'ludovicchabant/vim-gutentags'
     "Plug 'craigemery/vim-autotag'
+	
     " Generate config for YouCompleteMe, support make/cmake/qmake/autotools
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+	"rtags, llvm/clang based c++ code indexer
+	"need to firstly install https://github.com/nickdiego/compiledb, better than YCM-generator/Bear
+	"and run 'compiledb -n make' to generate compile_commands.json
+	Plug 'Andersbakken/rtags'
+	Plug 'lyuts/vim-rtags' "Vim bindings for rtags
 endif
 "Plug 'xolox/vim-misc'
 "Plug 'xolox/vim-easytags'
@@ -86,11 +90,51 @@ Plug 'dimasg/vim-mark'
 Plug 'christoomey/vim-tmux-navigator'
 
 
-" neovim related Plug
-Plug 'junegunn/fzf'
+" file fuzzy finder
+UnPlug 'ctrlpvim/ctrlp.vim'
+UnPlug 'tacahiroy/ctrlp-funky'
+"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } " 异步文件糊糊搜索及类似文本搜索与跳转， Leaderf 只能维护 gtags，不维护 ctags
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 "golang
 if executable('go')
     Plug 'fatih/vim-go'
 endif
+
+" TextObject: 参数”,”, 缩进”I”, 函数”f”,  支持i和a等操作
+Plug 'kana/vim-textobj-syntax' "Text objects for syntax highlighted items
+Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
+Plug 'sgur/vim-textobj-parameter'
+
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+Plug 'brooth/far.vim' " 批量修改
+Plug 'lfv89/vim-interestingwords' " 高亮感兴趣的当前单词
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'mhinz/vim-startify' " start screen
+Plug 'tracyone/neomake-multiprocess' " 异步跑命令，异步搜索等
+
+" Directory Explorer: replace nerdtree by defx for better performance
+UnPlug 'scrooloose/nerdtree'
+UnPlug 'jistr/vim-nerdtree-tabs'
+
+if (has("python3"))
+	if has('nvim')
+		Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+	else
+		Plug 'Shougo/defx.nvim'
+		Plug 'roxma/nvim-yarp'
+		Plug 'roxma/vim-hug-neovim-rpc'
+	endif
+	" Defx icons
+	" Requires nerd-font, install at https://github.com/ryanoasis/nerd-fonts or
+	" brew cask install font-hack-nerd-font
+	" Then set non-ascii font to Driod sans mono for powerline in iTerm2
+	Plug 'kristijanhusak/defx-icons'
+	Plug 'kristijanhusak/defx-git'
+endif
+
+Plug 'editorconfig/editorconfig-vim' " auto set config according to .editorconfig
