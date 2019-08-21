@@ -53,6 +53,8 @@ flags = [
     'c++',
     '-I.',
     '-I./src/include',
+    '-I./src/backend/gp_libpq_fe',
+    '-I./src/interfaces/libpq',
     '-I/usr/local/include',
     '-I/usr/include/',
     '-I/usr/include/c++/4.2.1/'

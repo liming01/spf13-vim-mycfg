@@ -1,9 +1,16 @@
+" Prevent automatically changing to open file directory
+let g:spf13_no_autochdir = 1
+
+" Leader keys
+let g:spf13_leader=' '
+let g:spf13_localleader=','
+
 " keep the key mapping for <S-H> & <S-L> unchanged: for move cursor top/down of the screen
 let g:spf13_no_fastTabs = 1
 
 " Change the color schema for status line, keep same with color scheme in .vimrc.fork
-"let g:airline_theme = 'molokai'
-let g:airline_theme = 'dark'
+let g:airline_theme = 'molokai'
+"let g:airline_theme = 'dark'
 
 "disable the stripping of whitespace
 let g:spf13_keep_trailing_whitespace = 1
@@ -15,7 +22,5 @@ let g:spf13_bundle_groups=['general', 'writing', 'programming', 'misc', 'python'
 if v:version > 703 || (v:version == 703 && has('patch584'))
 	let g:spf13_bundle_groups += ['youcompleteme']
 endif
-
-let g:spf13_no_autochdir = 1
 
 

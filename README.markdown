@@ -31,7 +31,8 @@ g], <C-]>, <C-w>], <C-w>}, <leader>w], <leader>t]
 ```
 - other plugins:
 ```
-CtrlP                       : <leader>cp, <leader>bl, <D-r>, <leader>fu, <leader>fU
+CtrlP                       : <leader>fl, <leader>bl, <D-r>, <leader>fu, <leader>fU
+FZF							: <leader>fl, <leader>bl, <leader>hl, <leader>ag, <leader>ms
 YankRing                    : <leader>yr
 nerdcommenter               : <leader>c<space>, <leader>cc, <leader>cu
 multiple-cursor             : <C-N>, <C-P>, <C-X>
@@ -56,6 +57,6 @@ go file in vertical split   : <leader>gf
 visual block search/replace : *, #, <leader>vr
 trim space                  : <leader>t<space>
 copy file name              : <leader>cf, <leader>cr, <leader>cn
-list keymap in sorted order : <leader>lm
+list keymap in sorted order : <leader>ml
 Zoom current windows        : <leader>z
 ```

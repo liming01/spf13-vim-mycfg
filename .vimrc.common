@@ -464,7 +464,7 @@ function! ListMap()
     silent! let lines = getline(1,"$")
     silent! normal ESC
 endfunction
-nnoremap <silent> <leader>lm :call ListMap()<CR>
+nnoremap <silent> <leader>ml :call ListMap()<CR>
 
 "==========================================
 " Trip trailing whitespace
