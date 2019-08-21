@@ -296,17 +296,21 @@ colorscheme molokai
 
 " fzf{
     if isdirectory(expand("~/.vim/bundle/fzf.vim"))
-        nnoremap <leader>fl :Files   <CR>
-        nnoremap <leader>bl :Buffers <CR>
-        nnoremap <leader>hl :Helptags<CR>
-        nnoremap <leader>ms :Maps    <CR>
-        nnoremap <leader>ag :execute 'Ag ' . expand('<cword>')<Cr>
+        nnoremap <leader>2f :Files   <CR>
+        nnoremap <leader>bf :Buffers <CR>
+        nnoremap <leader>bF :execute 'Buffers ' . expand('<cword>')<CR>
+        nnoremap <leader>hf :Helptags<CR>
+        nnoremap <leader>tf :Tags    <CR>
+        nnoremap <leader>tF :execute 'Tags ' . expand('<cword>')<CR>
+        nnoremap <leader>mf :Maps    <CR>
+        nnoremap <leader>ag :Ag      <CR>
+        nnoremap <leader>aG :execute 'Ag ' . expand('<cword>')<CR>
 " }
 " CtrlP{
 	elseif isdirectory(expand("~/.vim/bundle/ctrlp.vim"))
         let g:ctrlp_by_filename = 1
-        nnoremap <leader>fl :CtrlP<CR>
-        nnoremap <leader>bl :CtrlPBuffer<CR>
+        nnoremap <leader>2f :CtrlP<CR>
+        nnoremap <leader>bf :CtrlPBuffer<CR>
 		" CtrlP-funky{
 			if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
 				nnoremap <Leader>fu :CtrlPFunky<Cr>

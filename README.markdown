@@ -31,8 +31,8 @@ g], <C-]>, <C-w>], <C-w>}, <leader>w], <leader>t]
 ```
 - other plugins:
 ```
-CtrlP                       : <leader>fl, <leader>bl, <D-r>, <leader>fu, <leader>fU
-FZF							: <leader>fl, <leader>bl, <leader>hl, <leader>ag, <leader>ms
+CtrlP                       : <leader>2f, <leader>bl, <D-r>, <leader>fu, <leader>fU
+FZF							: <leader>2f, <leader>bf, <leader>hf, <leader>tf, <leader>mf,  <leader>ag,     # <object_type>f or F for <cword>
 YankRing                    : <leader>yr
 nerdcommenter               : <leader>c<space>, <leader>cc, <leader>cu
 multiple-cursor             : <C-N>, <C-P>, <C-X>
