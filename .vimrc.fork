@@ -7,6 +7,12 @@ colorscheme molokai
 " toggle wrap mode, similar to [ow/]ow in plugin vim-unimpaired
 :nmap <leader>ow :setlocal wrap!<CR> :setlocal wrap? <CR>
 
+" not to change dir for vim-startify
+" vim-startify {
+	if isdirectory(expand("~/.vim/bundle/vim-startify/"))
+		let g:startify_change_to_dir = 0
+	endif
+" }
 " disable store option for scrollbind setting problem
 " restore_view.vim {
 	if isdirectory(expand("~/.vim/bundle/restore_view.vim/"))

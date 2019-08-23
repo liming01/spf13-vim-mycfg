@@ -37,6 +37,7 @@ fi
 
 alias lvim="vim -u ~/.vimrc.complex"
 alias lnvim="nvim -u ~/.vimrc.complex"
+alias lmvim="mvim -u ~/.vimrc.complex"
 which ccat > /dev/null && alias cat="ccat"
 
 hawq_env(){
