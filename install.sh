@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -exo pipefail
+
 # Fetch absolute path to this script and current directory
 pushd . > /dev/null
 SCRIPT_PATH="${BASH_SOURCE[0]}";
@@ -15,7 +17,9 @@ CURRENT_DIR=`pwd`
 
 ################
 # Symlink dotfiles
-ln -sf $SCRIPT_PATH/dotfiles/.* ~/
+# This cmd will report error for current dir. & parent dir..
+# ln -sf $SCRIPT_PATH/dotfiles/.* ~/
+for dir in $(ls -1ad $SCRIPT_PATH/dotfiles/.* | tail -n +3) ; do ln -sf $dir ~/; done
 
 mkdir -p $HOME/.oh-my-zsh/custom/themes
 mkdir -p $HOME/.oh-my-zsh/custom/plugins
@@ -43,6 +47,13 @@ ln -sf $SCRIPT_PATH/.ycm_extra_conf.py ~/
 # change default vimrc to .vimrc.simple
 ln -sf $SCRIPT_PATH/.vimrc.simple ~/.vimrc
 ln -sf ~/.spf13-vim-3/.vimrc ~/.vimrc.complex
+
+# install vim-plug for vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# install vim-plug for neovim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim -u ~/.vimrc.complex +BundleInstall! +BundleClean +q
 ################
