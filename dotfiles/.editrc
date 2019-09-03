@@ -1,0 +1,28 @@
+# psql do not support functionality like bash's reverse-search-history on macOS.
+# The reason is: macOS link the libreadline to libedit, while libedit lacks some 
+# command-line features of libreadline.
+
+# > ll /usr/lib/libreadline.dylib
+# /usr/lib/libreadline.dylib -> libedit.3.dylib
+
+# > otool -L `which psql`
+# /Users/gpadmin/workspace/gpdb/../install/gpdb/bin/psql:
+#	/Users/gpadmin/workspace/gpdb/../install/gpdb/lib/libpq.5.dylib (compatibility version 5.0.0, current version 5.7.0)
+#	/usr/lib/libedit.3.dylib (compatibility version 2.0.0, current version 3.0.0)
+#	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1252.250.1)
+
+# https://github.com/PostgresApp/PostgresApp/issues/144
+# workaround for some navigation key bindings
+
+bind "^R" em-inc-search-prev     # history completion with Ctrl-R
+bind "\e[1~" ed-move-to-beg      # Home
+bind "\e[4~" ed-move-to-end      # End
+bind "\e[3~" ed-delete-next-char # Delete
+bind "\e[2~" ed-quoted-insert    # Insert
+bind "\e[1;5C" em-next-word      # Ctrl-Right (× 3 different escape codes depending on term)
+bind "\e[1;5D" ed-prev-word      # Ctrl-Left (× 3 different escape codes depending on term)
+bind "\e[5C" em-next-word
+bind "\e[5D" ed-prev-word
+bind "\e\e[C" em-next-word
+bind "\e\e[D" ed-prev-word
+
