@@ -225,10 +225,12 @@ my-backup(){
 #
 vim-default-complex(){
 	ln -fs ~/.vimrc.complex ~/.vimrc
+	ln -s ~/.vimrc ~/.config/nvim/init.vim
 }
 
 vim-default-simple(){
 	ln -fs ~/.vimrc.simple ~/.vimrc
+	ln -s ~/.vimrc ~/.config/nvim/init.vim
 }
 
 
