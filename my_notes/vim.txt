@@ -69,6 +69,11 @@ cscope -Rbq
 :tag /regexp<tab> --search tag with regular expression
 :tag /[Dd]o_\=[Ff]ile   tag with regular expression: same as :tag /DoFile\|do_file\|Do_File
 
+# tab窗口的操作
+:tagnext, tagfirst
+gt | gT
+
+
 # 模式中r和s的区别
 x  			X del previous char
 r 替换一个字符，不进入插入模式   R 进入替换模式，按esc回到正常模式
