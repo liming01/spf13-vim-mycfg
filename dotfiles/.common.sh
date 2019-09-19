@@ -20,7 +20,6 @@ ulimit -c unlimited
 
 if [ "`uname -s`" = "Darwin" ]; then
 	#echo "On Darwin"
-	alias vi="vim"
 	#export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
 	export PATH=.:${HOME}/bin:/usr/local/sbin:$PATH
 	#alias python="/usr/local/bin/python"
@@ -35,6 +34,10 @@ else
 	export LD_LIBRARY_PATH=/opt/gcc-6.2.0/lib6:$LD_LIBRARY_PATH
 fi
 
+# vi                    : to simple config;
+# lvim/lvim/lnvim/lmvim : to complex config;
+# vim/nvim              : use the config can be changed dynamically by vim-default-complex / vim-default-simple
+alias vi="vim -u ~/.vimrc.simple"
 alias lvim="vim -u ~/.vimrc.complex"
 alias lnvim="nvim -u ~/.vimrc.complex"
 alias lmvim="mvim -u ~/.vimrc.complex"
@@ -216,5 +219,17 @@ my-backup(){
 
 	cd ${cur_dir}
 }
+
+#
+# Function to change vim command default config to complex or simple
+#
+vim-default-complex(){
+	ln -fs ~/.vimrc.complex ~/.vimrc
+}
+
+vim-default-simple(){
+	ln -fs ~/.vimrc.simple ~/.vimrc
+}
+
 
 _main "$@"

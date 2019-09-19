@@ -1,11 +1,12 @@
 [core]
 	excludesfile = /Users/gpadmin/.gitignore_global
 	hooksPath = ${HOME}/workspace/git-hooks-core
+	editor = vim
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+	path = -ro
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 	trustExitCode = true
 [user]
 	name = Ming LI
@@ -14,3 +15,10 @@
 	template = ~/.stCommitMsg
 [icdiff]
 	options = --highlight --line-numbers
+[diff]
+	tool = bc3
+[merge]
+	tool = bc3
+[mergetool "bc3"]
+	trustExitCode = true
+[alias]

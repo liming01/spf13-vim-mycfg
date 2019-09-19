@@ -75,6 +75,9 @@ bind generic ca !?@git commit --amend --no-edit
 bind generic K view-help
 bind generic <C-w><C-w> view-next
 
+# -------------------------------------- My config -------------------------------------------
+bind generic <F1> view-help
+
 # jump easily between diff/status view to the history of the file
 bind diff H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
 bind status H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
@@ -84,7 +87,8 @@ bind status H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
 # Add/edit notes for the current commit used during a review
 bind generic T !git notes edit %(commit)
 # Open the commit on Github
-bind generic B @sh -c "xdg-open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
+#bind generic <F2> @sh -c "xdg-open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
+bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
 
 # Interactive rebase
 bind main B !git rebase -i %(commit)
@@ -101,3 +105,9 @@ bind status S !?git stash save --keep-index %(prompt)
 
 # Create a new branch
 bind refs n !@git branch "%(prompt Enter branch name: )"
+
+# Compare changed file in status view
+bind status <F4> !sh -c "git difftool -y \"$(git rev-parse --show-toplevel)/%(file)\""
+# Compare selected commit in log view (main view) with its parent
+bind main <F4> !git difftool -d %(commit)^!
+
