@@ -14,11 +14,19 @@ Tag Navigation
 -------------
 - YouCompleteMe:
 ```
-<leader>jw :YcmCompleter GoTo
-<leader>jd :YcmCompleter GoToDefinition
-<leader>js :YcmCompleter GoToDeclaration
-<leader>jt :YcmCompleter GetType<CR>
-<leader>jh :YcmCompleter GetParent<CR>
+<leader>jw  : YcmCompleter GoTo<CR>
+<leader>jww : YcmCompleter GoToImprecise<CR>
+<leader>jd  : YcmCompleter GoToDefinition<CR>
+<leader>jc  : YcmCompleter GoToReferences<CR>
+<leader>js  : YcmCompleter GoToDeclaration<CR>
+<leader>ji  : YcmCompleter GoToInclude<CR>
+<leader>jt  : YcmCompleter GetType<CR>
+<leader>jtt : YcmCompleter GetTypeImprecise<CR>
+<leader>jh  : YcmCompleter GetParent<CR>
+
+<leader>jr  : YcmCompleter RefactorRename<CR>
+<leader>j=  : YcmCompleter Format<CR>
+<leader>jq  : YcmCompleter FixIt<CR>
 ```
 - tag navigation:
 ```

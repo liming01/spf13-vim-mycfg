@@ -75,12 +75,12 @@ colorscheme molokai
 
 		noremap <silent> <leader>hs :GscopeFind s <C-R><C-W><cr>
 		noremap <silent> <leader>hg :GscopeFind g <C-R><C-W><cr>
+		noremap <silent> <leader>hd :GscopeFind d <C-R><C-W><cr>
 		noremap <silent> <leader>hc :GscopeFind c <C-R><C-W><cr>
 		noremap <silent> <leader>ht :GscopeFind t <C-R><C-W><cr>
 		noremap <silent> <leader>he :GscopeFind e <C-R><C-W><cr>
 		noremap <silent> <leader>hf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
 		noremap <silent> <leader>hi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-		noremap <silent> <leader>hd :GscopeFind d <C-R><C-W><cr>
 		noremap <silent> <leader>ha :GscopeFind a <C-R><C-W><cr>
 
 		" debug error
@@ -350,11 +350,19 @@ colorscheme molokai
         " speedup: YCM + Syntastic with gcc
         "g:ycm_register_as_syntastic_checker = 0
 
-		nnoremap <leader>jw :YcmCompleter GoTo<CR>
-		nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-		nnoremap <leader>js :YcmCompleter GoToDeclaration<CR>
-		nnoremap <leader>jt :YcmCompleter GetType<CR>
-		nnoremap <leader>jh :YcmCompleter GetParent<CR>
+		nnoremap <leader>jw  : YcmCompleter GoTo<CR>
+		nnoremap <leader>jww : YcmCompleter GoToImprecise<CR>
+		nnoremap <leader>jd  : YcmCompleter GoToDefinition<CR>
+		nnoremap <leader>jc  : YcmCompleter GoToReferences<CR>
+		nnoremap <leader>js  : YcmCompleter GoToDeclaration<CR>
+		nnoremap <leader>ji  : YcmCompleter GoToInclude<CR>
+		nnoremap <leader>jt  : YcmCompleter GetType<CR>
+		nnoremap <leader>jtt : YcmCompleter GetTypeImprecise<CR>
+		nnoremap <leader>jh  : YcmCompleter GetParent<CR>
+
+		nnoremap <leader>jr  : YcmCompleter RefactorRename<CR>
+		nnoremap <leader>j=  : YcmCompleter Format<CR>
+		nnoremap <leader>jq  : YcmCompleter FixIt<CR>
 
 	endif
 "}
