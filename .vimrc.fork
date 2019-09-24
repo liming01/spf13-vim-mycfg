@@ -350,19 +350,19 @@ colorscheme molokai
         " speedup: YCM + Syntastic with gcc
         "g:ycm_register_as_syntastic_checker = 0
 
-		nnoremap <leader>jw  : YcmCompleter GoTo<CR>
-		nnoremap <leader>jww : YcmCompleter GoToImprecise<CR>
-		nnoremap <leader>jd  : YcmCompleter GoToDefinition<CR>
-		nnoremap <leader>jc  : YcmCompleter GoToReferences<CR>
-		nnoremap <leader>js  : YcmCompleter GoToDeclaration<CR>
-		nnoremap <leader>ji  : YcmCompleter GoToInclude<CR>
-		nnoremap <leader>jt  : YcmCompleter GetType<CR>
-		nnoremap <leader>jtt : YcmCompleter GetTypeImprecise<CR>
-		nnoremap <leader>jh  : YcmCompleter GetParent<CR>
+		nnoremap <leader>jw  :YcmCompleter GoTo<CR>
+		nnoremap <leader>jww :YcmCompleter GoToImprecise<CR>
+		nnoremap <leader>jd  :YcmCompleter GoToDefinition<CR>
+		nnoremap <leader>jc  :YcmCompleter GoToReferences<CR>
+		nnoremap <leader>js  :YcmCompleter GoToDeclaration<CR>
+		nnoremap <leader>ji  :YcmCompleter GoToInclude<CR>
+		nnoremap <leader>jt  :YcmCompleter GetType<CR>
+		nnoremap <leader>jtt :YcmCompleter GetTypeImprecise<CR>
+		nnoremap <leader>jh  :YcmCompleter GetParent<CR>
 
-		nnoremap <leader>jr  : YcmCompleter RefactorRename<CR>
-		nnoremap <leader>j=  : YcmCompleter Format<CR>
-		nnoremap <leader>jq  : YcmCompleter FixIt<CR>
+		nnoremap <leader>jr  :YcmCompleter RefactorRename<space>
+		nnoremap <leader>j=  :YcmCompleter Format<CR>
+		nnoremap <leader>jq  :YcmCompleter FixIt<CR>
 
 	endif
 "}

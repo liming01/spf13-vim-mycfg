@@ -24,7 +24,7 @@ Tag Navigation
 <leader>jtt : YcmCompleter GetTypeImprecise<CR>
 <leader>jh  : YcmCompleter GetParent<CR>
 
-<leader>jr  : YcmCompleter RefactorRename<CR>
+<leader>jr  : YcmCompleter RefactorRename<space>
 <leader>j=  : YcmCompleter Format<CR>
 <leader>jq  : YcmCompleter FixIt<CR>
 ```
