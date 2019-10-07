@@ -14,6 +14,22 @@ colorscheme molokai
 	endif
 " }
 
+" asyncrun.vim {
+	if isdirectory(expand("~/.vim/bundle/asyncrun.vim/"))
+		" automatically open quickfix window when AsyncRun command is executed
+		" set the quickfix window 6 lines height.
+		let g:asyncrun_open = 6
+
+		" ring the bell to notify you job finished
+		let g:asyncrun_bell = 1
+
+		"get cooperate with vim-fugitive
+		if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+			command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+		endif
+	endif
+" }
+
 " overwrite default key map for using map
 " TaskList.vim {
 	if isdirectory(expand("~/.vim/bundle/TaskList.vim/"))
