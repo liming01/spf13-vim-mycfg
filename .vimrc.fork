@@ -13,6 +13,19 @@ colorscheme molokai
 		let g:startify_change_to_dir = 0
 	endif
 " }
+
+" overwrite default key map for using map
+" TaskList.vim {
+	if isdirectory(expand("~/.vim/bundle/TaskList.vim/"))
+		nnoremap <leader>td <Plug>TaskList
+	endif
+" }
+" vim-easymotion {
+	if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
+		nnoremap <Leader><Leader> <Plug>(easymotion-prefix)
+	endif
+" }
+
 " disable store option for scrollbind setting problem
 " restore_view.vim {
 	if isdirectory(expand("~/.vim/bundle/restore_view.vim/"))
@@ -73,15 +86,15 @@ colorscheme molokai
 		" disable the default keymaps
 		let g:gutentags_plus_nomap = 1
 
-		noremap <silent> <leader>hs :GscopeFind s <C-R><C-W><cr>
-		noremap <silent> <leader>hg :GscopeFind g <C-R><C-W><cr>
-		noremap <silent> <leader>hd :GscopeFind d <C-R><C-W><cr>
-		noremap <silent> <leader>hc :GscopeFind c <C-R><C-W><cr>
-		noremap <silent> <leader>ht :GscopeFind t <C-R><C-W><cr>
-		noremap <silent> <leader>he :GscopeFind e <C-R><C-W><cr>
-		noremap <silent> <leader>hf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
-		noremap <silent> <leader>hi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-		noremap <silent> <leader>ha :GscopeFind a <C-R><C-W><cr>
+		nnoremap <silent> <leader>hs :GscopeFind s <C-R><C-W><cr>
+		nnoremap <silent> <leader>hg :GscopeFind g <C-R><C-W><cr>
+		nnoremap <silent> <leader>hd :GscopeFind d <C-R><C-W><cr>
+		nnoremap <silent> <leader>hc :GscopeFind c <C-R><C-W><cr>
+		nnoremap <silent> <leader>ht :GscopeFind t <C-R><C-W><cr>
+		nnoremap <silent> <leader>he :GscopeFind e <C-R><C-W><cr>
+		nnoremap <silent> <leader>hf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+		nnoremap <silent> <leader>hi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+		nnoremap <silent> <leader>ha :GscopeFind a <C-R><C-W><cr>
 
 		" debug error
 		"let g:gutentags_define_advanced_commands = 1
@@ -168,9 +181,9 @@ colorscheme molokai
 " }
 " Defx {
 	if isdirectory(expand("~/.vim/bundle/defx.nvim"))
-		map <leader>e  :Defx -split=vertical -winwidth=50 -direction=topleft <CR>
-		map <leader>ef :Defx `expand('%:p:h')` -search=`expand('%:p')` <CR>
-		map <leader>eg :Defx -columns=git:mark:filename:type <CR>
+		nnoremap <leader>e  :Defx -split=vertical -winwidth=50 -direction=topleft <CR>
+		nnoremap <leader>ef :Defx `expand('%:p:h')` -search=`expand('%:p')` <CR>
+		nnoremap <leader>eg :Defx -columns=git:mark:filename:type <CR>
 
 		autocmd FileType defx call s:defx_my_settings()
 		function! s:defx_my_settings() abort
