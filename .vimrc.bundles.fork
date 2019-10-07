@@ -24,7 +24,7 @@ if (has("python") || has("python3"))
 	"need to firstly install https://github.com/nickdiego/compiledb, better than YCM-generator/Bear
 	"and run 'compiledb -n make' to generate compile_commands.json
 	Plug 'Andersbakken/rtags'
-	"Plug 'lyuts/vim-rtags' "Vim bindings for rtags
+	Plug 'lyuts/vim-rtags' "Vim bindings for rtags
 endif
 "Plug 'xolox/vim-misc'
 "Plug 'xolox/vim-easytags'
@@ -37,8 +37,6 @@ endif
 Plug 'vim-scripts/TaskList.vim'
 " relativenumber option toggle
 "Plug 'jeffkreeftmeijer/vim-numbertoggle'
-"Alternate Files quickly (.c --> .h etc)
-Plug 'vim-scripts/a.vim'
 
 "Visually select increasingly larger regions of text using the same key combination
 Plug 'terryma/vim-expand-region'
