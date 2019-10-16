@@ -39,6 +39,13 @@ Plug 'vim-scripts/TaskList.vim'
 " relativenumber option toggle
 "Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
+" easy motion
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'  "Integration between haya14busa/incsearch.vim and easymotion/vim-easymotion
+Plug 'unblevable/quick-scope'  "always-on highlight for a unique character in every word on a line to help you use f, F inline motion
+"Plug 'justinmk/vim-sneak' "Jump to any location specified by two characters
+
+
 "Visually select increasingly larger regions of text using the same key combination
 Plug 'terryma/vim-expand-region'
 "Plug 'YankRing.vim'

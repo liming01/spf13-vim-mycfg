@@ -33,12 +33,7 @@ colorscheme molokai
 " overwrite default key map for using map
 " TaskList.vim {
 	if isdirectory(expand("~/.vim/bundle/TaskList.vim/"))
-		nnoremap <leader>td <Plug>TaskList
-	endif
-" }
-" vim-easymotion {
-	if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
-		nnoremap <Leader><Leader> <Plug>(easymotion-prefix)
+		map <leader>td <Plug>TaskList
 	endif
 " }
 
@@ -395,6 +390,18 @@ colorscheme molokai
 
 	endif
 "}
+" vim-easymotion {
+	if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
+		map <Leader><Leader> <Plug>(easymotion-prefix)
+	endif
+" }
+" incsearch-easymotion.vim {
+	if isdirectory(expand("~/.vim/bundle/incsearch-easymotion.vim/"))
+		map z/ <Plug>(incsearch-easymotion-/)
+		map z? <Plug>(incsearch-easymotion-?)
+		map zg/ <Plug>(incsearch-easymotion-stay)
+	endif
+" }
 "==========================================
 " quickfix-search
 "==========================================

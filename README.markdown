@@ -46,7 +46,8 @@ nerdcommenter               : <leader>c<space>, <leader>cc, <leader>cu
 multiple-cursor             : <C-N>, <C-P>, <C-X>
 nerdtree                    : <C-e>, <leader>e
 tagbar                      : <leader>tt
-vim-easymotion              : <leader><leader>w, <leader><leader>fe
+vim-easymotion              : <leader><leader>w, <leader><leader>f, <leader><leader>e
+incsearch-easymotion.vim    : z/, z?, zg/
 tabular                     : <leader>a=
 vim-expand-region           : +, -
 vim-mark                    : <Leader>m,<Leader>n, <Leader>r, <Leader>*, <Leader># , <Leader>/, <Leader>?
