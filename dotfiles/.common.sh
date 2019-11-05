@@ -74,6 +74,7 @@ gpdb_env(){
 
 	[ -f ${GPDIR}/greenplum_path.sh ] && source ${GPDIR}/greenplum_path.sh
 	pg_env
+	export PGPORT=7000
 }
 
 gpdb4_env(){
@@ -138,11 +139,11 @@ go_env(){
 }
 _main(){
 	#alicloud_env
-	#go_env
+	go_env
+	pg_env
+	#postgres_env
 	gpdb_env
 	#gpdb4_env
-	#postgres_env
-	pg_env
 
 	# Reset it to skip error message 'no config file'
 	export OPENSSL_CONF=/usr/local/etc/openssl/openssl.cnf
