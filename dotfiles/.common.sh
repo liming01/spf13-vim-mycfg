@@ -41,7 +41,7 @@ alias vi="vim -u ~/.vimrc.simple"
 alias lvim="vim -u ~/.vimrc.complex"
 alias lnvim="nvim -u ~/.vimrc.complex"
 alias lmvim="mvim -u ~/.vimrc.complex"
-which ccat > /dev/null && alias cat="ccat"
+(which ccat > /dev/null 2>&1) && alias cat="ccat"
 
 hawq_env(){
 	[ -f ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh ] && source ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh
@@ -139,7 +139,7 @@ go_env(){
 }
 _main(){
 	#alicloud_env
-	go_env
+	#go_env
 	pg_env
 	#postgres_env
 	gpdb_env
