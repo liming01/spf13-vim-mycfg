@@ -96,10 +96,10 @@ pg_env(){
 	export PGHOST=localhost
 
 	alias pp="ps -ef | grep postgres | grep -v grep"  # ps for postgres
-	alias pq="ps -ef | grep 'postgres:.*[con|cmd]\d.*' | grep -v grep" # ps for postgres query
+	alias pq="ps -ef | grep 'postgres:.*con[[:digit:]]\{1,\}' | grep -v grep" # ps for postgres query
 	alias pj="ps -ef | grep java | grep -v grep"
 	alias pk="ps -ef | grep postgres | grep -v grep| awk '{print \$2}'| xargs kill -9; rm -rf /tmp/.s.PGSQL.*;" # ps and kill the postgres
-	alias pqk="ps -ef | grep 'postgres:.*[con|cmd]\d.*' | grep -v grep| awk '{print \$2}'| xargs kill -9" # ps and kill the postgres query related processes
+	alias pqk="ps -ef | grep 'postgres:.*con[[:digit:]]\{1,\}' | grep -v grep| awk '{print \$2}'| xargs kill -9" # ps and kill the postgres query related processes
 }
 gen_cmakefile(){
 	if [ ! -f ./CMakeLists.txt ]; then
