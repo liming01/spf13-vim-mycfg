@@ -116,7 +116,7 @@ Plug 'sgur/vim-textobj-parameter'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'brooth/far.vim' " 批量修改
-Plug 'lfv89/vim-interestingwords' " 高亮感兴趣的当前单词
+Plug 'lfv89/vim-interestingwords' " 高亮感兴趣的当前单词, <Leader>k (set interestingword),  <Leader>K (clear all),  n, N (search next/previous keymap)
 
 Plug 'jiangmiao/auto-pairs'
 

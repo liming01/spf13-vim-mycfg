@@ -51,6 +51,7 @@ incsearch-easymotion.vim    : z/, z?, zg/
 tabular                     : <leader>a=
 vim-expand-region           : +, -
 vim-mark                    : <Leader>m,<Leader>n, <Leader>r, <Leader>*, <Leader># , <Leader>/, <Leader>?
+vim-interestingwords        : <Leader>k (set interestingword),  <Leader>K (clear all),  n, N (search next/previous keymap)
 mark                        : m<Space>  del all marks
 TaskList.vim                : <leader>td
 sessionman                  : <leader>sl, <leader>ss, <leader>sc
