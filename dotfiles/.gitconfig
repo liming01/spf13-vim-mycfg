@@ -2,6 +2,7 @@
 	excludesfile = /Users/gpadmin/.gitignore_global
 	hooksPath = ${HOME}/workspace/git-hooks-core
 	editor = vim
+	pager = less -r
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
 	path = -ro
@@ -12,7 +13,6 @@
 	name = Ming LI
 	email = mli@apache.org
 [commit]
-	template = ~/.stCommitMsg
 [icdiff]
 	options = --highlight --line-numbers
 [diff]

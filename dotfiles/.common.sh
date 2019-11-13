@@ -139,7 +139,7 @@ go_env(){
 }
 _main(){
 	#alicloud_env
-	#go_env
+	go_env
 	pg_env
 	#postgres_env
 	gpdb_env
