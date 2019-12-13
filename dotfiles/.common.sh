@@ -135,7 +135,7 @@ alicloud_env(){
 	[ -f /usr/local/bin/aliyun_zsh_complete.sh ] && source /usr/local/bin/aliyun_zsh_complete.sh
 }
 go_env(){
-	export GOPATH=/Users/gpadmin/go
+	export GOPATH=${HOME}/go
 	export PATH=$PATH:$(go env GOPATH)/bin
 }
 _main(){
