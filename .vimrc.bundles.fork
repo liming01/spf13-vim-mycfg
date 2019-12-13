@@ -105,7 +105,7 @@ Plug 'junegunn/fzf.vim'
 
 "golang
 if executable('go')
-    Plug 'fatih/vim-go'
+	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 endif
 
 " TextObject: 参数”,”, 缩进”I”, 函数”f”,  支持i和a等操作
