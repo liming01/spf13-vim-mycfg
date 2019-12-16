@@ -69,6 +69,14 @@ endif
 " good keymap
 Plug 'tpope/vim-unimpaired'
 
+" Tig
+if executable('tig')
+	Plug 'iberianpig/tig-explorer.vim'
+	if has('nvim')
+		Plug 'rbgrouleff/bclose.vim'  "dependent plugin
+	endif
+endif
+
 " gitk
 Plug 'gregsexton/gitv'
 
