@@ -198,6 +198,8 @@ set tw=500
 " 设置最大列数的颜色提示
 let &colorcolumn="80,".join(range(120,999),",")
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+"highlight Visual  guifg=White guibg=LightBlue gui=none
+highlight Visual term=reverse cterm=reverse guibg=Grey
 
 " movement
 set scrolloff=7                 " keep 3 lines when scrolling
