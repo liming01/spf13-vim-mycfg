@@ -20,8 +20,10 @@ ulimit -c unlimited
 
 if [ "`uname -s`" = "Darwin" ]; then
 	#echo "On Darwin"
+	export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk/Contents/Home
+	export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
 	#export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
-	export PATH=.:${HOME}/bin:/usr/local/sbin:$PATH
+	export PATH=.:${HOME}/bin:/usr/local/sbin:${JAVA_HOME}/bin:$PATH
 	#alias python="/usr/local/bin/python"
 
 	#ulimit -n 65535
