@@ -137,7 +137,8 @@ alicloud_env(){
 	[ -f /usr/local/bin/aliyun_zsh_complete.sh ] && source /usr/local/bin/aliyun_zsh_complete.sh
 }
 go_env(){
-	export GOPATH=${HOME}/go
+	export GOROOT=/usr/local/go
+	export GOPATH=${HOME}/go:$HOME/workspace/repo4hashdata/hdw-agent
 	export PATH=$PATH:$(go env GOPATH)/bin
 }
 _main(){
@@ -150,6 +151,8 @@ _main(){
 
 	# Reset it to skip error message 'no config file'
 	export OPENSSL_CONF=/usr/local/etc/openssl/openssl.cnf
+	# set brew repo to alicloud for better speed
+	export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 }
 
 function _opengit_open()
@@ -237,6 +240,5 @@ vim-default-simple(){
 	ln -fs ~/.vimrc.simple ~/.vimrc
 	ln -s ~/.vimrc ~/.config/nvim/init.vim
 }
-
 
 _main "$@"

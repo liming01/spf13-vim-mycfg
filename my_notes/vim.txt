@@ -17,6 +17,17 @@ osascript <<END
 
 END
 ----------------------------------------------------------------------
+# YouCompleteMe插件安装
+运行git submodule update --init --recursive时报错repo无法访问
+https://zhuanlan.zhihu.com/p/73429590
+```
+cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/go/src/golang.org/x && mv tools tools.old
+git clone https://github.com/golang/tools.git
+或者
+git clone https://gitee.com/ragus/golang_tools.git tools
+如果以前下载成功过，只要修改git remote即可
+```
+----------------------------------------------------------------------
 https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
 
 - ag                  : 比grep、ack更快的递归搜索文件内容。  --> rg
