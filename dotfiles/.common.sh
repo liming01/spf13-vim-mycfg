@@ -1,4 +1,4 @@
-# postgres!/bin/sh
+# !/bin/sh
 
 if [ ! -n "${ZSH_NAME}" ]; then
 	#echo "Not In Zsh"
@@ -25,6 +25,7 @@ if [ "`uname -s`" = "Darwin" ]; then
 	#export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
 	export PATH=.:${HOME}/bin:/usr/local/sbin:${JAVA_HOME}/bin:$PATH
 	#alias python="/usr/local/bin/python"
+	alias typora="open -a typora"
 
 	#ulimit -n 65535
 	#ulimit -n 7500
@@ -97,11 +98,13 @@ pg_env(){
 	export PGPORT=15432
 	export PGHOST=localhost
 
-	alias pp="ps -ef | grep postgres | grep -v grep"  # ps for postgres
-	alias pq="ps -ef | grep 'postgres:.*con[[:digit:]]\{1,\}' | grep -v grep" # ps for postgres query
-	alias pj="ps -ef | grep java | grep -v grep"
-	alias pk="ps -ef | grep postgres | grep -v grep| awk '{print \$2}'| xargs kill -9; rm -rf /tmp/.s.PGSQL.*;" # ps and kill the postgres
-	alias pqk="ps -ef | grep 'postgres:.*con[[:digit:]]\{1,\}' | grep -v grep| awk '{print \$2}'| xargs kill -9" # ps and kill the postgres query related processes
+	alias pp="ps -ef | grep -v grep | grep postgres "  # ps for postgres
+	alias pc="ps -ef | grep -v grep | grep catalog "  # ps for catalog
+	alias pq="ps -ef | grep -v grep | grep 'postgres:.*con[[:digit:]]\{1,\}' " # ps for postgres query
+	alias pj="ps -ef | grep -v grep | grep java "
+	alias pk="ps -ef | grep -v grep | grep postgres | awk '{print \$2}'| xargs kill -s SIGKILL; rm -rf /tmp/.s.PGSQL.*;" # ps and kill the postgres
+	alias pck="ps -ef | grep -v grep | grep catalog | awk '{print \$2}'| xargs kill -s SIGKILL; rm -rf /tmp/.s.PGSQL.*;" # ps and kill the catalog
+	alias pqk="ps -ef | grep -v grep | grep 'postgres:.*con[[:digit:]]\{1,\}' | awk '{print \$2}'| xargs kill -s SIGKILL" # ps and kill the postgres query related processes
 }
 gen_cmakefile(){
 	if [ ! -f ./CMakeLists.txt ]; then
@@ -127,10 +130,13 @@ fi
 
 }
 postgres_env(){
-	export PATH=$HOME/workspace/postgresql/install/postgres/bin:$PATH
-	export MANPATH=$HOME/workspace/postgresql/install/postgres/share/man:$MANPATH
-	export LD_LIBRARY_PATH=$HOME/workspace/postgresql/install/postgres/lib:$LD_LIBRARY_PATH
-	export PGDATA=$HOME/workspace/postgresql/install/pgdata/postgres
+	export PGROOT=/usr/local/Cellar/postgresql/12.2
+	export PATH=${PGROOT}/bin:$PATH
+	export MANPATH=${PGROOT}/share/man:$MANPATH
+	export LD_LIBRARY_PATH=${PGROOT}/lib:$LD_LIBRARY_PATH
+	export PGDATA=$HOME/workspace/install/postgresql/pgdata/postgres
+	alias pgstart="pg_ctl -l ~/gpAdminLogs/postgresql.log start"
+	alias pgstop="pg_ctl -l ~/gpAdminLogs/postgresql.log stop"
 }
 
 alicloud_env(){
@@ -139,14 +145,14 @@ alicloud_env(){
 go_env(){
 	export GOROOT=/usr/local/go
 	export GOPATH=${HOME}/go:$HOME/workspace/repo4hashdata/hdw-agent
-	export PATH=$PATH:$(go env GOPATH)/bin
+	export PATH=$PATH:${HOME}/go/bin
 }
 _main(){
 	#alicloud_env
 	go_env
 	pg_env
-	#postgres_env
-	gpdb_env
+	postgres_env
+	#gpdb_env
 	#gpdb4_env
 
 	# Reset it to skip error message 'no config file'
