@@ -45,6 +45,7 @@ YankRing                    : <leader>yr
 nerdcommenter               : <leader>c<space>, <leader>cc, <leader>cu
 multiple-cursor             : <C-N>, <C-P>, <C-X>
 nerdtree                    : <C-e>, <leader>e
+defx                        : <leader>e, <leader>ef, <leader>eg
 tagbar                      : <leader>tt
 vim-easymotion              : <leader><leader>w, <leader><leader>f, <leader><leader>e
 incsearch-easymotion.vim    : z/, z?, zg/

@@ -46,15 +46,22 @@ ln -sf $SCRIPT_PATH/.ycm_extra_conf.py ~/
 
 # change default vimrc to .vimrc.simple
 ln -sf $SCRIPT_PATH/.vimrc.simple ~/.vimrc
+# install spf13-vim
+#git clone git@github.com:liming01/spf13-vim.git ../
+#ln -fs ${CURRENT_DIR}/../spf13-vim/ ~/.spf13-vim-3
+
 ln -sf ~/.spf13-vim-3/.vimrc ~/.vimrc.complex
 
 # install vim-plug for vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # install vim-plug for neovim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+#    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir -p ~/.local/share/nvim/site/autoload/
+cp ~/.vim/autoload/plug.vim ~/.local/share/nvim/site/autoload/
 
-vim -u ~/.vimrc.complex +BundleInstall! +BundleClean +q
+#vim -u ~/.vimrc.complex +BundleInstall! +BundleClean +q
+echo "Please Run: vim -u ~/.vimrc.complex +PlugInstall! +PlugClean +q"
 ################
 cd $CURRENT_DIR

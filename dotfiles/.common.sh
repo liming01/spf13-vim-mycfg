@@ -147,6 +147,12 @@ go_env(){
 	export GOPATH=${HOME}/go:$HOME/workspace/repo4hashdata/hdw-agent
 	export PATH=$PATH:${HOME}/go/bin
 }
+virtualbox_evn(){
+	#export PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS/
+
+	alias wds="cd ~/workspace/repo4hashdata/hashdata/vagrant/hdw-centos" # work dir for start vm
+	alias wdg="cd ~/workspace/repo4hashdata/hdw-agent" # work dir for golang code
+}
 _main(){
 	#alicloud_env
 	go_env
@@ -154,11 +160,13 @@ _main(){
 	postgres_env
 	#gpdb_env
 	#gpdb4_env
+	virtualbox_evn
 
 	# Reset it to skip error message 'no config file'
 	export OPENSSL_CONF=/usr/local/etc/openssl/openssl.cnf
 	# set brew repo to alicloud for better speed
-	export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+	#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+	export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 }
 
 function _opengit_open()
