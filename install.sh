@@ -60,6 +60,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 #    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p ~/.local/share/nvim/site/autoload/
 cp ~/.vim/autoload/plug.vim ~/.local/share/nvim/site/autoload/
+mkdir -p ~/.config/nvim/
+ln -fs ~/.vimrc ~/.config/nvim/init.vim
 
 #vim -u ~/.vimrc.complex +BundleInstall! +BundleClean +q
 echo "Please Run: vim -u ~/.vimrc.complex +PlugInstall! +PlugClean +q"

@@ -38,15 +38,26 @@ git clone https://gitee.com/mirrors/oh-my-zsh.git ~/.oh-my-zsh
 sh ~/.oh-my-zsh/tools/install.sh  #remove some check code
 
 ## install dependent commands
-brew install cloc ccat tig the_silver_searcher tree glances vim nvim
+brew install cloc ccat tig the_silver_searcher tree glances
 
 brew install fzf
 /usr/local/opt/fzf/install
+
+brew install vim nvim
+## if it failed, may need to chown ~/Library/Python/3.x/lib
+pip3 install --user --upgrade pynvim \
+	--index-url=http://mirrors.aliyun.com/pypi/simple \
+	--trusted-host=mirrors.aliyun.com
 
 ## install vim dependent commands
 #brew intall exuberant-ctags
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install cscope
+
+## install openjdk
+brew install openjdk
+sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+sudo ln -sfn /Library/Java/JavaVirtualMachines/openjdk.jdk /Library/Java/JavaVirtualMachines/jdk
 
 ## install some dev env
 brew cask install vagrant

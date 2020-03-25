@@ -138,6 +138,7 @@ UnPlug 'jistr/vim-nerdtree-tabs'
 if (has("python3"))
 	if has('nvim')
 		Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+		Plug 'kristijanhusak/defx-git'
 	else
 		Plug 'Shougo/defx.nvim'
 		Plug 'roxma/nvim-yarp'
@@ -147,8 +148,8 @@ if (has("python3"))
 	" Requires nerd-font, install at https://github.com/ryanoasis/nerd-fonts or
 	" brew cask install font-hack-nerd-font
 	" Then set non-ascii font to Driod sans mono for powerline in iTerm2
-	Plug 'kristijanhusak/defx-icons'
-	Plug 'kristijanhusak/defx-git'
+	" And call Defx with: -columns=icons:indent:filename:type
+	"Plug 'kristijanhusak/defx-icons'
 endif
 
 Plug 'editorconfig/editorconfig-vim' " auto set config according to .editorconfig

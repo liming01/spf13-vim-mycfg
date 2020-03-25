@@ -194,7 +194,6 @@ colorscheme molokai
 	if isdirectory(expand("~/.vim/bundle/defx.nvim"))
 		nnoremap <leader>e  :Defx -split=vertical -winwidth=50 -direction=topleft <CR>
 		nnoremap <leader>ef :Defx `expand('%:p:h')` -search=`expand('%:p')` <CR>
-		nnoremap <leader>eg :Defx -columns=git:mark:filename:type <CR>
 
 		autocmd FileType defx call s:defx_my_settings()
 		function! s:defx_my_settings() abort
@@ -264,6 +263,7 @@ colorscheme molokai
 
 " Defx git
 		if isdirectory(expand("~/.vim/bundle/defx-git"))
+			nnoremap <leader>eg :Defx -columns=git:mark:filename:type <CR>
 			hi Defx_git_Untracked guifg=#FF0000
 		endif
 	
