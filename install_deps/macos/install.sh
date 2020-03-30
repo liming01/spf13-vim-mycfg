@@ -38,7 +38,7 @@ git clone https://gitee.com/mirrors/oh-my-zsh.git ~/.oh-my-zsh
 sh ~/.oh-my-zsh/tools/install.sh  #remove some check code
 
 ## install dependent commands
-brew install cloc ccat tig the_silver_searcher tree glances
+brew install cloc ccat tig the_silver_searcher tree tldr glances
 
 brew install fzf
 /usr/local/opt/fzf/install
@@ -53,6 +53,7 @@ pip3 install --user --upgrade pynvim \
 #brew intall exuberant-ctags
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install cscope
+brew install global
 
 ## install openjdk
 brew install openjdk
@@ -69,12 +70,23 @@ go env -w GOPROXY=https://goproxy.cn,https://mirrors.aliyun.com/goproxy/,direct
 # ln some application to command
 ln -fs /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code /usr/local/bin/code
 ln -fs /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+ln -fs /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge /usr/local/bin/smerge
 ln -fs /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/local/bin/bcomp
 ln -fs /Applications/DiffMerge.app/Contents/Resources/diffmerge.sh /usr/local/bin/diffmerge
+ln -fs /Applications/TextMate.app/Contents/Resources/mate /usr/local/bin/mate
+ln -fs /Applications/CotEditor.app/Contents/SharedSupport/bin/cot /usr/local/bin/cot
 
+# skip sourcetree register
+defaults write com.torusknot.SourceTreeNotMAS completedWelcomeWizardVersion 3
+
+# disable Gatekeeper (i.e., set the option “All apps downloaded from:” to “Anywhere”)
+#sudo spctl --master-disable
 
 # set computer name and hostname
 sudo scutil --set ComputerName mrmbp
 sudo scutil --set HostName mingli-host
 
+# sudo no need password
 echo "Run \`sudo visudo\` and append \"%gpadmin ALL=(ALL) NOPASSWD: ALL\""
+# disable apps startup certification checking which make apps startup very slow in some network
+echo "Run \`sudo vi /etc/hosts\` and append \"0.0.0.0 ocsp.apple.com\""

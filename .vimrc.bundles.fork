@@ -149,7 +149,7 @@ if (has("python3"))
 	" brew cask install font-hack-nerd-font
 	" Then set non-ascii font to Driod sans mono for powerline in iTerm2
 	" And call Defx with: -columns=icons:indent:filename:type
-	"Plug 'kristijanhusak/defx-icons'
+	Plug 'kristijanhusak/defx-icons'
 endif
 
 Plug 'editorconfig/editorconfig-vim' " auto set config according to .editorconfig
