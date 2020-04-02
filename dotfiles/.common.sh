@@ -152,6 +152,7 @@ virtualbox_evn(){
 
 	alias wds="cd ~/workspace/repo4hashdata/hashdata/vagrant/hdw-centos" # work dir for start vm
 	alias wdg="cd ~/workspace/repo4hashdata/hdw-agent" # work dir for golang code
+	alias sshv="ssh gpadmin@192.168.10.200" # ssh vagrant vm
 }
 _main(){
 	#alicloud_env

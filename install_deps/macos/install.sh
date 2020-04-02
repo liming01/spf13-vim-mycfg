@@ -81,12 +81,23 @@ defaults write com.torusknot.SourceTreeNotMAS completedWelcomeWizardVersion 3
 
 # disable Gatekeeper (i.e., set the option “All apps downloaded from:” to “Anywhere”)
 #sudo spctl --master-disable
+# disable hibernation mode to write memory context to disk
+sudo pmset -a hibernatemode 0
 
 # set computer name and hostname
 sudo scutil --set ComputerName mrmbp
 sudo scutil --set HostName mingli-host
 
+# change hosts setting
+print "
+# for crack some software
+#0.0.0.0         account.jetbrains.com
+127.0.0.1       helios.scitools.com
+127.0.0.1       windows10.microdone.cn
+
+# disable apps startup certification checking which make apps startup very slow in some network
+0.0.0.0         ocsp.apple.com
+" | sudo tee -a /etc/hosts
+
 # sudo no need password
 echo "Run \`sudo visudo\` and append \"%gpadmin ALL=(ALL) NOPASSWD: ALL\""
-# disable apps startup certification checking which make apps startup very slow in some network
-echo "Run \`sudo vi /etc/hosts\` and append \"0.0.0.0 ocsp.apple.com\""
