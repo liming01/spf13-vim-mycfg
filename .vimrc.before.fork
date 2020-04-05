@@ -16,8 +16,8 @@ let g:airline_theme = 'molokai'
 let g:spf13_keep_trailing_whitespace = 1
 
 " Chose which group of plugin need to be actived.
-let g:spf13_bundle_groups=['general', 'writing', 'programming', 'misc', 'python', 'javascript', 'html']
-"comment out languages:  'php', 'scala', 'haskell', 'ruby', 'puppet', 'go', 'elixir'
+let g:spf13_bundle_groups=['general', 'writing', 'programming', 'misc', 'python', 'javascript', 'html', 'go']
+"comment out languages:  'php', 'scala', 'haskell', 'ruby', 'puppet', 'elixir'
 " Just choose one of these Snippets & AutoComplete tools:  'snipmate', 'youcompleteme', 'neocomplcache', 'neocomplete'
 if v:version > 703 || (v:version == 703 && has('patch584'))
 	let g:spf13_bundle_groups += ['youcompleteme']

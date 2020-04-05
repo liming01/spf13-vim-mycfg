@@ -73,6 +73,7 @@ ln -fs /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/loca
 ln -fs /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge /usr/local/bin/smerge
 ln -fs /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/local/bin/bcomp
 ln -fs /Applications/DiffMerge.app/Contents/Resources/diffmerge.sh /usr/local/bin/diffmerge
+ln -fs /Applications/GitUp.app/Contents/SharedSupport/gitup /usr/local/bin/gitup
 ln -fs /Applications/TextMate.app/Contents/Resources/mate /usr/local/bin/mate
 ln -fs /Applications/CotEditor.app/Contents/SharedSupport/bin/cot /usr/local/bin/cot
 
