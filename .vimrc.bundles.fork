@@ -100,7 +100,9 @@ Plug 'kshenoy/vim-signature'
 "[count]<Leader>/ 	[count]<Leader>? 	 Any mark navigtaion
 "<k1> .. <k9>  		<C-k1> .. <C-k9>  	 highlight group 1..9 navigation
 ":Mark				list all marks
-Plug 'dimasg/vim-mark'
+" Replaced by vim-interestingwords for simple usage
+" Plug 'dimasg/vim-mark'
+Plug 'lfv89/vim-interestingwords' " 高亮感兴趣的当前单词, <Leader>k (set interestingword),  <Leader>K (clear all),  n, N (search next/previous keymap)
 
 "Add support for tmux key conflict with vim
 Plug 'christoomey/vim-tmux-navigator'
@@ -126,7 +128,6 @@ Plug 'sgur/vim-textobj-parameter'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'brooth/far.vim' " 批量修改
-Plug 'lfv89/vim-interestingwords' " 高亮感兴趣的当前单词, <Leader>k (set interestingword),  <Leader>K (clear all),  n, N (search next/previous keymap)
 
 Plug 'jiangmiao/auto-pairs'
 
