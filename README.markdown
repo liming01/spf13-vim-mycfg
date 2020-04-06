@@ -41,7 +41,8 @@ g], <C-]>, <C-w>], <C-w>}, <leader>w], <leader>t]
 ```
 CtrlP                       : <leader>2f, <leader>bl, <D-r>, <leader>fu, <leader>fU
 FZF							: <leader>2f, <leader>bf, <leader>hf, <leader>tf, <leader>mf,  <leader>ag,     # <object_type>f or F for <cword>
-YankRing                    : <leader>yr
+YankRing                    : <leader>p, <M_P>, <M_N>
+vim-yankstack               : <leader>y, <leader>p, <leader>b
 nerdcommenter               : <leader>c<space>, <leader>cc, <leader>cu
 multiple-cursor             : <C-N>, <C-P>, <C-X>
 nerdtree                    : <C-e>, <leader>e

@@ -48,7 +48,9 @@ Plug 'unblevable/quick-scope'  "always-on highlight for a unique character in ev
 
 "Visually select increasingly larger regions of text using the same key combination
 Plug 'terryma/vim-expand-region'
-Plug 'vim-scripts/YankRing.vim'
+" replace it because it change a lot keymap
+"Plug 'vim-scripts/YankRing.vim'
+Plug 'maxbrunsfeld/vim-yankstack'  "a simpler alternative to the yankring
 "Perl/Ruby style regexp
 "Plug 'othree/eregex.vim'
 "debug manager

@@ -319,11 +319,23 @@ colorscheme molokai
 " YankRing{
     if isdirectory(expand("~/.vim/bundle/YankRing.vim"))
         let yankring_min_element_length=4
+        let g:yankring_history_dir = $HOME.'/.vim/'
         let g:yankring_history_file = '.yankring-history'
-        nnoremap <leader>yr :YRShow<CR>
+        "nnoremap <leader>yr :YRShow<CR>
+        nnoremap <leader>p :YRShow<CR>
+		" disable <C-N> and <C-P> in normal mode
+		let g:yankring_replace_n_pkey = '<m-p>'
+		let g:yankring_replace_n_nkey = '<m-n>'
     endif
 " }
 
+" vim-yankstack{
+    if isdirectory(expand("~/.vim/bundle/vim-yankstack"))
+        nnoremap <leader>y :Yanks<CR>
+		nmap <leader>p <Plug>yankstack_substitute_older_paste
+		nmap <leader>b <Plug>yankstack_substitute_newer_paste
+    endif
+" }
 " fzf{
     if isdirectory(expand("~/.vim/bundle/fzf.vim"))
         nnoremap <leader>2f :Files   <CR>
