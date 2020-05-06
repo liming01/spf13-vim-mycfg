@@ -69,13 +69,13 @@ go env -w GOPROXY=https://goproxy.cn,https://mirrors.aliyun.com/goproxy/,direct
 
 # ln some application to command
 ln -fs /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code /usr/local/bin/code
+ln -fs /Applications/TextMate.app/Contents/Resources/mate /usr/local/bin/mate
+ln -fs /Applications/CotEditor.app/Contents/SharedSupport/bin/cot /usr/local/bin/cot
 ln -fs /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 ln -fs /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge /usr/local/bin/smerge
 ln -fs /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/local/bin/bcomp
 ln -fs /Applications/DiffMerge.app/Contents/Resources/diffmerge.sh /usr/local/bin/diffmerge
 ln -fs /Applications/GitUp.app/Contents/SharedSupport/gitup /usr/local/bin/gitup
-ln -fs /Applications/TextMate.app/Contents/Resources/mate /usr/local/bin/mate
-ln -fs /Applications/CotEditor.app/Contents/SharedSupport/bin/cot /usr/local/bin/cot
 
 # skip sourcetree register
 defaults write com.torusknot.SourceTreeNotMAS completedWelcomeWizardVersion 3
