@@ -111,3 +111,5 @@ bind status <F4> !sh -c "git difftool -y \"$(git rev-parse --show-toplevel)/%(fi
 # Compare selected commit in log view (main view) with its parent
 bind main <F4> !git difftool -d %(commit)^!
 
+# set format for some views
+set main-view-author = abbreviated
