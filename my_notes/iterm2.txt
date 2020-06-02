@@ -1,0 +1,3 @@
+
+- How to terminate consoles sometimes hang forever when SSH connection breaks?
+Sometimes ~ + . doesn't work so doing [Enter] + ~ + . solves it: serverfault.com/a/283130/395276
