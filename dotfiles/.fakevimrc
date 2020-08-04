@@ -21,7 +21,7 @@ set clipboard=unnamed
 set tildeop
 
 " mappings
-nnoremap ; :
+"nnoremap ; :
 inoremap jj <Esc>
 
 " clear highlighted search term on space

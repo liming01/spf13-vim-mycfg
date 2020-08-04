@@ -78,7 +78,7 @@ bind generic <C-w><C-w> view-next
 # --- some keymap not in help
 # (1) In blame view:
 # - Step backwards to the parent commit of a given line: (, key)
-# - Step forwards to the child commit of a given line: (<  key, shift + ,)
+# - Step forwards to the child commit of a given line: (<  key, i.e. Shift + ,)
 
 # -------------------------------------- My config -------------------------------------------
 bind generic <F1> view-help

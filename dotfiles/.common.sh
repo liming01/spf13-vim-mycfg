@@ -154,6 +154,7 @@ virtualbox_evn(){
 	# which make the Clion report error when scaning these source files.
 	sudo ln -fs /Users/mingli/workspace/repo4hashdata/hashdata /gpdb
 
+	alias wd="cd ~/workspace/repo4hashdata/hashdata/" # working dir
 	alias wds="cd ~/workspace/repo4hashdata/hashdata/vagrant/hdw-centos" # work dir for start vm
 	alias wdg="cd ~/workspace/repo4hashdata/hdw-agent" # work dir for golang code
 	alias sshv="ssh gpadmin@192.168.10.200" # ssh vagrant vm
