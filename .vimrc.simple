@@ -69,3 +69,10 @@ set tags=tags;/  "search tag file in ancestor dirs.
        source ~/.vim/bundle/vim-tmux-navigator/plugin/tmux_navigator.vim
     endif
 " }
+"
+" Add add vim-interestingwords plugin manually for simple vimrc{
+    if filereadable(expand("~/.vim/bundle/vim-interestingwords/plugin/interestingwords.vim"))
+       source ~/.vim/bundle/vim-interestingwords/plugin/interestingwords.vim
+    endif
+" }
+"

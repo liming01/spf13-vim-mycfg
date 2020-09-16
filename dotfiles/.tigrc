@@ -93,7 +93,8 @@ bind status H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
 bind generic T !git notes edit %(commit)
 # Open the commit on Github
 #bind generic <F2> @sh -c "xdg-open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
-bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
+#bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
+bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo '(github.com|bitbucket.org|code.hashdata.xyz)[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
 
 # Interactive rebase
 bind main B !git rebase -i %(commit)

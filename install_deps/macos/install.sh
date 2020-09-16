@@ -68,6 +68,7 @@ go env -w GO111MODULE=auto
 go env -w GOPROXY=https://goproxy.cn,https://mirrors.aliyun.com/goproxy/,direct
 
 # ln some application to command
+ln -fs /Applications/MacVim.app/Contents/bin/mvim /usr/local/bin/mvim
 ln -fs /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code /usr/local/bin/code
 ln -fs /Applications/TextMate.app/Contents/Resources/mate /usr/local/bin/mate
 ln -fs /Applications/CotEditor.app/Contents/SharedSupport/bin/cot /usr/local/bin/cot

@@ -143,21 +143,27 @@ alicloud_env(){
 	[ -f /usr/local/bin/aliyun_zsh_complete.sh ] && source /usr/local/bin/aliyun_zsh_complete.sh
 }
 go_env(){
-	export GOROOT=/usr/local/go
+	#export GOROOT=/usr/local/go
+	export GOROOT=/usr/local/opt/go/libexec
 	export GOPATH=${HOME}/go:$HOME/workspace/repo4hashdata/hdw-agent
-	export PATH=$PATH:${HOME}/go/bin
+	export PATH=$PATH:${HOME}/go/bin:${GOROOT}/bin
 }
-virtualbox_evn(){
+virtualbox_env(){
 	#export PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS/
 
 	# build it in /gpdb on VM, which make some generated source files link to the that directory,
 	# which make the Clion report error when scaning these source files.
-	sudo ln -fs /Users/mingli/workspace/repo4hashdata/hashdata /gpdb
+	#sudo ln -fs /Users/mingli/workspace/repo4hashdata/hashdata /gpdb
 
 	alias wd="cd ~/workspace/repo4hashdata/hashdata/" # working dir
 	alias wds="cd ~/workspace/repo4hashdata/hashdata/vagrant/hdw-centos" # work dir for start vm
 	alias wdg="cd ~/workspace/repo4hashdata/hdw-agent" # work dir for golang code
 	alias sshv="ssh gpadmin@192.168.10.200" # ssh vagrant vm
+}
+vim_env(){
+	# kill processes forked by vim plugin YouCompleteMe
+	alias pvk="ps -ef | grep -v grep | grep ycmd  | awk '{print \$2}'| xargs kill -s SIGKILL; \
+		       ps -ef | grep -v grep | grep gopls | awk '{print \$2}'| xargs kill -s SIGKILL; "
 }
 _main(){
 	#alicloud_env
@@ -166,7 +172,8 @@ _main(){
 	postgres_env
 	#gpdb_env
 	#gpdb4_env
-	virtualbox_evn
+	virtualbox_env
+	vim_env
 
 	# Reset it to skip error message 'no config file'
 	export OPENSSL_CONF=/usr/local/etc/openssl/openssl.cnf
@@ -194,7 +201,7 @@ function opengit() {
   git remote >/dev/null 2>&1
 
   if [ $? = 0 ]; then
-	echo "Usage: opengit [repo] [remote_branch]"
+	echo "Usage: opengit [repo] [remote_branch| commit_id] [bool: type is_commit_id?]"
 
     if [ -z "$(git remote -v)" ]; then
       echo "Hum....there are no remotes here"
@@ -216,10 +223,19 @@ function opengit() {
 	where="https://bitbucket.org/"
 	fi
 
+	if [ -z "$remotes" ]; then
+	remotes=$(git remote -v | grep "$repoName" | awk -F'git@code.hashdata.xyz:' '{print $2}' | cut -d" " -f1| uniq)
+	where="https://code.hashdata.xyz/"
+	fi
+
 	if [ -z "$2" ];then
 	url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)"
 	else
-	url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/tree/${2}"
+		if [[ -z "$3" || "$3" != "true" ]];then
+			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/tree/${2}"
+		else
+			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/commit/${2}"
+		fi
 	fi
 	_opengit_open $url
 	echo "Opening in browser for URL: $url"
