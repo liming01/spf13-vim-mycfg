@@ -213,19 +213,21 @@ function opengit() {
     fi
 
 	where="https://github.com/" # default location to github
+	commit_part="commits"
 	remotes=$(git remote -v | grep "$repoName" | awk -F 'git@github.com:' '{print $2}' | cut -d" " -f1 | uniq)
 	if [ -z "$remotes" ]; then
-	remotes=$(git remote -v | grep "$repoName" | awk -F 'https://github.com/' '{print $2}' | cut -d" " -f1| uniq)
+		remotes=$(git remote -v | grep "$repoName" | awk -F 'https://github.com/' '{print $2}' | cut -d" " -f1| uniq)
 	fi
 
 	if [ -z "$remotes" ]; then
-	remotes=$(git remote -v | grep "$repoName" | awk -F'git@bitbucket.org/' '{print $2}' | cut -d" " -f1| uniq)
-	where="https://bitbucket.org/"
+		remotes=$(git remote -v | grep "$repoName" | awk -F'git@bitbucket.org/' '{print $2}' | cut -d" " -f1| uniq)
+		where="https://bitbucket.org/"
 	fi
 
 	if [ -z "$remotes" ]; then
-	remotes=$(git remote -v | grep "$repoName" | awk -F'git@code.hashdata.xyz:' '{print $2}' | cut -d" " -f1| uniq)
-	where="https://code.hashdata.xyz/"
+		remotes=$(git remote -v | grep "$repoName" | awk -F'git@code.hashdata.xyz:' '{print $2}' | cut -d" " -f1| uniq)
+		where="https://code.hashdata.xyz/"
+		commit_part="-/commits"
 	fi
 
 	if [ -z "$2" ];then
@@ -234,7 +236,8 @@ function opengit() {
 		if [[ -z "$3" || "$3" != "true" ]];then
 			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/tree/${2}"
 		else
-			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/commit/${2}"
+			#url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/commit/${2}"
+			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/${commit_part}/${2}"
 		fi
 	fi
 	_opengit_open $url
