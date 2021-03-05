@@ -10,7 +10,7 @@
 	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 	trustExitCode = true
 [user]
-	name = Ming LI
+	name = Ming Li
 	email = mli@apache.org
 [commit]
 [icdiff]

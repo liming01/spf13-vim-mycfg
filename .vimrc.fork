@@ -14,6 +14,21 @@ colorscheme molokai
 	endif
 " }
 
+" vim-rainbow {
+	if isdirectory(expand("~/.vim/bundle/vim-rainbow/"))
+		let g:rainbow_active = 1
+		let g:rainbow_load_separately = [
+			\ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+			\ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+			\ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+			\ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+			\ ]
+
+		let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+		let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+	endif
+" }
+
 " asyncrun.vim {
 	if isdirectory(expand("~/.vim/bundle/asyncrun.vim/"))
 		" automatically open quickfix window when AsyncRun command is executed

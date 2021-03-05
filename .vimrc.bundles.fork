@@ -130,6 +130,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'brooth/far.vim' " 批量修改
 
 Plug 'jiangmiao/auto-pairs'
+Plug 'frazrepo/vim-rainbow' " gives each pair of brackets a different shade of color
 
 Plug 'mhinz/vim-startify' " start screen
 Plug 'tracyone/neomake-multiprocess' " 异步跑命令，异步搜索等
