@@ -37,6 +37,12 @@ chsh -s /bin/zsh
 git clone https://gitee.com/mirrors/oh-my-zsh.git ~/.oh-my-zsh
 sh ~/.oh-my-zsh/tools/install.sh  #remove some check code
 
+## better diff format
+brew install diff-so-fancy
+### Configure git to use diff-so-fancy for all diff output
+git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+git config --global interactive.diffFilter "diff-so-fancy --patch"
+
 ## install dependent commands
 brew install cloc ccat tig the_silver_searcher tree tldr glances
 
@@ -75,11 +81,15 @@ ln -fs /Applications/CotEditor.app/Contents/SharedSupport/bin/cot /usr/local/bin
 ln -fs /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 ln -fs /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge /usr/local/bin/smerge
 ln -fs /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/local/bin/bcomp
+echo 'Need to run blow cmd for specific version of Beyond Compare: ln -fs /Applications/Beyond\ Compare4.3.6无限试用版.app /Applications/Beyond\ Compare.app'
 ln -fs /Applications/DiffMerge.app/Contents/Resources/diffmerge.sh /usr/local/bin/diffmerge
 ln -fs /Applications/GitUp.app/Contents/SharedSupport/gitup /usr/local/bin/gitup
 
 # skip sourcetree register
 defaults write com.torusknot.SourceTreeNotMAS completedWelcomeWizardVersion 3
+
+# disable the Mac startup sound
+sudo nvram StartupMute=%01
 
 # disable Gatekeeper (i.e., set the option “All apps downloaded from:” to “Anywhere”)
 #sudo spctl --master-disable

@@ -156,7 +156,8 @@ virtualbox_env(){
 	#sudo ln -fs /Users/mingli/workspace/repo4hashdata/hashdata /gpdb
 
 	alias wd="cd ~/workspace/repo4hashdata/hashdata/" # working dir
-	alias wds="cd ~/workspace/repo4hashdata/hashdata/vagrant/hdw-centos" # work dir for start vm
+	alias wds="cd ~/workspace/repo4hashdata/hashdata/vagrant/centos7" # work dir for start vm
+	alias wds1="cd ~/workspace/repo4hashdata/hashdata/vagrant/hdw-centos" # work dir for start vm (old version)
 	alias wdg="cd ~/workspace/repo4hashdata/hdw-agent" # work dir for golang code
 	alias sshv="ssh gpadmin@192.168.10.200" # ssh vagrant vm
 }
@@ -231,7 +232,9 @@ function opengit() {
 	fi
 
 	if [ -z "$2" ];then
-	url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)"
+			#TODO: local branch name maybe different from remote branch name
+			branch_name=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'`
+			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/tree/${branch_name## }"   ## Strip leading space for branch name
 	else
 		if [[ -z "$3" || "$3" != "true" ]];then
 			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/tree/${2}"
