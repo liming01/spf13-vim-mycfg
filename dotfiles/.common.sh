@@ -3,9 +3,9 @@
 if [ ! -n "${ZSH_NAME}" ]; then
 	#echo "Not In Zsh"
 	parse_git_branch() {
-		git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+		git branch --show-current
 	}
-	export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+	export PS1="\u@\h \[\033[32m\]\w\[\033[33m\](\$(parse_git_branch))\[\033[00m\] $ "
 	#export PS1='\[\033[0;36m\][\u@\h:\W]\$\[\033[0m\] '
 	export CLICOLOR=1
 	[ -f /usr/local/etc/bash_completion.d/git-completion.bash ] && source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -202,7 +202,7 @@ function opengit() {
   git remote >/dev/null 2>&1
 
   if [ $? = 0 ]; then
-	echo "Usage: opengit [repo] [remote_branch| commit_id] [bool: type is_commit_id?]"
+	echo "Usage: opengit [repo] [remote_branch | commit_id]"
 
     if [ -z "$(git remote -v)" ]; then
       echo "Hum....there are no remotes here"
@@ -213,34 +213,19 @@ function opengit() {
 	  repoName=$1
     fi
 
-	where="https://github.com/" # default location to github
-	commit_part="commits"
-	remotes=$(git remote -v | grep "$repoName" | awk -F 'git@github.com:' '{print $2}' | cut -d" " -f1 | uniq)
-	if [ -z "$remotes" ]; then
-		remotes=$(git remote -v | grep "$repoName" | awk -F 'https://github.com/' '{print $2}' | cut -d" " -f1| uniq)
-	fi
-
-	if [ -z "$remotes" ]; then
-		remotes=$(git remote -v | grep "$repoName" | awk -F'git@bitbucket.org/' '{print $2}' | cut -d" " -f1| uniq)
-		where="https://bitbucket.org/"
-	fi
-
-	if [ -z "$remotes" ]; then
-		remotes=$(git remote -v | grep "$repoName" | awk -F'git@code.hashdata.xyz:' '{print $2}' | cut -d" " -f1| uniq)
-		where="https://code.hashdata.xyz/"
-		commit_part="-/commits"
-	fi
+	git_web_hosts='github.com|bitbucket.org|code.hashdata.xyz'
+	remotes=`git remote -v | grep "$repoName" | grep -Eo "(${git_web_hosts})[:/][^.]+" | head -1 | tr : /`
 
 	if [ -z "$2" ];then
 			#TODO: local branch name maybe different from remote branch name
-			branch_name=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'`
-			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/tree/${branch_name## }"   ## Strip leading space for branch name
+			branch_name=`git branch --show-current`
+			echo "No branch name passed as param, using current local branch name \"${branch_name}\" as remote branch name"
+			url="https://$remotes/commits/${branch_name## }"   ## Strip leading space for branch name
 	else
-		if [[ -z "$3" || "$3" != "true" ]];then
-			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/tree/${2}"
+		if git show-ref -q --heads "$2"; then
+			url="https://$remotes/commits/${2}" #for branch, display commit list
 		else
-			#url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/commit/${2}"
-			url="$where$(echo $remotes | cut -d" " -f1 | cut -d"." -f1)/${commit_part}/${2}"
+			url="https://$remotes/commit/${2}"  #for commit, display git log
 		fi
 	fi
 	_opengit_open $url
