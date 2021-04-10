@@ -33,9 +33,11 @@ brew update
 ## install zsh & oh-my-zsh
 brew install zsh
 chsh -s /bin/zsh
-#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://gitee.com/mirrors/oh-my-zsh.git ~/.oh-my-zsh
-sh ~/.oh-my-zsh/tools/install.sh  #remove some check code
+#git clone https://gitee.com/mirrors/oh-my-zsh.git ~/.oh-my-zsh
+#sh ~/.oh-my-zsh/tools/install.sh  #remove some check code
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+## install git-open plugin
+git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open
 
 ## better diff format
 brew install diff-so-fancy
