@@ -39,11 +39,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ## install git-open plugin
 git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open
 
-## better diff format
-brew install diff-so-fancy
-### Configure git to use diff-so-fancy for all diff output
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-git config --global interactive.diffFilter "diff-so-fancy --patch"
+### better diff format, replaced by delta
+#brew install diff-so-fancy
+#### Configure git to use diff-so-fancy for all diff output
+#git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+#git config --global interactive.diffFilter "diff-so-fancy --patch"
+brew install git-delta
 
 ## install dependent commands
 brew install cloc ccat tig the_silver_searcher tree tldr glances
@@ -113,5 +114,7 @@ print "
 0.0.0.0         ocsp.apple.com
 " | sudo tee -a /etc/hosts
 
+# echo to install diff-highlight for git & tig
+echo "Need to manually install diff-highlight: copy from git distrubtion: /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight"
 # sudo no need password
 echo "Run \`sudo visudo\` and append \"%gpadmin ALL=(ALL) NOPASSWD: ALL\""

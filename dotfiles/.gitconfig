@@ -2,7 +2,9 @@
 	excludesfile = /Users/gpadmin/.gitignore_global
 	hooksPath = ${HOME}/workspace/git-hooks-core
 	editor = vim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-highlight | less -r
+[interactive]
+	diffFilter = diff-highlight
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
 	path = -ro
@@ -13,8 +15,6 @@
 	name = Ming Li
 	email = mli@apache.org
 [commit]
-[icdiff]
-	options = --highlight --line-numbers
 [diff]
 	tool = bc3
 [merge]
@@ -22,5 +22,20 @@
 [mergetool "bc3"]
 	trustExitCode = true
 [alias]
-[interactive]
-	diffFilter = diff-so-fancy --patch
+
+##config for delta
+#[pager]
+#    diff = delta
+#    log = delta
+#    reflog = delta
+#    show = delta
+#
+#[delta]
+#    plus-style = "syntax #012800"
+#    minus-style = "syntax #340001"
+#	syntax-theme = Monokai Extended
+#    navigate = true
+#	#side-by-side = true
+#
+#[interactive]
+#    diffFilter = delta --color-only

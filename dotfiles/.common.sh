@@ -213,7 +213,7 @@ function opengit() {
 	  repoName=$1
     fi
 
-	git_web_hosts='github.com|bitbucket.org|code.hashdata.xyz'
+	git_web_hosts='github.com|bitbucket.org|code.hashdata.xyz|gitee.com'
 	remotes=`git remote -v | grep "$repoName" | grep -Eo "(${git_web_hosts})[:/][^.]+" | head -1 | tr : /`
 
 	if [ -z "$2" ];then
@@ -225,7 +225,7 @@ function opengit() {
 		if git show-ref -q --heads "$2"; then
 			url="https://$remotes/commits/${2}" #for branch, display commit list
 		else
-			url="https://$remotes/commit/${2}"  #for commit, display git log
+			url="https://$remotes/commits/${2}"  #for commit, display git log
 		fi
 	fi
 	_opengit_open $url

@@ -119,3 +119,7 @@ bind main <F4> !git difftool -d %(commit)^!
 
 # set format for some views
 set main-view-author = abbreviated
+
+# set diff format highlight, firstly install:
+# > cp /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
+set diff-highlight = true
