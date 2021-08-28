@@ -103,6 +103,13 @@ sudo pmset -a hibernatemode 0
 sudo scutil --set ComputerName mrmbp
 sudo scutil --set HostName mingli-host
 
+# Workaround for "mkdir /code" error: Read-only file system
+mkdir -p ~/code  # it should be "ln -fs DIR_TO_CODE ~/code"
+
+grep 'code' /etc/synthetic.conf 2>&1 >/dev/null || echo "
+code		${HOME}/code
+" | sudo tee -a /etc/synthetic.conf
+
 # change hosts setting
 print "
 # for crack some software

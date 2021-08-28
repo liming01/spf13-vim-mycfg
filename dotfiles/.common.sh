@@ -123,6 +123,10 @@ add_custom_target(build_gpdb COMMAND make -C ${gpdb_SOURCE_DIR}
 
 add_executable(gpdb ${SOURCE_FILES})
 EOF
+	# if pass project name as param, then replace it in the generated file
+	if [ $# -eq 1 ]; then
+		sed -i "" "s/gpdb/${1}/g" CMakeLists.txt
+	fi
 
 else
 	echo "Warning: ./CMakeLists.txt already exists!"
@@ -156,10 +160,13 @@ virtualbox_env(){
 	#sudo ln -fs /Users/mingli/workspace/repo4hashdata/hashdata /gpdb
 
 	alias wd="cd ~/workspace/repo4hashdata/hashdata/" # working dir
-	alias wds="cd ~/workspace/repo4hashdata/hashdata/vagrant/centos7" # work dir for start vm
-	alias wds1="cd ~/workspace/repo4hashdata/hashdata/vagrant/hdw-centos" # work dir for start vm (old version)
 	alias wdg="cd ~/workspace/repo4hashdata/hdw-agent" # work dir for golang code
-	alias sshv="ssh gpadmin@192.168.10.200" # ssh vagrant vm
+
+	export WDS="${HOME}/workspace/repo4hashdata/hashdata/vagrant/devel"
+	alias wds="cd ${WDS}" # work dir for start vm
+	#alias wds1="cd ~/workspace/repo4hashdata/hashdata/vagrant/hdw-centos" # work dir for start vm (old version)
+	#alias wds2="cd ~/workspace/repo4hashdata/hashdata/vagrant/centos7" # work dir for start vm
+	alias sshv="pushd ${WDS} && vagrant ssh; popd" # ssh vagrant vm
 }
 vim_env(){
 	# kill processes forked by vim plugin YouCompleteMe
