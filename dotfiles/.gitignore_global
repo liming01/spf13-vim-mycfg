@@ -10,6 +10,10 @@ GRTAGS
 GTAGS
 .ycm_extra_conf.py
 
+# vim setting for LSP
+.cache/
+build/
+
 # vscode setting
 .vscode/
 

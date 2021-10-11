@@ -41,9 +41,10 @@ fi
 # lvim/lvim/lnvim/lmvim : to complex config;
 # vim/nvim              : use the config can be changed dynamically by vim-default-complex / vim-default-simple
 alias vi="vim -u ~/.vimrc.simple"
-alias lvim="vim -u ~/.vimrc.complex"
-alias lnvim="nvim -u ~/.vimrc.complex"
-alias lmvim="mvim -u ~/.vimrc.complex"
+alias mvim="vim -u ~/.vimrc.complex"
+alias mnvim="nvim -u ~/.vimrc.complex"
+alias mmvim="mvim -u ~/.vimrc.complex"
+alias lvim="${HOME}/.local/bin/lvim"
 (which ccat > /dev/null 2>&1) && alias cat="ccat"
 
 hawq_env(){
@@ -101,6 +102,7 @@ pg_env(){
 	alias pp="ps -ef | grep -v grep | grep postgres "  # ps for postgres
 	alias pc="ps -ef | grep -v grep | grep catalog "  # ps for catalog
 	alias pq="ps -ef | grep -v grep | grep 'postgres:.*con[[:digit:]]\{1,\}' " # ps for postgres query
+	alias wpq="watch -n 0.1 -d 'ps -ef | grep -v grep | grep '\''postgres:.*con[[:digit:]]\{1,\}'\'' '" # watch ps for postgres query
 	alias pj="ps -ef | grep -v grep | grep java "
 	alias pk="ps -ef | grep -v grep | grep postgres | awk '{print \$2}'| xargs kill -s SIGKILL; rm -rf /tmp/.s.PGSQL.*;" # ps and kill the postgres
 	alias pck="ps -ef | grep -v grep | grep catalog | awk '{print \$2}'| xargs kill -s SIGKILL; rm -rf /tmp/.s.PGSQL.*;" # ps and kill the catalog
