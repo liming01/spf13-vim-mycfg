@@ -108,9 +108,28 @@ pg_env(){
 	alias pck="ps -ef | grep -v grep | grep catalog | awk '{print \$2}'| xargs kill -s SIGKILL; rm -rf /tmp/.s.PGSQL.*;" # ps and kill the catalog
 	alias pqk="ps -ef | grep -v grep | grep 'postgres:.*con[[:digit:]]\{1,\}' | awk '{print \$2}'| xargs kill -s SIGKILL" # ps and kill the postgres query related processes
 }
+
+gen_lsp_config(){
+	PROJ_DIR=`pwd`
+
+	set -x; #set verbose
+
+	# same as CLion cmake project auto generated directory
+	mkdir -p ${PROJ_DIR}/cmake-build-debug; cd ${PROJ_DIR}/cmake-build-debug&&cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" ../
+
+	ln -fs ${PROJ_DIR}/cmake-build-debug/compile_commands.json ${PROJ_DIR}/;  # for LSP
+	ln -fs ${HOME}/.ycm_extra_conf.py ${PROJ_DIR}/; # for YouCompleteMe
+	set +x
+
+	cd ${PROJ_DIR}/
+}
+
 gen_cmakefile(){
 	if [ ! -f ./CMakeLists.txt ]; then
 	cat >> CMakeLists.txt <<'EOF'
+# This CMakeLists does not build GPDB. It is intended for consumption by the
+# CLion IDE, which depends on CMakeLists for code intelligence.
+
 cmake_minimum_required(VERSION 3.9)
 project(gpdb)
 
@@ -130,8 +149,11 @@ EOF
 		sed -i "" "s/gpdb/${1}/g" CMakeLists.txt
 	fi
 
+	gen_lsp_config
+
 else
 	echo "Warning: ./CMakeLists.txt already exists!"
+	gen_lsp_config
 fi
 
 }

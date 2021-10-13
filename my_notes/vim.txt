@@ -31,9 +31,9 @@ git clone https://gitee.com/ragus/golang_tools.git tools
 要么配置.ycm_extra_conf.py文件，指定项目配置；
 要么要配置对LSP 的支持。
 
-clangd / cquery 的關鍵都是生成 compile_commands.json。
-cmake 的工程本身就有 flag 能生成 compile_commands.json
-makefile 的工程可以用 compiledb 生成 compile_commands.json
+clangd / cquery 的关键都是生成 compile_commands.json。
+cmake 的工程本身就有 flag 能生成 compile_commands.json, 跑`cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1`
+makefile 的工程可以用bear或者compiledb生成 compile_commands.json, 跑`compiledb make`
 ----------------------------------------------------------------------
 https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
 
