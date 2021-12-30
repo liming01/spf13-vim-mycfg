@@ -42,6 +42,7 @@ https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
 - ccache              : 高速C/C++编译缓存工具，反复编译内核非常有用。
 - ccat                : 高亮语法显示的cat
 - cloc                : 代码统计工具，能够统计代码的空行数、注释行、各种编程语言。
+- croc                : 跨平台的命令，能够轻松、安全地传输文件，内置一个公共中继服务器，可以实现内网穿透，也支持自建中继服务器。
 - exa                 : 并行执行、变色好看的ls
 - delta               : 包括了下面两个功能： A)diff-so-fancy: 显示字符串级别的差异 B)icdiff: 分屏显示 diff
 - figlet              : 将输入字符转换成艺术字体

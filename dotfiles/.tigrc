@@ -120,6 +120,10 @@ bind main <F4> !git difftool -d %(commit)^!
 # set format for some views
 set main-view-author = abbreviated
 
+# set smart case when searching: ignore case when the search string is lower-case only.
+set ignore-case = smart-case
+set tab-size = 4
+
 # set diff format highlight, firstly install:
 # > cp /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
 set diff-highlight = true
