@@ -66,6 +66,7 @@ bind generic uu status-update
 bind generic ur status-revert
 bind generic um status-merge
 bind generic ul stage-update-line
+bind generic up stage-update-part
 bind generic us stage-split-chunk
 
 bind generic c  none
@@ -81,42 +82,6 @@ bind generic <C-w><C-w> view-next
 # - Step forwards to the child commit of a given line: (<  key, i.e. Shift + ,)
 
 # -------------------------------------- My config -------------------------------------------
-bind generic <F1> view-help
-
-# jump easily between diff/status view to the history of the file
-bind diff H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
-bind status H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
-
-################ Added from: https://github.com/jonas/tig/wiki/Bindings ################
-
-# Add/edit notes for the current commit used during a review
-bind generic T !git notes edit %(commit)
-# Open the commit on Github
-#bind generic <F2> @sh -c "xdg-open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
-#bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
-bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo '(github.com|bitbucket.org|code.hashdata.xyz)[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
-
-# Interactive rebase
-bind main B !git rebase -i %(commit)
-# Revert
-bind main ! !git revert %(commit)
-# Tag the selected commit
-bind main T !@git tag %(prompt) %(commit)
-
-
-# Intent to add: might be useful if you want to add-patch a newly created file
-bind status N !@git add -N %(file)
-# Stash the unstaged changes
-bind status S !?git stash save --keep-index %(prompt)
-
-# Create a new branch
-bind refs n !@git branch "%(prompt Enter branch name: )"
-
-# Compare changed file in status view
-bind status <F4> !sh -c "git difftool -y \"$(git rev-parse --show-toplevel)/%(file)\""
-# Compare selected commit in log view (main view) with its parent
-bind main <F4> !git difftool -d %(commit)^!
-
 # set format for some views
 set main-view-author = abbreviated
 
@@ -127,3 +92,42 @@ set tab-size = 4
 # set diff format highlight, firstly install:
 # > cp /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
 set diff-highlight = true
+
+# -------------------------------------- key mapping -------------------------------------------
+bind generic <F1> view-help
+
+# jump easily between diff/status view to the history of the file
+bind diff H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind status H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+
+################ Added from: https://github.com/jonas/tig/wiki/Bindings ################
+
+# Add/edit notes for the current commit used during a review
+bind generic <C-T> !git notes edit %(commit)
+
+# Open the commit on Github
+#bind generic <F2> @sh -c "xdg-open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
+#bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
+bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo '(github.com|bitbucket.org|code.hashdata.xyz)[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
+
+# Interactive rebase
+bind main <C-X> !git rebase -i %(commit)
+# Revert
+bind main ! !git revert %(commit)
+# Tag the selected commit
+bind main T !@git tag "%(prompt Tag the selected commit | Enter tag name: )" %(commit)
+
+
+# Intent to add: might be useful if you want to add-patch a newly created file
+bind status <C-A> !@git add -N %(file)
+# Stash the unstaged changes
+bind status <C-S> !?git stash save --keep-index %(prompt)
+
+# Create a new branch, not bind n/N key because it conflict with find next match key
+bind refs <C-A> !@git branch "%(prompt Create a new branch | Enter branch name: )"
+
+# Compare changed file in status view
+bind status <F4> !sh -c "git difftool -y \"$(git rev-parse --show-toplevel)/%(file)\""
+# Compare selected commit in log view (main view) with its parent
+bind main <F4> !git difftool -d %(commit)^!
+

@@ -23,7 +23,7 @@ if [ "`uname -s`" = "Darwin" ]; then
 	export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk/Contents/Home
 	export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
 	#export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
-	export PATH=.:${HOME}/bin:/usr/local/sbin:${JAVA_HOME}/bin:$PATH
+	export PATH=.:${HOME}/bin:/usr/local/bin:/usr/local/sbin:${JAVA_HOME}/bin:$PATH
 	#alias python="/usr/local/bin/python"
 	alias typora="open -a typora"
 
@@ -109,6 +109,7 @@ pg_env(){
 	alias pqk="ps -ef | grep -v grep | grep 'postgres:.*con[[:digit:]]\{1,\}' | awk '{print \$2}'| xargs kill -s SIGKILL" # ps and kill the postgres query related processes
 }
 
+# Generate config file compile_commands.json for LSP using cmake (using same dir as CLion)
 gen_lsp_config(){
 	PROJ_DIR=`pwd`
 
@@ -124,6 +125,8 @@ gen_lsp_config(){
 	cd ${PROJ_DIR}/
 }
 
+# Generate cmake config for project, so that CLion can work
+# pass parameter: project name (default is gpdb)
 gen_cmakefile(){
 	if [ ! -f ./CMakeLists.txt ]; then
 	cat >> CMakeLists.txt <<'EOF'
