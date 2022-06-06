@@ -193,7 +193,10 @@ virtualbox_env(){
 	alias wds="cd ${WDS}" # work dir for start vm
 	#alias wds1="cd ~/workspace/repo4hashdata/hashdata/vagrant/hdw-centos" # work dir for start vm (old version)
 	#alias wds2="cd ~/workspace/repo4hashdata/hashdata/vagrant/centos7" # work dir for start vm
-	alias sshv="pushd ${WDS} && vagrant ssh; popd" # ssh vagrant vm
+
+	# ssh vagrant vm
+	# use stored pwd instead of pushd&popd because they are not work correctly in zsh & oh-my-zsh
+	alias sshv="cd ${WDS} && vagrant ssh; cd -"
 }
 vim_env(){
 	# kill processes forked by vim plugin YouCompleteMe

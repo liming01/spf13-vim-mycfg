@@ -1,8 +1,8 @@
 [core]
-	excludesfile = /Users/gpadmin/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	hooksPath = ${HOME}/workspace/git-hooks-core
 	editor = vim
-	pager = diff-highlight | less -r
+	pager = diff-highlight | less -x1,5   # setting tabwidth to 4
 [interactive]
 	diffFilter = diff-highlight
 [difftool "sourcetree"]
