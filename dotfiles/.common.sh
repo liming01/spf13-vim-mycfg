@@ -37,9 +37,10 @@ else
 	export LD_LIBRARY_PATH=/opt/gcc-6.2.0/lib6:$LD_LIBRARY_PATH
 fi
 
-# vi                    : to simple config;
-# lvim/lvim/lnvim/lmvim : to complex config;
-# vim/nvim              : use the config can be changed dynamically by vim-default-complex / vim-default-simple
+# vi               : to simple config;
+# mvim/mnvim/mmvim : to complex config;
+# lvim             : Lunar Vim
+# vim/nvim         : use the config can be changed dynamically by vim-default-complex / vim-default-simple
 alias vi="vim -u ~/.vimrc.simple"
 alias mvim="vim -u ~/.vimrc.complex"
 alias mnvim="nvim -u ~/.vimrc.complex"

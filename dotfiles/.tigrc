@@ -121,7 +121,7 @@ bind main T !@git tag "%(prompt Tag the selected commit | Enter tag name: )" %(c
 # Intent to add: might be useful if you want to add-patch a newly created file
 bind status <C-A> !@git add -N %(file)
 # Stash the unstaged changes
-bind status <C-S> !?git stash save --keep-index %(prompt)
+bind status <C-S> !?git stash save --keep-index "%(prompt Stash save indexed changes | Enter stash message: )"
 
 # Create a new branch, not bind n/N key because it conflict with find next match key
 bind refs <C-A> !@git branch "%(prompt Create a new branch | Enter branch name: )"
