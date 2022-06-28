@@ -1,9 +1,14 @@
 *~
+# macos generated file
 .DS_Store
 
 .autotools
 
-# vim and emacs 
+#Java generated files
+**/*.class
+**/*.jar
+
+# vim and emacs
 tags
 GPATH
 GRTAGS

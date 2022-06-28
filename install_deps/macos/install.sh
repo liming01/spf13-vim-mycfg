@@ -2,6 +2,19 @@
 
 set -ex
 
+# install XCode Developer CLI tools
+xcode-select —-install
+
+# install Homebrew
+install_brew()
+{
+	if ! which brew; then
+		yes '' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	fi
+}
+
+install_brew
+
 # set brew repo to alicloud for better speed
 #export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
