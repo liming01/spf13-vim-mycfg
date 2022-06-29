@@ -82,9 +82,15 @@ bind generic <C-w><C-w> view-next
 # - Step forwards to the child commit of a given line: (<  key, i.e. Shift + ,)
 
 # (2) In status view:
-# Stage a single line: # bind stage 1 stage-update-line
+# Stage a single line:
+# 		bind stage 1 stage-update-line
+# Stage/unstage part of chunk:
+# 		bind stage 2 stage-update-part
 
 # -------------------------------------- My config -------------------------------------------
+# blue is not clear in dark mode, set No Blue Color SCheme
+source -q ~/.noblue_colorscheme.tigrc
+
 # set format for some views
 set main-view-author = abbreviated
 
