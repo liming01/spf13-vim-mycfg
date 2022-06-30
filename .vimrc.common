@@ -197,7 +197,8 @@ set tw=500
 
 " 设置最大列数的颜色提示
 let &colorcolumn="80,".join(range(120,999),",")
-highlight ColorColumn ctermbg=0 guibg=DarkCyan
+highlight ColorColumn ctermbg=16 guibg=#000000
+"highlight ColorColumn ctermbg=0 guibg=DarkCyan
 "highlight Visual  guifg=White guibg=LightBlue gui=DarkBlue
 highlight Visual term=reverse cterm=reverse guibg=DarkBlue
 

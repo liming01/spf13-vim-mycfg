@@ -2,7 +2,8 @@
 let g:syntastic_auto_loc_list = 3
 
 "set default color schema
-colorscheme molokai
+colorscheme atom
+"colorscheme molokai
 
 " toggle wrap mode, similar to [ow/]ow in plugin vim-unimpaired
 :nmap <leader>ow :setlocal wrap!<CR> :setlocal wrap? <CR>
