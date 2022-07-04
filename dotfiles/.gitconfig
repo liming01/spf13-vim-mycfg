@@ -15,6 +15,9 @@
 	name = Ming Li
 	email = mli@apache.org
 [commit]
+[log]
+	# follow the renamed/moved file
+	follow = true
 [diff]
 	tool = bc3
 [merge]
