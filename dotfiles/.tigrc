@@ -105,9 +105,9 @@ set diff-highlight = true
 # -------------------------------------- key mapping -------------------------------------------
 bind generic <F1> view-help
 
-# jump easily between diff/status view to the history of the file
-bind diff H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
-bind status H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+# jump easily between diff/status view to the history of the file: follow the moved/renamed file
+bind diff H !sh -c "tig --follow \"$(git rev-parse --show-toplevel)/%(file)\""
+bind status H !sh -c "tig --follow \"$(git rev-parse --show-toplevel)/%(file)\""
 
 ################ Added from: https://github.com/jonas/tig/wiki/Bindings ################
 

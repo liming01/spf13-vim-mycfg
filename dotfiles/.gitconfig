@@ -17,7 +17,7 @@
 [commit]
 [log]
 	# follow the renamed/moved file
-	follow = true
+	# follow = true
 [diff]
 	tool = bc3
 [merge]
