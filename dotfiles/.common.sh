@@ -47,6 +47,7 @@ alias mnvim="nvim -u ~/.vimrc.complex"
 alias mmvim="mvim -u ~/.vimrc.complex"
 alias lvim="${HOME}/.local/bin/lvim"
 (which ccat > /dev/null 2>&1) && alias cat="ccat"
+alias tiga="tig --all"
 
 hawq_env(){
 	[ -f ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh ] && source ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh
