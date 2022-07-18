@@ -104,6 +104,11 @@ ln -fs /Applications/GitUp.app/Contents/SharedSupport/gitup /usr/local/bin/gitup
 # skip sourcetree register
 defaults write com.torusknot.SourceTreeNotMAS completedWelcomeWizardVersion 3
 
+# Set mouse acceleration: default value is 3, disable it by -1
+# You can read the setting as:
+# defaults read .GlobalPreferences com.apple.mouse.scaling
+defaults write .GlobalPreferences com.apple.mouse.scaling 7
+
 # disable the Mac startup sound
 sudo nvram StartupMute=%01
 
