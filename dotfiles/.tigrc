@@ -76,7 +76,12 @@ bind generic ca !?@git commit --amend --no-edit
 bind generic K view-help
 bind generic <C-w><C-w> view-next
 
-# --- some keymap not in help
+#------------ end of https://github.com/jonas/tig/blob/master/contrib/vim.tigrc (Mar 3, 2020) --------------
+# the built-in config is:
+#     <INSTALL_DIR>/share/tig/examples/tigrc
+#     https://github.com/jonas/tig/blob/master/tigrc
+
+# --------------------------------- some keymap not in help ----------------------------------
 # (1) In blame view:
 # - Go to the parent commit of a given line: (, key)
 # - Go backwards of the navigate history: (<  key, i.e. Shift + ,)
@@ -106,8 +111,11 @@ set tab-size = 4
 # > cp /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
 set diff-highlight = true
 
-# -------------------------------------- key mapping -------------------------------------------
+# ------------------------------------- key mapping -----------------------------------------
 bind generic <F1> view-help
+
+# Option: Wrap long lines instead of horizontal scrolling
+bind generic ow :toggle wrap-lines
 
 # jump easily between diff/status view to the history of the file: follow the moved/renamed file
 bind diff H !sh -c "tig --follow \"$(git rev-parse --show-toplevel)/%(file)\""
