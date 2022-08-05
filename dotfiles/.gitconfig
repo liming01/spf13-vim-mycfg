@@ -15,6 +15,7 @@
 	name = Ming Li
 	email = mli@apache.org
 [commit]
+	template = ~/.git_commit_template
 [log]
 	# follow the renamed/moved file
 	# follow = true

@@ -1,0 +1,30 @@
+
+# head: <type>(<scope>): <subject>
+# - type: feat, fix, perf, docs, style, refactor, test, chore, build, ci, revert
+# - scope: can be empty (eg. if the change is a global or difficult to assign to a single component)
+# - subject: start with verb (use imperative, present tense: such as 'change'), 50-character line.
+#            Not capitalized. No period at the end.
+
+# body: 72-character wrapped. This should answer:
+# * Why was this change necessary?
+# * How does it address the problem?
+# * Are there any side effects?
+
+
+#
+# footer:
+# - BREAKING CHANGE: <breaking change description + migration instructions>
+# - DEPRECATED: <deprecation description + recommended update path>
+# - Closes #<pr number>
+# - Discussion: link
+
+
+# - Reported-by:
+# - Co-authored-by:
+# - Reviewed-by:
+
+
+# Ref to:
+#	https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#
+#	https://www.conventionalcommits.org/
+#
