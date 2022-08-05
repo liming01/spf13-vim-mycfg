@@ -1,3 +1,13 @@
+# Config file for lazygit
+#
+# Need to run:
+#     ln -fs config.yml $HOME/Library/Application\ Support/lazygit/
+# 
+# Below setting ref to:
+#     https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium (Jun 29, 2022)
+#
+# ----------------------------------------------------------------------------
+#
 # set diff format highlight, firstly install:
 # > cp /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
 git:

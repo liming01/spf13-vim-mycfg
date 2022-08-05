@@ -104,7 +104,11 @@ ln -fs /Applications/GitUp.app/Contents/SharedSupport/gitup /usr/local/bin/gitup
 # skip sourcetree register
 defaults write com.torusknot.SourceTreeNotMAS completedWelcomeWizardVersion 3
 
-# Set mouse acceleration: default value is 3, disable it by -1
+# Set mouse acceleration: default value is 2.5, disable it by -1
+
+# Note: Log out to take effect. Only affects the mouse, not the trackpad.
+# If you change Tracking Speed under System Preferences, it will undo this setting.
+
 # You can read the setting as:
 # defaults read .GlobalPreferences com.apple.mouse.scaling
 defaults write .GlobalPreferences com.apple.mouse.scaling 7
@@ -112,8 +116,9 @@ defaults write .GlobalPreferences com.apple.mouse.scaling 7
 # disable the Mac startup sound
 sudo nvram StartupMute=%01
 
-# disable Gatekeeper (i.e., set the option “All apps downloaded from:” to “Anywhere”)
+# disable Gatekeeper (i.e., set the option “All apps downloaded from:” to “Anywhere”): macos 10.14
 #sudo spctl --master-disable
+
 # disable hibernation mode to write memory context to disk
 sudo pmset -a hibernatemode 0
 
@@ -121,7 +126,7 @@ sudo pmset -a hibernatemode 0
 sudo scutil --set ComputerName mrmbp
 sudo scutil --set HostName mingli-host
 
-# Workaround for "mkdir /code" error: Read-only file system
+# Workaround for "mkdir /code" error: Read-only file system: macos 10.15
 mkdir -p ~/code  # it should be "ln -fs DIR_TO_CODE ~/code"
 
 grep 'code' /etc/synthetic.conf 2>&1 >/dev/null || echo "
