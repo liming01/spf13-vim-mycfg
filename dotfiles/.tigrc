@@ -97,8 +97,10 @@ bind generic <C-w><C-w> view-next
 # 		bind stage 2 stage-update-part
 
 # -------------------------------------- My config -------------------------------------------
-# blue is not clear in dark mode, set No Blue Color SCheme
-source -q ~/.noblue_colorscheme.tigrc
+# blue is not clear in iterm2 dark mode, set No Blue Color SCheme
+# change iterm2 setting: Profile > Colors > Color Presets to other (e.g. Atom)
+# or change color setting in tigrc
+#source -q ~/.noblue_colorscheme.tigrc
 
 # set format for some views
 set main-view-author = abbreviated

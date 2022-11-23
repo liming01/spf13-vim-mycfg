@@ -53,7 +53,7 @@ ln -sf $SCRIPT_PATH/.ycm_extra_conf.py ~/
 ln -sf $SCRIPT_PATH/.vimrc.simple ~/.vimrc
 # install spf13-vim
 #git clone git@github.com:liming01/spf13-vim.git ../
-#ln -fs ${CURRENT_DIR}/../spf13-vim/ ~/.spf13-vim-3
+ln -fs ${CURRENT_DIR}/../spf13-vim/ ~/.spf13-vim-3
 
 ln -sf ~/.spf13-vim-3/.vimrc ~/.vimrc.complex
 
