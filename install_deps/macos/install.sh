@@ -59,6 +59,10 @@ git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open
 #git config --global interactive.diffFilter "diff-so-fancy --patch"
 brew install git-delta
 
+# install diff-highlight for git & tig
+# if wrong path, exec `brew --prefix git` or manually get version /usr/local/Cellar/git/xxx
+ln -fs /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
+
 ## install dependent commands
 brew install cloc ccat tig the_silver_searcher tree tldr glances
 
@@ -144,7 +148,5 @@ print "
 0.0.0.0         ocsp.apple.com
 " | sudo tee -a /etc/hosts
 
-# echo to install diff-highlight for git & tig
-echo "Need to manually install diff-highlight: copy from git distrubtion: /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight"
 # sudo no need password
 echo "Run \`sudo visudo\` and append \"%gpadmin ALL=(ALL) NOPASSWD: ALL\""

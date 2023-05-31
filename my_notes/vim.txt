@@ -51,7 +51,7 @@ https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
 - fkill               : fuzzy finding before kill
 - fzf                 : 命令行下模糊搜索工具，能够交互式智能搜索并选取文件或者内容，配合终端ctrl-r历史命令搜索简直完美。
 - glances             : 更强大的 htop / top 代替者
-- htop                : 提供更美观、更方便的进程监控工具，替代top命令。vtop
+- htop                : 提供更美观、更方便的进程监控工具，替代top命令。vtop, bottom
 - lnav                : 过滤大日志
 - jq                  : jason query, 类似的还有yaml文件的：yq
 - mc                  : 内容浏览/预览
@@ -83,6 +83,12 @@ brew install –cask
 - iina       : A modern media player
 - item2      : macOS terminal replacement
 - pdf-expert : Easily read, annotate, fill out, sign and edit PDF documents
+
+CLI in rust language
+- fd :  find: 要找文件时，再也不用搜索find的用法了. cargo install fd-find
+- dua:　du  : 哪个目录最占空间一目了然. 而且删目录比rm更快. cargo install dua-cli
+- z　:　cd  : 拯救各位cd狂魔. cargo install zoxide. 使用前请看主页.
+- tokei cloc: 分析目录下代码有多少行、注释多少行，方便各位攻城狮们看看KPI完成了多少。
 
 MacOS工具：
 - caffeinate sleep 5: prevent the system from sleeping on behalf of a utility
