@@ -48,6 +48,7 @@ alias mmvim="mvim -u ~/.vimrc.complex"
 alias lvim="${HOME}/.local/bin/lvim"
 (which ccat > /dev/null 2>&1) && alias cat="ccat"
 alias tiga="tig --all"
+alias lg="lazygit"
 
 hawq_env(){
 	[ -f ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh ] && source ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh
@@ -180,6 +181,8 @@ go_env(){
 	export GOROOT=/usr/local/opt/go/libexec
 	export GOPATH=${HOME}/go:$HOME/workspace/repo4hashdata/hdw-agent
 	export PATH=$PATH:${HOME}/go/bin:${GOROOT}/bin
+	unset GOPROXY
+	go env -w GOPROXY=https://goproxy.cn,https://mirrors.aliyun.com/goproxy/,direct
 }
 virtualbox_env(){
 	#export PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS/
@@ -190,6 +193,7 @@ virtualbox_env(){
 
 	alias wd="cd ~/workspace/repo4hashdata/hashdata/" # working dir
 	alias wdg="cd ~/workspace/repo4hashdata/hdw-agent" # work dir for golang code
+	alias wda="cd ~/workspace/repo4hashdata/hashdata/vagrant/devel/actions" # work dir for golang code
 
 	export WDS="${HOME}/workspace/repo4hashdata/hashdata/vagrant/devel"
 	alias wds="cd ${WDS}" # work dir for start vm

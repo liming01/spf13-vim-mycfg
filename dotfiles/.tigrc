@@ -123,6 +123,10 @@ bind generic ow :toggle wrap-lines
 bind diff H !sh -c "tig --follow \"$(git rev-parse --show-toplevel)/%(file)\""
 bind status H !sh -c "tig --follow \"$(git rev-parse --show-toplevel)/%(file)\""
 
+# look at an entire single file at a revisions:
+#  run something like tig -- path/to/file. Select a commit and hit "V" to view the file.
+bind generic V !sh -c 'git show $1:$2' -- %(commit) %(fileargs)
+
 ################ Added from: https://github.com/jonas/tig/wiki/Bindings ################
 
 # Add/edit notes for the current commit used during a review
@@ -133,13 +137,15 @@ bind generic <C-T> !git notes edit %(commit)
 #bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
 bind generic <F2> @sh -c "open 'https://'$(git remote -v | grep -Eo '(github.com|bitbucket.org|code.hashdata.xyz)[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
 
+# Amend last commit
+bind generic cl !git commit --amend
+
 # Interactive rebase
 bind main <C-X> !git rebase -i %(commit)
 # Revert
 bind main ! !git revert %(commit)
 # Tag the selected commit
 bind main T !@git tag "%(prompt Tag the selected commit | Enter tag name: )" %(commit)
-
 
 # Intent to add: might be useful if you want to add-patch a newly created file
 bind status <C-A> !@git add -N %(file)

@@ -16,6 +16,7 @@ git:
     #pager: delta --paging=never --24-bit-color=never
     pager: diff-highlight
 
+#-------------------- below are custom key --------------------
 # Extract diff into index
 # This requires some explanation: say you've got a PR that has merged in master
 # a few times and so it's a bit of a mess to follow the changes, but there's
@@ -28,9 +29,21 @@ customCommands:
     context: localBranches
     description: Extract diff into index
 
+# Amend the author of last commit
+  - key: '<c-a>'
+    description: 'amend the author of last commit'
+    command: 'git commit --amend --author="{{index .PromptResponses 0}} <{{index .PromptResponses 1}}>"'
+    context: 'commits'
+    prompts:
+      - type: 'input'
+        title: 'Author Name'
+        initialValue: ''
+      - type: 'input'
+        title: 'Email Address'
+    subprocess: yes
+
 #-------------------- tig --------------------
 # Blame via tig
-customCommands:
   - key: b
     command: tig blame -- {{.SelectedFile.Name}}
     context: files
@@ -48,7 +61,6 @@ customCommands:
     subprocess: yes
 
 # Browse files at revision via tig
-customCommands:
   - key: t
     command: tig show {{.SelectedSubCommit.Sha}}
     context: subCommits
@@ -66,7 +78,6 @@ customCommands:
     subprocess: yes
 
 # File history via tig
-customCommands:
   - key: t
     command: tig {{.SelectedSubCommit.Sha}} -- {{.SelectedCommitFile.Name}}
     context: commitFiles
