@@ -1,18 +1,28 @@
 # !/bin/sh
 
+# set -x
+
 if [ ! -n "${ZSH_NAME}" ]; then
 	#echo "Not In Zsh"
 	parse_git_branch() {
-		git branch --show-current
+		git branch --show-current 2>/dev/null
 	}
 	export PS1="\u@\h \[\033[32m\]\w\[\033[33m\](\$(parse_git_branch))\[\033[00m\] $ "
 	#export PS1='\[\033[0;36m\][\u@\h:\W]\$\[\033[0m\] '
 	export CLICOLOR=1
 	[ -f /usr/local/etc/bash_completion.d/git-completion.bash ] && source /usr/local/etc/bash_completion.d/git-completion.bash
 	[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+	if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
+		test -e "${HOME}/.iterm2_shell_integration.bash" || curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
+		test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+	fi
 else
 	#echo "In Zsh"
 	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+	if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
+		test -e "${HOME}/.iterm2_shell_integration.zsh" || curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
+		test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+	fi
 fi
 
 ulimit -c unlimited
@@ -31,7 +41,6 @@ if [ "`uname -s`" = "Darwin" ]; then
 	#ulimit -n 7500
 else
 	#echo "Not On Darwin"
-	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 	# docker images: new gcc
 	export PATH=.:/opt/gcc-6.2.0/bin:$PATH
 	export LD_LIBRARY_PATH=/opt/gcc-6.2.0/lib6:$LD_LIBRARY_PATH
@@ -202,7 +211,11 @@ virtualbox_env(){
 
 	# ssh vagrant vm
 	# use stored pwd instead of pushd&popd because they are not work correctly in zsh & oh-my-zsh
-	alias sshv="cd ${WDS} && vagrant ssh; cd -"
+	if [[ $LC_TERMINAL == "iTerm2" ]]; then
+		alias sshv="cd ${WDS} && vagrant ssh -c 'tmux -CC new -A -s main'; cd -"
+	else
+		alias sshv="cd ${WDS} && vagrant ssh; cd -"
+	fi
 }
 vim_env(){
 	# kill processes forked by vim plugin YouCompleteMe
