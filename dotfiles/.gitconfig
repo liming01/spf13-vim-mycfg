@@ -1,5 +1,5 @@
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesFile = ~/.gitignore_global
 	hooksPath = ${HOME}/workspace/git-hooks-core
 	editor = vim
 	pager = diff-highlight | less -x1,5   # setting tabwidth to 4
@@ -21,6 +21,7 @@
 	# follow = true
 [diff]
 	tool = bc3
+	external = difft
 [merge]
 	tool = bc3
 [mergetool "bc3"]

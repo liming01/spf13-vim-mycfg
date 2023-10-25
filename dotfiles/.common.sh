@@ -35,6 +35,7 @@ if [ "`uname -s`" = "Darwin" ]; then
 	#export PATH=.:/usr/local/opt/python/libexec/bin:${HOME}/bin:$PATH
 	export PATH=.:${HOME}/bin:/usr/local/bin:/usr/local/sbin:${JAVA_HOME}/bin:$PATH
 	#alias python="/usr/local/bin/python"
+
 	alias typora="open -a typora"
 
 	#ulimit -n 65535
@@ -51,13 +52,16 @@ fi
 # lvim             : Lunar Vim
 # vim/nvim         : use the config can be changed dynamically by vim-default-complex / vim-default-simple
 alias vi="vim -u ~/.vimrc.simple"
-alias mvim="vim -u ~/.vimrc.complex"
-alias mnvim="nvim -u ~/.vimrc.complex"
-alias mmvim="mvim -u ~/.vimrc.complex"
+alias vim="vim -u ~/.vimrc.complex"
+alias nvim="nvim -u ~/.vimrc.complex"
+alias mvim="mvim -u ~/.vimrc.complex"
 alias lvim="${HOME}/.local/bin/lvim"
-(which ccat > /dev/null 2>&1) && alias cat="ccat"
+export EDITOR=vim
+#(which ccat > /dev/null 2>&1) && alias cat="ccat"
 alias tiga="tig --all"
 alias lg="lazygit"
+# setting for lazydocker: use `docker context ls` to get the default value: colima docker
+export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
 
 hawq_env(){
 	[ -f ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh ] && source ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh

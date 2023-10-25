@@ -16,6 +16,12 @@ git:
     #pager: delta --paging=never --24-bit-color=never
     pager: diff-highlight
 
+#git:
+#  paging:
+#    externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off
+
+confirmOnQuit: true
+notARepository: quit
 #-------------------- below are custom key --------------------
 # Extract diff into index
 # This requires some explanation: say you've got a PR that has merged in master
@@ -47,7 +53,7 @@ customCommands:
   - key: b
     command: tig blame -- {{.SelectedFile.Name}}
     context: files
-    description: blame file at tree
+    description: blame file at worktree
     subprocess: yes
   - key: b
     command: tig blame {{.SelectedSubCommit.Sha}} -- {{.SelectedCommitFile.Name}}
@@ -57,7 +63,7 @@ customCommands:
   - key: B
     command: tig blame -- {{.SelectedCommitFile.Name}}
     context: commitFiles
-    description: blame file at tree
+    description: blame file at worktree
     subprocess: yes
 
 # Browse files at revision via tig
