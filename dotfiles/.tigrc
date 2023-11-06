@@ -113,6 +113,9 @@ set tab-size = 4
 # > cp /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
 set diff-highlight = true
 
+# custom diff formatters
+bind generic cd >sh -c "GIT_EXTERNAL_DIFF=difft git show %(commit) --ext-diff"
+
 # ------------------------------------- key mapping -----------------------------------------
 bind generic <F1> view-help
 
@@ -120,12 +123,14 @@ bind generic <F1> view-help
 bind generic ow :toggle wrap-lines
 
 # jump easily between diff/status view to the history of the file: follow the moved/renamed file
-bind diff H !sh -c "tig --follow \"$(git rev-parse --show-toplevel)/%(file)\""
-bind status H !sh -c "tig --follow \"$(git rev-parse --show-toplevel)/%(file)\""
+bind diff H !sh -c "tig --follow %(file)"
+bind status H !sh -c "tig --follow %(file)"
 
-# look at an entire single file at a revisions:
-#  run something like tig -- path/to/file. Select a commit and hit "V" to view the file.
-bind generic V !sh -c 'git show $1:$2' -- %(commit) %(fileargs)
+# look at file content: the file from argument at a revisions:
+#  only works in cmd like: tig path/to/file, or hit "H" as key mapping obove
+bind generic Vf !sh -c 'git show $1:$2$3' -- %(commit) %(repo:prefix) %(fileargs)
+# look at file content: the parent commit of this selected file at cursor
+bind generic Vp !sh -c 'git show $1:$2' -- %(commit)^ %(file)
 
 ################ Added from: https://github.com/jonas/tig/wiki/Bindings ################
 
@@ -151,7 +156,7 @@ bind main T !@git tag "%(prompt Tag the selected commit | Enter tag name: )" %(c
 bind status <C-A> !@git add -N %(file)
 # Stash the unstaged changes
 bind status <C-S> !?git stash save --keep-index "%(prompt Stash save indexed changes | Enter stash message: )"
-# Delete a file
+# Delete a file: <C-D> is used as half page down
 bind status D !@?rm %(file)
 
 # Create a new branch, not bind n/N key because it conflict with find next match key

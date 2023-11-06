@@ -44,7 +44,7 @@ https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
 - cloc                : 代码统计工具，能够统计代码的空行数、注释行、各种编程语言。=> rust写的tokei
 - croc                : 跨平台的命令，能够轻松、安全地传输文件，内置一个公共中继服务器，可以实现内网穿透，也支持自建中继服务器。
 - delta               : 包括了下面两个功能： A)diff-so-fancy: 显示字符串级别的差异 B)icdiff: 分屏显示 diff。但是风格比较不清楚。
-- diffr               : rust写的, 不是行比较，而是针对差异块比较。但是风格比较乱。
+- diffr/riff          : rust写的, 不是行比较，而是针对差异块比较。但是风格比较乱。
 - difftastic          : 采rust写的，采用tree-sitter来理解不同语言的diff。
 - figlet              : 将输入字符转换成艺术字体
 - fkill               : fuzzy finding before kill
