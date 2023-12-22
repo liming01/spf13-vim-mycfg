@@ -56,6 +56,7 @@ alias vim="vim -u ~/.vimrc.complex"
 alias nvim="nvim -u ~/.vimrc.complex"
 alias mvim="mvim -u ~/.vimrc.complex"
 alias lvim="${HOME}/.local/bin/lvim"
+alias neovide="/Applications/neovide.app/Contents/MacOS/neovide --neovim-bin $HOME/.local/bin/lvim"
 export EDITOR=vim
 #(which ccat > /dev/null 2>&1) && alias cat="ccat"
 alias tiga="tig --all"

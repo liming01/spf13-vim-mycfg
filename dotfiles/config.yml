@@ -6,6 +6,8 @@
 # Below setting ref to:
 #     https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium (Jun 29, 2022)
 #
+# Default setting:
+#     https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
 # ----------------------------------------------------------------------------
 #
 # set diff format highlight, firstly install:
@@ -22,6 +24,11 @@ git:
 
 confirmOnQuit: true
 notARepository: quit
+promptToReturnFromSubprocess: false # display confirmation when subprocess terminates
+
+gui:
+  scrollHeight: 15 # how many lines you scroll by
+
 #-------------------- below are custom key --------------------
 # Extract diff into index
 # This requires some explanation: say you've got a PR that has merged in master

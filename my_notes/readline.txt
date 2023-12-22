@@ -1,4 +1,5 @@
 
+Bash itself uses the GNU readline library, as do many other interactive command-line programs. Readline has the following default key bindings which mimic emacs behaviour:
 
 1. 移动光标
 Ctrl-b 向左移动一个字符
@@ -16,6 +17,8 @@ Ctrl-k 删除光标右边的所有内容
 Ctrl-w 删除光标前面一个单词
 Alt-d 删除光标后面一个单词
 
+Ctrl + H Same as backspace
+
 Ctrl-y 粘贴上次被Ctrl-w删除的单词
 
 3.撤销
@@ -23,9 +26,17 @@ Ctrl-_　撤销上一次操作
 Alt-r 撤销所有操作
 
 4. 交换
-Ctrl-t 交换前两个字母
-Alt-t 交换前两个单词
+Ctrl-t			交换前两个字母
+Alt-t/Esc-t		交换前两个单词
 
 5. History
 也有在一大堆历史中操作的方法。输入history，会出现一份列表，找到那一行的编号执行
 !#num
+
+6. Others
+
+Ctrl + L Clears the Screen, similar to the clear command
+Ctrl + R Let’s you search through previously used commands
+Ctrl + C Kill whatever you are running
+Ctrl + D Exit the current shell
+Ctrl + Z Puts whatever you are running into a suspended background process. fg restores it.
