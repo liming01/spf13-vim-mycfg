@@ -1,0 +1,429 @@
+{
+  "cmake.configureOnOpen": true,
+  "http.proxySupport": "off",
+  "go.formatTool": "goimports",
+  "sync.gist": "99caa4af83ff584b8897d9b500016253",
+  "go.useLanguageServer": true,
+  "git.ignoreLegacyWarning": true,
+  "extensions.ignoreRecommendations": false,
+  "editor.renderControlCharacters": true,
+  "workbench.sideBar.location": "left",
+  "gitlens.views.repositories.files.layout": "list",
+  "scm.alwaysShowRepositories": true,
+  "editor.formatOnSaveMode": "modifications",
+  "files.autoSave": "onWindowChange",
+  "todo-tree.tree.showScanModeButton": false,
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "editor.tabSize": 8,
+  "editor.cursorStyle": "line",
+  "editor.insertSpaces": false,
+  "editor.lineNumbers": "on",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "go.toolsManagement.autoUpdate": true,
+  // 忽略排除的文件
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/__pycache__": true, // python 生产的cache文件
+    "**/.idea": true
+  },
+  "editor.guides.bracketPairs": "active",
+  "editor.bracketPairColorization.enabled": true,
+  "tabnine.experimentalAutoImports": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "vscode-office.openOutline": true,
+  "gitlens.views.commitDetails.files.layout": "list",
+  "terminal.integrated.scrollback": 10000,
+  "git.openRepositoryInParentFolders": "never",
+  "workbench.colorTheme": "Atom One Light",
+  "gitlens.hovers.annotations.over": "annotation",
+  "editor.inlayHints.enabled": "onUnlessPressed",
+  "github-enterprise.uri": "https://cocopilot.org",
+  "editor.multiDocumentOccurrencesHighlight": true,
+  "editor.fontSize": 14,
+  "workbench.activityBar.location": "top",
+  "gitlens.graph.minimap.enabled": false,
+  "gitlens.ai.experimental.provider": "openai",
+  "gitlens.ai.experimental.openai.model": "gpt-4-1106-preview",
+  "gitlens.graph.layout": "editor",
+  // ----------------- vim config ----------------- 
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.highlightedyank.enable": true,
+  "vim.foldfix": true,
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.surround": true,
+  "vim.sneak": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-e>"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "cursorEnd",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": [
+        "<C-a>"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "cursorHome",
+          "args": []
+        }
+      ]
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // ----------------------------------------------------
+    // Jump to change
+    {
+      "before": [
+        "[",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.editor.previousChange"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.editor.nextChange"
+      ]
+    },
+    // Code actions
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "a"
+      ],
+      "commands": [
+        "editor.action.sourceAction"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "r",
+        "r"
+      ],
+      "commands": [
+        // "extension.runScript"
+        // "autojspro.run"
+        "code-runner.run"
+      ]
+    },
+    // Quick fix
+    {
+      "before": [
+        "<leader>",
+        "q",
+        "f"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    // 重用名变量
+    {
+      "before": [
+        "<leader>",
+        "r",
+        "n"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    // Format 格式化当前文件
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "m"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
+    },
+    // go===================================================
+    {
+      "before": [
+        "g",
+        "d"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "t"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition"
+      ]
+    },
+    // go to  References
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "i"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    // ===================================================
+    // new===================================================
+    // 新建文件夹,在编辑器的区域
+    {
+      "before": [
+        "<Leader>",
+        "n",
+        "d"
+      ],
+      "commands": [
+        "explorer.newFolder"
+      ]
+    },
+    // 新建文件,新建文件的位置取决于,文件资源管理器所在的位置
+    {
+      "before": [
+        "<Leader>",
+        "n",
+        "f"
+      ],
+      "commands": [
+        "explorer.newFile"
+      ]
+    },
+    // =====================================================
+    // open========================================================
+    // 打开文件资源管理器,光标会聚焦到文件资源管理器的窗口
+    {
+      "before": [
+        "<leader>",
+        "o",
+        "e"
+      ],
+      "commands": [
+        "workbench.view.explorer"
+      ]
+    },
+    // 新建一个terminal终端
+    {
+      "before": [
+        "<leader>",
+        "o",
+        "T"
+      ],
+      "commands": [
+        "workbench.action.terminal.new"
+      ]
+    },
+    // ===============================================
+    // 移动==============================================================================
+    // 左右移动标签页------------------------------------------------
+    {
+      "before": [
+        "<leader>",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.navigateLeft"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.navigateRight"
+      ]
+    },
+    // 移动下一个编辑器标签
+    {
+      "before": [
+        "<space>",
+        "J"
+      ],
+      "commands": [
+        "workbench.action.nextEditor"
+      ]
+    },
+    // 移动到上一个编辑器标签
+    {
+      "before": [
+        "<space>",
+        "K"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ]
+    },
+    // 组中上一个标签页
+    {
+      "before": [
+        "H"
+      ],
+      "commands": [
+        "workbench.action.previousEditorInGroup"
+      ]
+    },
+    // 组中下一个标签页
+    {
+      "before": [
+        "L"
+      ],
+      "commands": [
+        "workbench.action.nextEditorInGroup"
+      ]
+    },
+    // 关闭标签组
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.closeEditorsInGroup"
+      ]
+    },
+    // 移动到上一个标签组
+    {
+      "before": [
+        "<leader>",
+        "H"
+      ],
+      "commands": [
+        "workbench.action.moveEditorToPreviousGroup"
+      ]
+    },
+    // 移动到下一个标签组
+    {
+      "before": [
+        "<leader>",
+        "L"
+      ],
+      "commands": [
+        "workbench.action.moveEditorToNextGroup"
+      ]
+    },
+    // 左右移动标签页---------------------------------------------------------------
+    {
+      "before": [
+        "<space>",
+        "'"
+      ],
+      "commands": [
+        "workbench.action.maximizeEditor"
+      ]
+    },
+    // 保存当前文件---------------------------------------------------------------
+    {
+      "before": [
+        "<space>",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.navigateBack"
+      ],
+      "when": "canNavigateBack"
+    },
+    // 定义速览
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.showDefinitionPreviewHover"
+      ]
+    },
+    // workbench.action.closeActiveEditor
+    {
+      "before": [
+        "<space>",
+        "w",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    },
+    //workbench.action.closeAllEditors
+    {
+      "before": [
+        "<space>",
+        "w",
+        "a"
+      ],
+      "commands": [
+        "workbench.action.closeAllEditors"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "q",
+        "f"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    }
+  ],
+  "editor.renderWhitespace": "trailing",
+  "vim.showMarksInGutter": true,
+}
