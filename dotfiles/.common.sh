@@ -206,7 +206,7 @@ virtualbox_env(){
 	#sudo ln -fs /Users/mingli/workspace/repo4hashdata/hashdata /gpdb
 
 	alias wd="cd ~/workspace/repo4hashdata/hashdata/" # working dir
-	alias wdg="cd ~/workspace/repo4hashdata/hdw-agent" # work dir for golang code
+	alias wdg="cd ~/workspace/repo4hashdata/catalog" # work dir for golang code
 	alias wda="cd ~/workspace/repo4hashdata/hashdata/vagrant/devel/actions" # work dir for golang code
 
 	export WDS="${HOME}/workspace/repo4hashdata/hashdata/vagrant/devel"

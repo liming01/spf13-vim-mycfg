@@ -23,7 +23,7 @@ for dir in $(ls -1ad $SCRIPT_PATH/dotfiles/.* | tail -n +3) ; do ln -sf $dir ~/;
 
 # config for lazygit
 mkdir -p $HOME/Library/Application\ Support/lazygit/
-ln -sf $SCRIPT_PATH/dotfiles/config.yml $HOME/Library/Application\ Support/lazygit/
+ln -sf $SCRIPT_PATH/dotfiles/lazygit/config.yml $HOME/Library/Application\ Support/lazygit/
 
 # config for oh-my-zsh
 mkdir -p $HOME/.oh-my-zsh/custom/themes
@@ -48,6 +48,7 @@ ln -sf $SCRIPT_PATH/.vimrc.local ~/
 ln -sf $SCRIPT_PATH/.vimrc.common ~/
 ln -sf $SCRIPT_PATH/.vimrc.simple ~/
 ln -sf $SCRIPT_PATH/.ycm_extra_conf.py ~/
+ln -sf $SCRIPT_PATH/.ideavimrc ~/
 
 # change default vimrc to .vimrc.simple
 ln -sf $SCRIPT_PATH/.vimrc.simple ~/.vimrc

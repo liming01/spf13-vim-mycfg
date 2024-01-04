@@ -255,8 +255,8 @@
     {
       "before": [
         "<leader>",
-        "o",
-        "T"
+        "n",
+        "t"
       ],
       "commands": [
         "workbench.action.terminal.new"
@@ -362,26 +362,6 @@
         "workbench.action.maximizeEditor"
       ]
     },
-    // 保存当前文件---------------------------------------------------------------
-    {
-      "before": [
-        "<space>",
-        "s"
-      ],
-      "commands": [
-        "workbench.action.files.save"
-      ]
-    },
-    {
-      "before": [
-        "g",
-        "b"
-      ],
-      "commands": [
-        "workbench.action.navigateBack"
-      ],
-      "when": "canNavigateBack"
-    },
     // 定义速览
     {
       "before": [
@@ -389,28 +369,6 @@
       ],
       "commands": [
         "editor.action.showDefinitionPreviewHover"
-      ]
-    },
-    // workbench.action.closeActiveEditor
-    {
-      "before": [
-        "<space>",
-        "w",
-        "c"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
-    },
-    //workbench.action.closeAllEditors
-    {
-      "before": [
-        "<space>",
-        "w",
-        "a"
-      ],
-      "commands": [
-        "workbench.action.closeAllEditors"
       ]
     },
     {
