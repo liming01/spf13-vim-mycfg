@@ -61,7 +61,7 @@
   "gitlens.ai.experimental.provider": "openai",
   "gitlens.ai.experimental.openai.model": "gpt-4-1106-preview",
   "gitlens.graph.layout": "editor",
-  // ----------------- vim config ----------------- 
+  // ----------------- vim config -----------------
   "vim.leader": "<space>",
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
@@ -120,6 +120,25 @@
         "workbench.action.editor.nextChange"
       ]
     },
+    // Need to install extension: Go to Next/Previous Member
+    {
+      "before": [
+        "[",
+        "m"
+      ],
+      "commands": [
+        "gotoNextPreviousMember.previousMember"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "m"
+      ],
+      "commands": [
+        "gotoNextPreviousMember.nextMember"
+      ]
+    },
     // Code actions
     {
       "before": [
@@ -133,7 +152,7 @@
     },
     {
       "before": [
-        "<space>",
+        "<leader>",
         "r",
         "r"
       ],
@@ -189,13 +208,43 @@
     {
       "before": [
         "g",
+        "D"
+      ],
+      "commands": [
+        "editor.action.goToDeclaration"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "p",
+        "d"
+      ],
+      "commands": [
+        "editor.action.peekDefinition"
+      ]
+    },
+    // go to type
+    {
+      "before": [
+        "g",
         "t"
       ],
       "commands": [
         "editor.action.goToTypeDefinition"
       ]
     },
-    // go to  References
+    {
+      "before": [
+        "g",
+        "p",
+        "t"
+      ],
+      "commands": [
+        "editor.action.peekTypeDefinition"
+      ]
+    },
+    // go to References
     {
       "before": [
         "g",
@@ -208,11 +257,76 @@
     {
       "before": [
         "g",
+        "p",
+        "r"
+      ],
+      "commands": [
+        "editor.action.referenceSearch.trigger"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "r"
+      ],
+      "commands": [
+        "references-view.findReferences"
+      ],
+      "when": "editorHasReferenceProvider"
+    },
+    // go to impl
+    {
+      "before": [
+        "g",
         "i"
       ],
       "commands": [
         "editor.action.goToImplementation"
       ]
+    },
+    {
+      "before": [
+        "g",
+        "p",
+        "i"
+      ],
+      "commands": [
+        "editor.action.peekImplementation"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "i"
+      ],
+      "commands": [
+        "references-view.findImplementations"
+      ],
+      "when": "editorHasImplementationProvider"
+    },
+    // go to call hierarchy
+    {
+      "before": [
+        "g",
+        "c"
+      ],
+      "commands": [
+        "editor.showCallHierarchy"
+      ],
+      "when": "editorHasCallHierarchyProvider && editorTextFocus && !inReferenceSearchEditor"
+    },
+    {
+      "before": [
+        "<leader>",
+        "h",
+        "c"
+      ],
+      "commands": [
+        "references-view.showCallHierarchy"
+      ],
+      "when": "editorHasCallHierarchyProvider && editorTextFocus && !inReferenceSearchEditor"
     },
     // ===================================================
     // new===================================================
@@ -244,7 +358,6 @@
     {
       "before": [
         "<leader>",
-        "o",
         "e"
       ],
       "commands": [
@@ -263,8 +376,43 @@
       ]
     },
     // ===============================================
-    // 移动==============================================================================
-    // 左右移动标签页------------------------------------------------
+    // 移动
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "after": [
+        "<C-w>",
+        "h"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "<C-w>",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "<C-w>",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "after": [
+        "<C-w>",
+        "l"
+      ]
+    },
     {
       "before": [
         "<leader>",
@@ -277,92 +425,41 @@
     {
       "before": [
         "<leader>",
+        "j"
+      ],
+      "commands": [
+        "workbench.action.navigateDown"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "k"
+      ],
+      "commands": [
+        "workbench.action.navigateUp"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
         "l"
       ],
       "commands": [
         "workbench.action.navigateRight"
       ]
     },
-    // 移动下一个编辑器标签
-    {
-      "before": [
-        "<space>",
-        "J"
-      ],
-      "commands": [
-        "workbench.action.nextEditor"
-      ]
-    },
-    // 移动到上一个编辑器标签
-    {
-      "before": [
-        "<space>",
-        "K"
-      ],
-      "commands": [
-        "workbench.action.previousEditor"
-      ]
-    },
-    // 组中上一个标签页
-    {
-      "before": [
-        "H"
-      ],
-      "commands": [
-        "workbench.action.previousEditorInGroup"
-      ]
-    },
-    // 组中下一个标签页
-    {
-      "before": [
-        "L"
-      ],
-      "commands": [
-        "workbench.action.nextEditorInGroup"
-      ]
-    },
-    // 关闭标签组
+    // ---------------------------------------------------------------
     {
       "before": [
         "<leader>",
-        "g",
-        "c"
-      ],
-      "commands": [
-        "workbench.action.closeEditorsInGroup"
-      ]
-    },
-    // 移动到上一个标签组
-    {
-      "before": [
-        "<leader>",
-        "H"
-      ],
-      "commands": [
-        "workbench.action.moveEditorToPreviousGroup"
-      ]
-    },
-    // 移动到下一个标签组
-    {
-      "before": [
-        "<leader>",
-        "L"
-      ],
-      "commands": [
-        "workbench.action.moveEditorToNextGroup"
-      ]
-    },
-    // 左右移动标签页---------------------------------------------------------------
-    {
-      "before": [
-        "<space>",
         "'"
       ],
       "commands": [
         "workbench.action.maximizeEditor"
       ]
     },
-    // 定义速览
+    // 定义速览, 默认是：gh, 但是没有focus Hover
     {
       "before": [
         "K"
@@ -371,9 +468,10 @@
         "editor.action.showDefinitionPreviewHover"
       ]
     },
+    //默认是: gq
     {
       "before": [
-        "<space>",
+        "<leader>",
         "q",
         "f"
       ],
