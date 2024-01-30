@@ -224,11 +224,11 @@
         "editor.action.peekDefinition"
       ]
     },
-    // go to type
+    // [g]o to t[y]pe
     {
       "before": [
         "g",
-        "t"
+        "y"
       ],
       "commands": [
         "editor.action.goToTypeDefinition"
@@ -238,7 +238,7 @@
       "before": [
         "g",
         "p",
-        "t"
+        "y"
       ],
       "commands": [
         "editor.action.peekTypeDefinition"
@@ -482,4 +482,5 @@
   ],
   "editor.renderWhitespace": "trailing",
   "vim.showMarksInGutter": true,
+  "redhat.telemetry.enabled": false,
 }

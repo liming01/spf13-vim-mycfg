@@ -1,4 +1,9 @@
 " From https://github.com/JetBrains/ideavim/discussions/303
+" Q: How to find action name?
+" A:
+" 1) find `IdeaVim: track action Ids` in "Search everywhere" (double shift), then
+" and trigger the action with IDE keymap, it will echo in the hint windows.
+" 2) add extra keymap, and find it in the config
 
 " vim settings
 set scrolloff=5
@@ -59,7 +64,8 @@ nmap gT <Action>(TextSearchAction)
 
 nmap go <Action>(GotoSuperMethod)
 nmap gd <Action>(GotoDeclaration)
-nmap gD <Action>(GotoTypeDeclaration)
+" [g]o to t[y]pe
+nmap gy <Action>(GotoTypeDeclaration)
 nmap gi <Action>(GotoImplementation)
 nmap gI <Action>(QuickImplementations)
 nmap gn <Action>(ShowNavBar)
