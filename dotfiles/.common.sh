@@ -61,6 +61,10 @@ export EDITOR=vim
 #(which ccat > /dev/null 2>&1) && alias cat="ccat"
 alias tiga="tig --all"
 alias lg="lazygit"
+# alias to use difft for git command
+alias gdt="GIT_EXTERNAL_DIFF=difft git diff"
+alias gsht="GIT_EXTERNAL_DIFF=difft git show --ext-diff"
+alias glgt="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
 # setting for lazydocker: use `docker context ls` to get the default value: colima docker
 export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
 

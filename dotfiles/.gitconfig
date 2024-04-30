@@ -21,7 +21,7 @@
 	# follow = true
 [diff]
 	tool = bc3
-	external = difft
+	#external = difft
 	algorithm = histogram
 [merge]
 	tool = bc3

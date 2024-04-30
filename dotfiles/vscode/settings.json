@@ -480,7 +480,11 @@
       ]
     }
   ],
-  "editor.renderWhitespace": "trailing",
+  "editor.renderWhitespace": "all",
   "vim.showMarksInGutter": true,
   "redhat.telemetry.enabled": false,
+  "gitlens.views.commits.files.layout": "list",
+  "gitProjectManager.baseProjectsFolders": [
+    "~/workspace"
+  ],
 }

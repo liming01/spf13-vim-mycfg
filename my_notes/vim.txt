@@ -41,7 +41,7 @@ https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
 - axel                : 多线程下载工具，下载文件时可以替代curl、wget。
 - ccache              : 高速C/C++编译缓存工具，反复编译内核非常有用。
 - ccat                : 高亮语法显示的cat。 => bat 支持的语言多, rust写的
-- cloc                : 代码统计工具，能够统计代码的空行数、注释行、各种编程语言。=> rust写的tokei
+- cloc                : 代码统计工具，能够统计代码的空行数、注释行、各种编程语言。=> rust写的tokei, go写的scc （引入Complexity表示：程序分支数或者环路个数，用于评估软件复杂度。）。
 - croc                : 跨平台的命令，能够轻松、安全地传输文件，内置一个公共中继服务器，可以实现内网穿透，也支持自建中继服务器。
 - delta               : 包括了下面两个功能： A)diff-so-fancy: 显示字符串级别的差异 B)icdiff: 分屏显示 diff。但是风格比较不清楚。
 - diffr/riff          : rust写的, 不是行比较，而是针对差异块比较。但是风格比较乱。
@@ -51,6 +51,7 @@ https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
 - fzf                 : 命令行下模糊搜索工具，能够交互式智能搜索并选取文件或者内容，配合终端ctrl-r历史命令搜索简直完美。
 - glances             : 更强大的 htop / top 代替者
 - htop                : 提供更美观、更方便的进程监控工具，替代top命令。vtop, bottom
+- inlyne              : markdown viewer
 - jq                  : jason query, 类似的还有yaml文件的：yq
 - lnav                : 过滤大日志
 - mc                  : 内容浏览/预览
