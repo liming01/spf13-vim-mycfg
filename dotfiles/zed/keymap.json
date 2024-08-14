@@ -1,18 +1,18 @@
 // default vim keymap: https://zed.dev/ref/vim.json
 [
   {
-      "context": "Editor && vim_mode == normal && (vim_operator == none || vim_operator == n) && !VimWaiting",
-      "bindings": {
-        // put key-bindings here if you want them to work only in normal mode
-        "g d": "editor::GoToDefinition",
-        "g p d": "editor::GoToDefinitionSplit",
-        //[g]o to t[y]pe
-        "g y": "editor::GoToTypeDefinition",
-        "g p y": "editor::GoToTypeDefinitionSplit",
-        "g r": "editor::FindAllReferences",
-        "shift-k": "editor::Hover",
-        "[ d": "editor::GoToPrevDiagnostic",
-        "] d": "editor::GoToDiagnostic"
-      }
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      "g d": "editor::GoToDefinition",
+      "g p d": "editor::GoToDefinitionSplit",
+      //[g]o to t[y]pe
+      "g y": "editor::GoToTypeDefinition",
+      "g p y": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      //"shift-k": "editor::Hover",
+      "[ d": "editor::GoToPrevDiagnostic",
+      "] d": "editor::GoToDiagnostic"
     }
+  }
 ]

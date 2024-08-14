@@ -101,6 +101,24 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     // ----------------------------------------------------
+	// not work occasionally for moving cursor to previous or next position (ctrl + i / o)
+	// workaround: override the keybindings to use VSCodes own going forward/backward
+    {
+      "before": [
+        "<C-o>"
+      ],
+      "commands": [
+        "workbench.action.navigateBack"
+      ]
+    },
+    {
+      "before": [
+        "<C-i>"
+      ],
+      "commands": [
+        "workbench.action.navigateForward"
+      ]
+    },
     // Jump to change
     {
       "before": [
@@ -222,6 +240,16 @@
       ],
       "commands": [
         "editor.action.peekDefinition"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "v",
+        "d"
+      ],
+      "commands": [
+        "editor.action.revealDefinitionAside"
       ]
     },
     // [g]o to t[y]pe

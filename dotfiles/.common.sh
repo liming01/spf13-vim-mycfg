@@ -57,6 +57,7 @@ alias nvim="nvim -u ~/.vimrc.complex"
 alias mvim="mvim -u ~/.vimrc.complex"
 alias lvim="${HOME}/.local/bin/lvim"
 alias neovide="/Applications/neovide.app/Contents/MacOS/neovide --neovim-bin $HOME/.local/bin/lvim"
+#alias zedp='http_proxy="socks5://127.0.0.1:8016/"'\ 'https_proxy="socks5://127.0.0.1:8016/" zed'
 export EDITOR=vim
 #(which ccat > /dev/null 2>&1) && alias cat="ccat"
 alias tiga="tig --all"

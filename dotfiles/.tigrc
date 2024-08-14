@@ -109,6 +109,10 @@ set main-view-author = abbreviated
 set ignore-case = smart-case
 set tab-size = 4
 
+#set mouse = true
+#set mouse-scroll = 5
+#set mouse-wheel-cursor = true
+
 # set diff format highlight, firstly install:
 # > cp /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
 set diff-highlight = true
