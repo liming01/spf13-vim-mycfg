@@ -1,0 +1,8 @@
+# Global config file at:
+#
+# > MacOS: $HOME/Library/Application\ Support/lazydocker/config.yml
+# > Linux: $HOME/.config/lazydocker/config.yml
+# > Windows: %LOCALAPPDATA%\lazydocker\config.yml or %APPDATA%\lazydocker\config.yml
+#
+gui:
+  scrollHeight: 15

@@ -41,7 +41,7 @@
     "**/Thumbs.db": true,
     "**/__pycache__": true, // python 生产的cache文件
     "**/.idea": true
-  },
+},
   "editor.guides.bracketPairs": "active",
   "editor.bracketPairColorization.enabled": true,
   "tabnine.experimentalAutoImports": true,
@@ -50,7 +50,6 @@
   "gitlens.views.commitDetails.files.layout": "list",
   "terminal.integrated.scrollback": 10000,
   "git.openRepositoryInParentFolders": "never",
-  "workbench.colorTheme": "Atom One Light",
   "gitlens.hovers.annotations.over": "annotation",
   "editor.inlayHints.enabled": "onUnlessPressed",
   "github-enterprise.uri": "https://cocopilot.org",
@@ -60,7 +59,7 @@
   "gitlens.graph.minimap.enabled": false,
   "gitlens.ai.experimental.provider": "openai",
   "gitlens.ai.experimental.openai.model": "gpt-4-1106-preview",
-  "gitlens.graph.layout": "editor",
+"gitlens.graph.layout": "editor",
   // ----------------- vim config -----------------
   "vim.leader": "<space>",
   "vim.useSystemClipboard": true,
@@ -307,7 +306,7 @@
     {
       "before": [
         "g",
-        "i"
+        "I"
       ],
       "commands": [
         "editor.action.goToImplementation"
@@ -317,7 +316,7 @@
       "before": [
         "g",
         "p",
-        "i"
+        "I"
       ],
       "commands": [
         "editor.action.peekImplementation"
@@ -327,7 +326,7 @@
       "before": [
         "<leader>",
         "g",
-        "i"
+        "I"
       ],
       "commands": [
         "references-view.findImplementations"
@@ -515,4 +514,10 @@
   "gitProjectManager.baseProjectsFolders": [
     "~/workspace"
   ],
+  "vscode-office.editorTheme": "Auto",
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.editorAssociations": {
+    "{git,gitlens}:/**/*.{md,csv,svg}": "default"
+  },
+  "workbench.colorTheme": "Atom One Light",
 }

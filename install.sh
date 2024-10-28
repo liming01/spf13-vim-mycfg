@@ -24,6 +24,9 @@ for dir in $(ls -1ad $SCRIPT_PATH/dotfiles/.* | tail -n +3) ; do ln -sf $dir ~/;
 # config for lazygit
 mkdir -p $HOME/Library/Application\ Support/lazygit/
 ln -sf $SCRIPT_PATH/dotfiles/lazygit/config.yml $HOME/Library/Application\ Support/lazygit/
+# config for lazydocker
+mkdir -p $HOME/Library/Application\ Support/lazydocker/
+ln -sf $SCRIPT_PATH/dotfiles/lazydocker/config.yml $HOME/Library/Application\ Support/lazydocker/
 
 # config for oh-my-zsh
 mkdir -p $HOME/.oh-my-zsh/custom/themes

@@ -3,6 +3,12 @@
 # Need to run:
 #     ln -fs config.yml $HOME/Library/Application\ Support/lazygit/
 # 
+# Global config file at:
+#
+# > MacOS: $HOME/Library/Application\ Support/lazygit/config.yml
+# > Linux: $HOME/.config/lazygit/config.yml
+# > Windows: %LOCALAPPDATA%\lazygit\config.yml or %APPDATA%\lazygit\config.yml
+# 
 # Below setting ref to:
 #     https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium (Jun 29, 2022)
 #

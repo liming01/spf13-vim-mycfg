@@ -60,8 +60,7 @@ bind generic @k :?^@@
 bind generic @- :toggle diff-context -1
 bind generic @+ :toggle diff-context +1
 
-bind status  u  none
-bind stage   u  none
+bind generic u none
 bind generic uu status-update
 bind generic ur status-revert
 bind generic um status-merge
@@ -164,6 +163,8 @@ bind status <C-A> !@git add -N %(file)
 bind status <C-S> !?git stash save --keep-index "%(prompt Stash save indexed changes | Enter stash message: )"
 # Delete a file: <C-D> is used as half page down
 bind status D !@?rm %(file)
+# Restore a file at worktree
+bind status <C-R> !@?git restore --worktree %(file)
 
 # Create a new branch, not bind n/N key because it conflict with find next match key
 bind refs <C-A> !@git branch "%(prompt Create a new branch | Enter branch name: )"

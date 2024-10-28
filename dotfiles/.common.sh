@@ -57,7 +57,6 @@ alias nvim="nvim -u ~/.vimrc.complex"
 alias mvim="mvim -u ~/.vimrc.complex"
 alias lvim="${HOME}/.local/bin/lvim"
 alias neovide="/Applications/neovide.app/Contents/MacOS/neovide --neovim-bin $HOME/.local/bin/lvim"
-#alias zedp='http_proxy="socks5://127.0.0.1:8016/"'\ 'https_proxy="socks5://127.0.0.1:8016/" zed'
 export EDITOR=vim
 #(which ccat > /dev/null 2>&1) && alias cat="ccat"
 alias tiga="tig --all"
@@ -68,6 +67,13 @@ alias gsht="GIT_EXTERNAL_DIFF=difft git show --ext-diff"
 alias glgt="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
 # setting for lazydocker: use `docker context ls` to get the default value: colima docker
 export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
+
+# proxy setting
+alias proxy_set="export https_proxy=http://10.13.11.1:1080; export http_proxy=http://10.13.11.1:1080;"
+alias proxy_set2="export https_proxy=socks5://127.0.0.1:8016/; export http_proxy=socks5://127.0.0.1:8016/;"
+alias proxy_unset="unset https_proxy; unset http_proxy"
+alias zedp='http_proxy="socks5://127.0.0.1:8016/"'\ 'https_proxy="socks5://127.0.0.1:8016/" zed'
+alias codep='http_proxy="socks5://127.0.0.1:8016/"'\ 'https_proxy="socks5://127.0.0.1:8016/" code'
 
 hawq_env(){
 	[ -f ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh ] && source ~/workspace/hawq2/hawq-db-devel/greenplum_path.sh
