@@ -23,18 +23,14 @@ git:
     colorArg: always
     #pager: delta --paging=never --24-bit-color=never
     pager: diff-highlight
-
 #git:
 #  paging:
 #    externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off
-
 confirmOnQuit: true
 notARepository: quit
 promptToReturnFromSubprocess: false # display confirmation when subprocess terminates
-
 gui:
   scrollHeight: 15 # how many lines you scroll by
-
 #-------------------- below are custom key --------------------
 # Extract diff into index
 # This requires some explanation: say you've got a PR that has merged in master
@@ -44,11 +40,10 @@ gui:
 # of the head of the master branch.
 customCommands:
   - key: 'D'
-    command: git diff {{.SelectedLocalBranch.Name}} > /tmp/lazygit.patch && git reset --hard {{.SelectedLocalBranch.Name}} && git apply /tmp/lazygit.patch 
+    command: git diff {{.SelectedLocalBranch.Name}} > /tmp/lazygit.patch && git reset --hard {{.SelectedLocalBranch.Name}} && git apply /tmp/lazygit.patch
     context: localBranches
     description: Extract diff into index
-
-# Amend the author of last commit
+    # Amend the author of last commit
   - key: '<c-a>'
     description: 'amend the author of last commit'
     command: 'git commit --amend --author="{{index .PromptResponses 0}} <{{index .PromptResponses 1}}>"'
@@ -59,52 +54,35 @@ customCommands:
         initialValue: ''
       - type: 'input'
         title: 'Email Address'
-    subprocess: yes
-
-#-------------------- tig --------------------
-# Blame via tig
   - key: b
     command: tig blame -- {{.SelectedFile.Name}}
     context: files
     description: blame file at worktree
-    subprocess: yes
   - key: b
     command: tig blame {{.SelectedSubCommit.Sha}} -- {{.SelectedCommitFile.Name}}
     context: commitFiles
     description: blame file at revision
-    subprocess: yes
   - key: B
     command: tig blame -- {{.SelectedCommitFile.Name}}
     context: commitFiles
     description: blame file at worktree
-    subprocess: yes
-
-# Browse files at revision via tig
   - key: t
     command: tig show {{.SelectedSubCommit.Sha}}
     context: subCommits
     description: tig commit (`t` again to browse files at revision)
-    subprocess: yes
   - key: t
     command: tig show {{.SelectedLocalBranch.Name}}
     context: localBranches
     description: tig branch (`t` again to browse files at revision)
-    subprocess: yes
   - key: t
     command: tig show {{.SelectedRemoteBranch.RemoteName}}/{{.SelectedRemoteBranch.Name}}
     context: remoteBranches
     description: tig branch (`t` again to browse files at revision)
-    subprocess: yes
-
-# File history via tig
   - key: t
     command: tig {{.SelectedSubCommit.Sha}} -- {{.SelectedCommitFile.Name}}
     context: commitFiles
     description: tig file (history of commits affecting file)
-    subprocess: yes
   - key: t
     command: tig -- {{.SelectedFile.Name}}
     context: files
     description: tig file (history of commits affecting file)
-    subprocess: yes
-

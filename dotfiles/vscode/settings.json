@@ -517,7 +517,8 @@
   "vscode-office.editorTheme": "Auto",
   "vsicons.dontShowNewVersionMessage": true,
   "workbench.editorAssociations": {
-    "{git,gitlens}:/**/*.{md,csv,svg}": "default"
+    "*.copilotmd": "vscode.markdown.preview.editor",
+    "{hexdiff}:/**/*.*": "hexEditor.hexedit"
   },
   "workbench.colorTheme": "Atom One Light",
 }

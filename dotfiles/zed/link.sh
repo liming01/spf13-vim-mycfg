@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Fetch absolute path to this script and current directory
-pushd . >/dev/null
+CURRENT_PATH="$(pwd)"
 SCRIPT_PATH="${BASH_SOURCE[0]}"
 while ([ -h "${SCRIPT_PATH}" ]); do
   cd "$(dirname "${SCRIPT_PATH}")"
@@ -9,7 +9,7 @@ while ([ -h "${SCRIPT_PATH}" ]); do
 done
 cd "$(dirname "${SCRIPT_PATH}")" >/dev/null
 SCRIPT_PATH="$(pwd)"
-popd >/dev/null
+cd $CURRENT_PATH
 
 # link config files
 DEST_DIR=$HOME/.config/zed/

@@ -21,12 +21,23 @@ CURRENT_DIR=`pwd`
 # ln -sf $SCRIPT_PATH/dotfiles/.* ~/
 for dir in $(ls -1ad $SCRIPT_PATH/dotfiles/.* | tail -n +3) ; do ln -sf $dir ~/; done
 
-# config for lazygit
-mkdir -p $HOME/Library/Application\ Support/lazygit/
-ln -sf $SCRIPT_PATH/dotfiles/lazygit/config.yml $HOME/Library/Application\ Support/lazygit/
-# config for lazydocker
-mkdir -p $HOME/Library/Application\ Support/lazydocker/
-ln -sf $SCRIPT_PATH/dotfiles/lazydocker/config.yml $HOME/Library/Application\ Support/lazydocker/
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # macOS specific commands
+  # config for lazygit
+  mkdir -p $HOME/Library/Application\ Support/lazygit/
+  ln -sf $SCRIPT_PATH/dotfiles/lazygit/config.yml $HOME/Library/Application\ Support/lazygit/
+  # config for lazydocker
+  mkdir -p $HOME/Library/Application\ Support/lazydocker/
+  ln -sf $SCRIPT_PATH/dotfiles/lazydocker/config.yml $HOME/Library/Application\ Support/lazydocker/
+else
+  # config for lazygit
+  mkdir -p $HOME/.config/jesseduffield/lazygit/
+  ln -sf $SCRIPT_PATH/dotfiles/lazygit/config.yml $HOME/.config/jesseduffield/lazygit/
+  # config for lazydocker
+  mkdir -p $HOME/.config/jesseduffield/lazydocker/
+  ln -sf $SCRIPT_PATH/dotfiles/lazydocker/config.yml $HOME/.config/jesseduffield/lazydocker/
+fi
+
 
 # config for oh-my-zsh
 mkdir -p $HOME/.oh-my-zsh/custom/themes

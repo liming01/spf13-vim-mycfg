@@ -12,6 +12,7 @@ if [ ! -n "${ZSH_NAME}" ]; then
 	export CLICOLOR=1
 	[ -f /usr/local/etc/bash_completion.d/git-completion.bash ] && source /usr/local/etc/bash_completion.d/git-completion.bash
 	[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+	eval "$(zoxide init bash --cmd z)"
 	if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
 		test -e "${HOME}/.iterm2_shell_integration.bash" || curl -L https://iterm2.com/shell_integration/bash -o ~/.iterm2_shell_integration.bash
 		test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
@@ -19,6 +20,7 @@ if [ ! -n "${ZSH_NAME}" ]; then
 else
 	#echo "In Zsh"
 	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+	eval "$(zoxide init zsh --cmd z)"
 	if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
 		test -e "${HOME}/.iterm2_shell_integration.zsh" || curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
 		test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -341,3 +343,4 @@ vim-default-simple(){
 }
 
 _main "$@"
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles

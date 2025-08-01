@@ -13,15 +13,13 @@ cd $CURRENT_PATH
 
 # link config files
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  DEST_DIR=$HOME/Library/Application\ Support/Code/User/
+  DEST_DIR=$HOME/Library/Application\ Support/lazygit/
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  DEST_DIR=$HOME/.config/Code/User/
+  DEST_DIR=$HOME/.config/jesseduffield/lazygit/
 else 
   echo "Unsupported OS type: $OSTYPE"
   exit 1
 fi
 
 mkdir -p "${DEST_DIR}"
-ln -fs ${SCRIPT_PATH}/keybindings.json $DEST_DIR
-ln -fs ${SCRIPT_PATH}/settings.json $DEST_DIR
-
+ln -fs ${SCRIPT_PATH}/config.yml ${DEST_DIR}
