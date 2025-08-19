@@ -48,19 +48,28 @@
         }
       }
     },
-    "lsp": {
-      "typescript-language-server": {
-        "initialization_options": {
-          "preferences": {
-            "includeInlayParameterNameHints": "all",
-            "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
-            "includeInlayFunctionParameterTypeHints": true,
-            "includeInlayVariableTypeHints": true,
-            "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
-            "includeInlayPropertyDeclarationTypeHints": true,
-            "includeInlayFunctionLikeReturnTypeHints": true,
-            "includeInlayEnumMemberValueHints": true
-          }
+    "clangd": {
+      "binary": {
+        "path": "/usr/bin/clangd",
+        "arguments": [
+          //"--config-file=/.clang/configuration.yaml",
+          // set compile_commands.json dir
+          "--background-index",
+          "--compile-commands-dir=./bld/"
+        ]
+      }
+    },
+    "typescript-language-server": {
+      "initialization_options": {
+        "preferences": {
+          "includeInlayParameterNameHints": "all",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+          "includeInlayFunctionParameterTypeHints": true,
+          "includeInlayVariableTypeHints": true,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": true,
+          "includeInlayFunctionLikeReturnTypeHints": true,
+          "includeInlayEnumMemberValueHints": true
         }
       }
     }

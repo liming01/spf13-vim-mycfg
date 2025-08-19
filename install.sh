@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -exo pipefail
+# set -exo pipefail
 
 # Fetch absolute path to this script and current directory
 pushd . > /dev/null

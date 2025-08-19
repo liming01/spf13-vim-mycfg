@@ -287,7 +287,7 @@ function opengit() {
 	  repoName=$1
     fi
 
-	git_web_hosts='github.com|bitbucket.org|code.hashdata.xyz|gitee.com'
+	git_web_hosts='github.com|bitbucket.org|code.hashdata.xyz|gitee.com|gitlab.greatopensource.com'
 	remotes=`git remote -v | grep "$repoName" | grep -Eo "(${git_web_hosts})[:/][^.]+" | head -1 | tr : /`
 
 	if [ -z "$2" ];then

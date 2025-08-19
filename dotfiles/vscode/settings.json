@@ -1,5 +1,6 @@
 {
-  "cmake.configureOnOpen": true,
+  "cmake.configureOnEdit": false,
+  "cmake.configureOnOpen": false,
   "http.proxySupport": "off",
   "go.formatTool": "goimports",
   "sync.gist": "99caa4af83ff584b8897d9b500016253",
@@ -33,9 +34,13 @@
   "go.toolsManagement.autoUpdate": true,
   // 忽略排除的文件
   "files.exclude": {
+    "*.o": true,
+    "**/__pycache__": true,
+    "**/.DS_Store": true,
     "**/.git": true,
-    "**/.svn": true,
     "**/.hg": true,
+    "**/.idea": true,
+    "**/.svn": true,
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
@@ -521,4 +526,8 @@
     "{hexdiff}:/**/*.*": "hexEditor.hexedit"
   },
   "workbench.colorTheme": "Atom One Light",
+  "cmake.showConfigureWithDebuggerNotification": false,
+  "github.copilot.enable": {
+    "*": false
+  },
 }
