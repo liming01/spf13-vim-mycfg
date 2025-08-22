@@ -22,14 +22,8 @@ i=0
 while [ $i -lt $number ]; do
 	port=$((starting_socket + i))
 	rm -rf $current_dir/$port/
-	mkdir -p $current_dir/$port/data/
-
-	echo "initialize mysql data in $current_dir/$port/data"
-	mysqld --initialize --datadir=$current_dir/$port/data
 
 	mkdir -p $current_dir/$port/etc
-	mkdir -p $current_dir/$port/log
-	mkdir -p $current_dir/$port/tmp
 	cat > $current_dir/$port/etc/my.cnf <<EOF
 [mysqld]
 port=$port
@@ -52,12 +46,21 @@ slow-query-log-file=$current_dir/$port/log/mysql_slow.log
 
 lower_case_table_names=1
 #performance_schema=off
+innodb_page_size=64K
 long_query_time=20
 
 [client]
 socket=$current_dir/$port/log/mysqld$port.sock
 port=$port
 EOF
+
+	mkdir -p $current_dir/$port/log
+	mkdir -p $current_dir/$port/tmp
+	mkdir -p $current_dir/$port/data
+	echo "initialize mysql data in $current_dir/$port/data"
+	#mysqld --defaults-file=$current_dir/$port/etc/my.cnf --initialize
+	mysqld --defaults-file=$current_dir/$port/etc/my.cnf --initialize-insecure
+
 
 	install_dir=$HOME/workspace/install/percona
 
