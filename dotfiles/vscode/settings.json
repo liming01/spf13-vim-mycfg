@@ -101,7 +101,7 @@
           "args": []
         }
       ]
-    },
+    }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     // ----------------------------------------------------
@@ -510,6 +510,16 @@
       "commands": [
         "editor.action.quickFix"
       ]
+    },
+    // fix conflict key on linux
+    {
+      "before": [
+        "<C-p>"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ],
+      "when": "isLinux"
     }
   ],
   "editor.renderWhitespace": "all",
@@ -529,5 +539,5 @@
   "cmake.showConfigureWithDebuggerNotification": false,
   "github.copilot.enable": {
     "*": false
-  },
+  }
 }
