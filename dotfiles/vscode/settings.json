@@ -539,5 +539,10 @@
   "cmake.showConfigureWithDebuggerNotification": false,
   "github.copilot.enable": {
     "*": false
-  }
+  },
+  "editor.formatOnSave": true,
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "editor.defaultFormatter": "xaver.clang-format"
 }

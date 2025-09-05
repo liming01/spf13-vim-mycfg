@@ -196,7 +196,9 @@ gp_env() {
 mysql_env(){
 	export DUCKDB_BUILD=Debug	# used to build build pg_duckdb/third_party/duckdb in debug mode
 
-    export MYSQL_PS0="\\d> "
+	#export MYSQL_PS1="(\\u@\\h) [\\d]> "
+    export MYSQL_PS1="\\d> "
+
     export PATH=$HOME/workspace/install/percona/bin:$PATH
     export PATH=/opt/node-v22.2.0-linux-x64/bin/:$PATH # for greatdb-docs dependency
     export LD_LIBRARY_PATH=$HOME/workspace/install/percona/lib:$LD_LIBRARY_PATH
