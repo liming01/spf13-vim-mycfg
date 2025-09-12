@@ -201,23 +201,28 @@ mysql_env(){
 
     export PATH=$HOME/workspace/install/percona/bin:$PATH
     export PATH=/opt/node-v22.2.0-linux-x64/bin/:$PATH # for greatdb-docs dependency
-    export LD_LIBRARY_PATH=$HOME/workspace/install/percona/lib:$LD_LIBRARY_PATH
-	# run mysql generated from host directly on docker
-	 export LD_LIBRARY_PATH=/mnt/host/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH;
+	export PATH=$HOME/workspace/depend/openssl/ssl/bin:$PATH
+    export LD_LIBRARY_PATH=$HOME/workspace/install/percona/lib:$HOME/workspace/depend/openssl/ssl/lib:$LD_LIBRARY_PATH
+	# needed when runing mysql generated from host directly on docker
+	export LD_LIBRARY_PATH=/mnt/host/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH;
+	export LD_LIBRARY_PATH=$HOME/workspace/depend/openssl/ssl/lib:$LD_LIBRARY_PATH
+	## workaround bugs in cluster repo
+	export LD_LIBRARY_PATH=/home/wl/workspace/anker_test/myrocks/bld/lib/crypto_so/encapsulate_libs/:$LD_LIBRARY_PATH
+
 
     alias pm='ps -ef | grep -v grep | grep mysqld'
 
-    alias mstart='$HOME/workspace/install/percona/support-files/mysql.server start --skip-grant-tables --gdb'
+    alias mstart='$HOME/workspace/install/percona/support-files/mysql.server start --skip-grant-tables'
     alias imysql='mysql -u root'
     alias mstop='$HOME/workspace/install/percona/support-files/mysql.server stop'
 
-    alias mstart1='/home/wl/workspace/install/percona/bin/mysqld_safe --defaults-file=/home/wl/workspace/install/n_data/3306/etc/my.cnf --skip-grant-tables --gdb 2>&1 &'
-    alias imysql1='mysql -uroot -p -P3306 -S /home/wl/workspace/install/n_data/3306/log/mysqld3306.sock'
-    alias mstop1=' [ -f /home/wl/workspace/install/n_data/3306/log/mysqld.pid ] && kill $(cat /home/wl/workspace/install/n_data/3306/log/mysqld.pid) && echo MySQL_stopped '
+    alias mstart1='/home/wl/workspace/install/percona/bin/mysqld_safe --defaults-file=/home/wl/workspace/install/mysql_data/n_data/3306/etc/my.cnf --skip-grant-tables 2>&1 &'
+    alias imysql1='mysql -uroot -p -P3306 -S /home/wl/workspace/install/mysql_data/n_data/3306/log/mysqld3306.sock'
+    alias mstop1=' [ -f /home/wl/workspace/install/mysql_data/n_data/3306/log/mysqld.pid ] && kill $(cat /home/wl/workspace/install/mysql_data/n_data/3306/log/mysqld.pid) && echo MySQL_stopped '
 
-    alias mstart2='/home/wl/workspace/install/percona/bin/mysqld_safe --defaults-file=/home/wl/workspace/install/n_data/3307/etc/my.cnf --skip-grant-tables --gdb 2>&1 &'
-    alias imysql2='mysql -uroot -p -P3307 -S /home/wl/workspace/install/n_data/3307/log/mysqld3307.sock'
-    alias mstop2=' [ -f /home/wl/workspace/install/n_data/3307/log/mysqld.pid ] && kill $(cat /home/wl/workspace/install/n_data/3307/log/mysqld.pid) && echo MySQL_stopped '
+    alias mstart2='/home/wl/workspace/install/percona/bin/mysqld_safe --defaults-file=/home/wl/workspace/install/mysql_data/n_data/3307/etc/my.cnf --skip-grant-tables 2>&1 &'
+    alias imysql2='mysql -uroot -p -P3307 -S /home/wl/workspace/install/mysql_data/n_data/3307/log/mysqld3307.sock'
+    alias mstop2=' [ -f /home/wl/workspace/install/mysql_data/n_data/3307/log/mysqld.pid ] && kill $(cat /home/wl/workspace/install/mysql_data/n_data/3307/log/mysqld.pid) && echo MySQL_stopped '
 }
 
 _main() {

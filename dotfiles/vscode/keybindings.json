@@ -68,8 +68,8 @@
 		"when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux"
 	},
 	{
-		"key": "ctrl+meta+n",
-		"command": "workbench.action.files.newUntitledFile",
+		"key": "ctrl+n",
+		"command": "-workbench.action.files.newUntitledFile"
 		"when": "isLinux"
 	}
 ]
