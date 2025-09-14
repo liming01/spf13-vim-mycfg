@@ -69,7 +69,7 @@
 	},
 	{
 		"key": "ctrl+n",
-		"command": "-workbench.action.files.newUntitledFile"
+		"command": "-workbench.action.files.newUntitledFile",
 		"when": "isLinux"
 	}
 ]
