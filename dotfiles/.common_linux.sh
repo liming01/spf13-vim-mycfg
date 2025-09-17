@@ -204,11 +204,8 @@ mysql_env(){
 	export PATH=$HOME/workspace/depend/openssl/ssl/bin:$PATH
     export LD_LIBRARY_PATH=$HOME/workspace/install/percona/lib:$HOME/workspace/depend/openssl/ssl/lib:$LD_LIBRARY_PATH
 	# needed when runing mysql generated from host directly on docker
-	export LD_LIBRARY_PATH=/mnt/host/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH;
+	#export LD_LIBRARY_PATH=/mnt/host/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH;
 	export LD_LIBRARY_PATH=$HOME/workspace/depend/openssl/ssl/lib:$LD_LIBRARY_PATH
-	## workaround bugs in cluster repo
-	export LD_LIBRARY_PATH=/home/wl/workspace/anker_test/myrocks/bld/lib/crypto_so/encapsulate_libs/:$LD_LIBRARY_PATH
-
 
     alias pm='ps -ef | grep -v grep | grep mysqld'
 
