@@ -24,6 +24,22 @@ set smartcase
 set gdefault
 nmap <leader>nh :noh<CR>
 
+" use system clipboard
+if has('macunix')
+    " macOS 专属配置
+    set clipboard=unnamed
+elseif has('unix')
+    " Linux/WSL 专属配置
+    set clipboard=unnamedplus
+    " 检查是否安装 xclip/xsel
+    if system('command -v xclip >/dev/null 2>&1 || echo "missing"') =~ 'missing'
+        echo "Clipboard requires xclip: run 'sudo apt install xclip'"
+    endif
+elseif has('win32') || has('win64')
+    " Windows 专属配置
+    set clipboard=unnamed
+endif
+
 " ideavim settings
 set ideajoin
 set ideamarks
