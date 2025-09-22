@@ -1,75 +1,81 @@
 [
-	//move on the Hover window
-	{
-		"key": "h",
-		"command": "editor.action.scrollLeftHover",
-		"when": "editorHoverFocused"
-	},
-	{
-		"key": "j",
-		"command": "editor.action.scrollDownHover",
-		"when": "editorHoverFocused"
-	},
-	{
-		"key": "k",
-		"command": "editor.action.scrollUpHover",
-		"when": "editorHoverFocused"
-	},
-	{
-		"key": "l",
-		"command": "editor.action.scrollRightHover",
-		"when": "editorHoverFocused"
-	},
-	// file explorer
-	{
-		"key": "space+e",
-		"command": "workbench.view.explorer",
-		"when": "filesExplorerFocus && !inputFocus"
-	},
-	{
-		"key": "a",
-		"command": "explorer.newFile",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-	},
-	{
-		"key": "f",
-		"command": "explorer.newFolder",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-	},
-	{
-		"key": "r",
-		"command": "renameFile",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-	},
-	{
-		"key": "x",
-		"command": "filesExplorer.cut",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-	},
-	{
-		"key": "y",
-		"command": "filesExplorer.copy",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
-	},
-	{
-		"key": "p",
-		"command": "filesExplorer.paste",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
-	},
-	// change copilot editor inline chat key because conflict with vim onl linux
-	{
-		"key": "ctrl+shift+i",
-		"command": "inlineChat.start",
-		"when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux"
-	},
-	{
-		"key": "ctrl+i",
-		"command": "-inlineChat.start",
-		"when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux"
-	},
-	{
-		"key": "ctrl+n",
-		"command": "-workbench.action.files.newUntitledFile",
-		"when": "isLinux"
-	}
+  //move on the Hover window
+  {
+    "key": "h",
+    "command": "editor.action.scrollLeftHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "j",
+    "command": "editor.action.scrollDownHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "k",
+    "command": "editor.action.scrollUpHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "l",
+    "command": "editor.action.scrollRightHover",
+    "when": "editorHoverFocused"
+  },
+  // file explorer
+  {
+    "key": "space+e",
+    "command": "workbench.view.explorer",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "f",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  // change copilot editor inline chat key because conflict with vim onl linux
+  {
+    "key": "ctrl+shift+i",
+    "command": "inlineChat.start",
+    "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "-inlineChat.start",
+    "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput && isLinux"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus"
+  },
+  // disable key mapping
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.files.newUntitledFile",
+    "when": "isLinux"
+  }
 ]

@@ -8,28 +8,33 @@
 // custom settings, run the `open default keymap` command
 // from the command palette or from `Zed` application menu.
 [
-	{
-		"context": "Dock || Terminal || Editor",
-		"bindings": {
-			"ctrl-h": "workspace::ActivatePaneLeft",
-			"ctrl-l": "workspace::ActivatePaneRight",
-			"ctrl-k": "workspace::ActivatePaneUp",
-			"ctrl-j": "workspace::ActivatePaneDown"
-		}
-	},
-	{
-		"context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
-		"bindings": {
-			// put key-bindings here if you want them to work only in normal mode
-			// "g d": "editor::GoToDefinition", "g shift-d": "editor::GoToDeclaration",
-			"g v d": "editor::GoToDefinitionSplit",
-			// [g]o to t[y]pe
-			// "g y": "editor::GoToTypeDefinition", "g shift-i": "editor::GoToImplementation",
-			"g v y": "editor::GoToTypeDefinitionSplit",
-			"g v I": "editor::GoToImplementationSplit",
-			// "g shift-a": "editor::FindAllReferences", "g a": "editor::SelectAllMatches",
-			// "shift-k": "editor::Hover",  // or 'gh'
-			// "[ d": "editor::GoToPrevDiagnostic",	"] d": "editor::GoToDiagnostic"
-		}
-	}
+  {
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-shift-c": "editor::Copy"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      // "g d": "editor::GoToDefinition", "g shift-d": "editor::GoToDeclaration",
+      "g v d": "editor::GoToDefinitionSplit",
+      // [g]o to t[y]pe
+      // "g y": "editor::GoToTypeDefinition", "g shift-i": "editor::GoToImplementation",
+      "g v y": "editor::GoToTypeDefinitionSplit",
+      "g v I": "editor::GoToImplementationSplit"
+      // "g shift-a": "editor::FindAllReferences", "g a": "editor::SelectAllMatches",
+      // "shift-k": "editor::Hover",  // or 'gh'
+      // "[ d": "editor::GoToPrevDiagnostic",	"] d": "editor::GoToDiagnostic"
+    }
+  }
 ]

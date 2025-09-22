@@ -12,14 +12,19 @@ export QT_IM_MODULE="fcitx"
 (which fzf > /dev/null 2>&1) && eval "$(fzf --bash)"
 (which zoxide > /dev/null 2>&1) && eval "$(zoxide init bash)"
 # alias for tmux to firstly attach, if no session, then create new one
-alias tmuxa="tmux -CC new -A -s main"
+(which git > /dev/null 2>&1) && alias gco="git checkout" && alias gb="git branch" && alias gbr="git branch -r"
+(which tmux > /dev/null 2>&1) && alias tmuxa="tmux -CC new -A -s main"
 
 # echo git branch name in PS
 parse_git_branch() {
-	git branch --show-current 2>/dev/null
+    (which git > /dev/null 2>&1) && git branch --show-current 2>/dev/null
 }
-export PS1="\u@\h \[\033[32m\]\w\[\033[33m\](\$(parse_git_branch))\[\033[00m\] $ "
-#export PS1='\[\033[0;36m\][\u@\h:\W]\$\[\033[0m\] '
+if command -v git &> /dev/null; then
+  export PS1="\u@\h \[\033[32m\]\w\[\033[33m\](\$(parse_git_branch))\[\033[00m\] $ "
+else
+  export PS1="\u@\h \[\033[32m\]\w\[\033[00m\] $ "
+fi
+
 export CLICOLOR=1
 
 # config for flame graph and xbpf+bcc or perf
@@ -202,7 +207,7 @@ mysql_env(){
     export PATH=$HOME/workspace/install/percona/bin:$PATH
     export PATH=/opt/node-v22.2.0-linux-x64/bin/:$PATH # for greatdb-docs dependency
 	export PATH=$HOME/workspace/depend/openssl/ssl/bin:$PATH
-    export LD_LIBRARY_PATH=$HOME/workspace/install/percona/lib:$HOME/workspace/depend/openssl/ssl/lib:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=$HOME/workspace/install/percona/lib:$LD_LIBRARY_PATH
 	# needed when runing mysql generated from host directly on docker
 	#export LD_LIBRARY_PATH=/mnt/host/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH;
 	export LD_LIBRARY_PATH=$HOME/workspace/depend/openssl/ssl/lib:$LD_LIBRARY_PATH
