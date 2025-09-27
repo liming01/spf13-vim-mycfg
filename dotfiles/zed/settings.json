@@ -7,13 +7,100 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "terminal": {
-    "dock": "right"
+  "icon_theme": "Material Icon Theme",
+  "ssh_connections": [
+    {
+      "host": "wl-mingli",
+      "username": "wl",
+      "projects": [
+        {
+          "paths": ["/home/wl/workspace/anker_test/myrocks/./"]
+        }
+      ]
+    },
+    {
+      "host": "wl-mingli",
+      "username": "wl",
+      "projects": [
+        {
+          "paths": ["/home/wl/workspace/percona-server"]
+        }
+      ]
+    }
+  ],
+  "theme": {
+    "mode": "system", // system, light, dark
+    "light": "One Light",
+    "dark": "One Dark - Darkened"
   },
-  "format_on_save": "off",
+  "auto_install_extensions": {
+    "material-icon-theme": true,
+    "one-dark-darkened": true
+  },
+  "auto_update": true, // 自动更新
+  // 界面字体
+  "ui_font_size": 16,
+  "base_keymap": "VSCode",
+  "buffer_font_size": 15,
+  "vim_mode": true,
+  "terminal": {
+    "env": {
+      // 设置终端的环境变量
+      "key": "value",
+      "EDITOR": "zed --wait"
+    },
+    "shell": "system" // 使用系统默认的shell，通常是 /etc/passwd 文件
+  },
+  "format_on_save": "on",
+  "autosave": "on_focus_change", // 自动保存
+  "restore_on_startup": "last_session",
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+    "show_diagnostics": "errors"
+  },
+  "git": {
+    "git_gutter": "tracked_files", // 文件左边显示 git gutter，修改黄色，新增绿色，删除红色等
+    "inline_blame": {
+      // 在聚焦行显示 git blame
+      "enabled": false, // 是否显示
+      "delay_ms": 2000, // 延迟显示
+      "show_commit_summary": true // 显示摘要
+    }
+  },
+  "preview_tabs": {
+    "enabled": true, // 文件预览，双击正式打开
+    "enable_preview_from_file_finder": true, // 代码查找器中打开
+    "enable_preview_from_code_navigation": true // 代码导航时打开
+  },
+  "telemetry": {
+    // 遥测
+    "diagnostics": false, // 诊断
+    "metrics": false // 指标
+  },
+  "project_panel": {
+    "dock": "left", // 文件目录位置
+    "git_status": true, // git 状态
+    "indent_size": 18, // 缩进尺寸，像素为单位
+    "indent_guides": {
+      // 缩进线
+      "show": "always"
+    },
+    "scrollbar": {
+      "show": "auto" // 滚动条，
+    }
+  },
+  "outline_panel": {
+    "button": true // 是否显示按钮
+  },
   "collaboration_panel": {
     "dock": "right"
   },
+  "unnecessary_code_fade": 0.7, // 淡化未使用的代码
+  "current_line_highlight": "all", // 当前行高亮
+  "lsp_highlight_debounce": 75, // LSP 提示防抖延迟，ms
+  // 代码补全
+  "show_completions_on_input": true, // 输入时显示补全
   "inlay_hints": {
     "enabled": true,
     "show_type_hints": true,
@@ -73,16 +160,5 @@
         }
       }
     }
-  },
-  "project_panel": {
-    "dock": "left"
-  },
-  "base_keymap": "VSCode",
-  "theme": "One Light",
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
-  "buffer_font_size": 15,
-  "vim_mode": true
+  }
 }
