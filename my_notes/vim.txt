@@ -424,7 +424,11 @@ squeeze empty lines
 
 "spellcheck
 !ispell %
-:%!sort -u
+# 用外部命令sort
+:%!sort -r  # reverse: 反序
+:%!sort -n -k 2  # number at col 2, -t : field-separator
+:%!sort -u  # unique: 只输出重复中的一个
+:%!sort -V  # version sort: 对于包含字母和数字混合的字符串（如A100、B20）
 
 K [look identifier]
 #searches back *searches forward

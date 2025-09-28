@@ -21,10 +21,11 @@ build/
 bld/
 # vscode setting
 .vscode/
+# zed setting
+.zed/
 
 # clion generated files
 .idea/
-CMakeLists.txt
 cmake-build-debug/
 compile_commands.json
 
