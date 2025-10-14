@@ -12,7 +12,6 @@ export QT_IM_MODULE="fcitx"
 (which fzf > /dev/null 2>&1) && eval "$(fzf --bash)"
 (which zoxide > /dev/null 2>&1) && eval "$(zoxide init bash)"
 # alias for tmux to firstly attach, if no session, then create new one
-(which git > /dev/null 2>&1) && alias gco="git checkout" && alias gb="git branch" && alias gbr="git branch -r"
 (which tmux > /dev/null 2>&1) && alias tmuxa="tmux -CC new -A -s main"
 
 # echo git branch name in PS
@@ -21,6 +20,18 @@ parse_git_branch() {
 }
 if command -v git &> /dev/null; then
   export PS1="\u@\h \[\033[32m\]\w\[\033[33m\](\$(parse_git_branch))\[\033[00m\] $ "
+  alias gco="git checkout"
+  alias gb="git branch"
+  alias gbr="git branch -r"
+  alias gd="git diff"
+  alias gsh="git show"
+  alias glg="git log -p"
+  if command -v diff &> /dev/null; then
+    # alias to use difft for git command
+    alias gdt="GIT_EXTERNAL_DIFF=difft git diff"
+    alias gsht="GIT_EXTERNAL_DIFF=difft git show --ext-diff"
+    alias glgt="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
+  fi
 else
   export PS1="\u@\h \[\033[32m\]\w\[\033[00m\] $ "
 fi

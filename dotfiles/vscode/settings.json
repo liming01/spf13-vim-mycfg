@@ -520,6 +520,16 @@
         "workbench.action.quickOpen"
       ],
       "when": "isLinux"
+    },
+    // switch tab use vim key: gt, disable it, use vscode keybinding
+    {
+      "before": [
+        "<C-t>"
+      ],
+      "commands": [
+        "workbench.action.showAllSymbols"
+      ],
+      "when": "isLinux"
     }
   ],
   "editor.renderWhitespace": "all",
@@ -544,5 +554,8 @@
     "editor.defaultFormatter": "xaver.clang-format"
   },
   "editor.defaultFormatter": "xaver.clang-format",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }
