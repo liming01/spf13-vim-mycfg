@@ -14,7 +14,9 @@
       "username": "wl",
       "projects": [
         {
-          "paths": ["/home/wl/workspace/anker_test/myrocks/./"]
+          "paths": [
+            "/home/wl/workspace/anker_test/myrocks/"
+          ]
         }
       ]
     },
@@ -23,7 +25,9 @@
       "username": "wl",
       "projects": [
         {
-          "paths": ["/home/wl/workspace/percona-server"]
+          "paths": [
+            "/home/wl/workspace/percona-server"
+          ]
         }
       ]
     }
@@ -50,6 +54,16 @@
       "EDITOR": "zed --wait"
     },
     "shell": "system" // 使用系统默认的shell，通常是 /etc/passwd 文件
+  },
+  // force to use clang-format instead of default clangd, I use specific version clang-format
+  "formatter": {
+    "external": {
+      "command": "clang-format",
+      "arguments": [
+        "--style=file",
+        "--assume-filename={buffer_path}"
+      ]
+    }
   },
   "format_on_save": "on",
   "autosave": "on_focus_change", // 自动保存

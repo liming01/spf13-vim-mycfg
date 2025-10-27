@@ -557,5 +557,8 @@
   "editor.formatOnSave": true,
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
   }
 }
