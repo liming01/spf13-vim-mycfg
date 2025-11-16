@@ -55,10 +55,10 @@ fi
 # vim/nvim         : use the config can be changed dynamically by vim-default-complex / vim-default-simple
 alias vi="vim -u ~/.vimrc.simple"
 alias vim="vim -u ~/.vimrc.complex"
-alias nvim="nvim -u ~/.vimrc.complex"
 alias mvim="mvim -u ~/.vimrc.complex"
 alias lvim="${HOME}/.local/bin/lvim"
-alias neovide="/Applications/neovide.app/Contents/MacOS/neovide --neovim-bin $HOME/.local/bin/lvim"
+#alias nvim="nvim -u ~/.vimrc.complex"
+#alias neovide="/Applications/neovide.app/Contents/MacOS/neovide --neovim-bin $HOME/.local/bin/lvim"
 export EDITOR=vim
 #(which ccat > /dev/null 2>&1) && alias cat="ccat"
 alias tiga="tig --all"
@@ -252,9 +252,14 @@ _main(){
 
 	# Reset it to skip error message 'no config file'
 	export OPENSSL_CONF=/usr/local/etc/openssl/openssl.cnf
-	# set brew repo to alicloud for better speed
-	#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
-	export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+
+	if [ "`uname -s`" = "Darwin" ]; then
+		# set brew repo to alicloud for better speed
+		#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+		export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+		export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew-core.git"
+		export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+	fi
 }
 
 function _opengit_open()
@@ -334,12 +339,10 @@ my-backup(){
 #
 vim-default-complex(){
 	ln -fs ~/.vimrc.complex ~/.vimrc
-	ln -s ~/.vimrc ~/.config/nvim/init.vim
 }
 
 vim-default-simple(){
 	ln -fs ~/.vimrc.simple ~/.vimrc
-	ln -s ~/.vimrc ~/.config/nvim/init.vim
 }
 
 _main "$@"
