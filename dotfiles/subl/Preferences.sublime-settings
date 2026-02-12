@@ -1,0 +1,11 @@
+{
+	"ignored_packages": [],
+	//"ignored_packages": ["Vintage"],
+	"vintage_ctrl_keys": true,
+	"vintage_start_in_command_mode": true,
+	"font_size": 11,
+	// not replace tab with spaces
+	"translate_tabs_to_spaces": false,
+	"detect_indentation": false,
+	"draw_white_space": ["all"],
+}

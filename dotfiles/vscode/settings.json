@@ -11,7 +11,7 @@
   "workbench.sideBar.location": "left",
   "gitlens.views.repositories.files.layout": "list",
   "scm.alwaysShowRepositories": true,
-  "editor.formatOnSaveMode": "modifications",
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
   "files.autoSave": "onWindowChange",
   "todo-tree.tree.showScanModeButton": false,
   "todo-tree.general.tags": [

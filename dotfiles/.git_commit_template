@@ -1,4 +1,26 @@
 
+
+########## 注意： component名称不能含-等特殊字符
+####### task类型: story
+#xxxxx: dml: *************
+#
+#story: xxxxx
+#backport: none
+#meta: none
+#releasenotes: [****]
+#********
+#
+####### task类型: bugfix
+#xxxxx: dml: **************
+#
+#fix: xxxxx
+#introduced: 6.0.2
+#backport: 6.0.1,6.0.2(可多个版本)
+#meta: none
+#releasenotes: [****]
+#********
+
+
 # head: <type>(<scope>): <subject>
 # - type: feat, fix, perf, docs, style, refactor, test, chore, build, ci, revert
 # - scope: can be empty (eg. if the change is a global or difficult to assign to a single component)

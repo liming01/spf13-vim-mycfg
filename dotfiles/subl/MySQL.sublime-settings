@@ -1,0 +1,9 @@
+{
+	"extensions":
+	[
+		"test",
+		"result",
+		"inc",
+	],
+	"translate_tabs_to_spaces": false,
+}
