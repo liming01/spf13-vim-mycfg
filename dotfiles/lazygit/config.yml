@@ -19,10 +19,10 @@
 # set diff format highlight, firstly install:
 # > cp /usr/local/Cellar/git/2.26.2/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
 git:
-  paging:
-    colorArg: always
-    #pager: delta --paging=never --24-bit-color=never
-    pager: diff-highlight
+  pagers:
+    - colorArg: always
+      #pager: delta --paging=never --24-bit-color=never
+      pager: diff-highlight
 #git:
 #  paging:
 #    externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off

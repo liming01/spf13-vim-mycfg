@@ -117,7 +117,8 @@ set tab-size = 4
 set diff-highlight = true
 
 # custom diff formatters
-bind generic cd >sh -c "GIT_EXTERNAL_DIFF=difft git show %(commit) --ext-diff"
+bind generic cd !sh -c "GIT_EXTERNAL_DIFF=difft git show %(commit) --ext-diff"
+bind status cd !sh -c "GIT_EXTERNAL_DIFF=difft git diff %(file)"
 
 # ------------------------------------- key mapping -----------------------------------------
 bind generic <F1> view-help

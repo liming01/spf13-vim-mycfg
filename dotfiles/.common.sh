@@ -60,7 +60,7 @@ alias lvim="${HOME}/.local/bin/lvim"
 #alias nvim="nvim -u ~/.vimrc.complex"
 #alias neovide="/Applications/neovide.app/Contents/MacOS/neovide --neovim-bin $HOME/.local/bin/lvim"
 export EDITOR=vim
-#(which ccat > /dev/null 2>&1) && alias cat="ccat"
+(which bat > /dev/null 2>&1) && alias cat="bat"
 alias tiga="tig --all"
 alias lg="lazygit"
 # alias to use difft for git command
