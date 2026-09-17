@@ -46,7 +46,7 @@
     "**/Thumbs.db": true,
     "**/__pycache__": true, // python 生产的cache文件
     "**/.idea": true
-},
+  },
   "editor.guides.bracketPairs": "active",
   "editor.bracketPairColorization.enabled": true,
   "tabnine.experimentalAutoImports": true,
@@ -64,7 +64,7 @@
   "gitlens.graph.minimap.enabled": false,
   "gitlens.ai.experimental.provider": "openai",
   "gitlens.ai.experimental.openai.model": "gpt-4-1106-preview",
-"gitlens.graph.layout": "editor",
+  "gitlens.graph.layout": "editor",
   // ----------------- vim config -----------------
   "vim.leader": "<space>",
   "vim.useSystemClipboard": true,
@@ -105,8 +105,8 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     // ----------------------------------------------------
-	// not work occasionally for moving cursor to previous or next position (ctrl + i / o)
-	// workaround: override the keybindings to use VSCodes own going forward/backward
+    // not work occasionally for moving cursor to previous or next position (ctrl + i / o)
+    // workaround: override the keybindings to use VSCodes own going forward/backward
     {
       "before": [
         "<C-o>"
@@ -560,5 +560,7 @@
   },
   "[sql]": {
     "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
-  }
+  },
+  "update.mode": "none",
+  "chat.permissions.default": "autoApprove"
 }

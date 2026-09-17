@@ -38,6 +38,9 @@ else
   ln -sf $SCRIPT_PATH/dotfiles/lazydocker/config.yml $HOME/.config/jesseduffield/lazydocker/
 fi
 
+# config for wezterm
+mkdir -p $HOME/.config/wezterm/
+ln -sf $SCRIPT_PATH/dotfiles/wezterm/wezterm.lua $HOME/.config/wezterm/
 
 # config for oh-my-zsh
 mkdir -p $HOME/.oh-my-zsh/custom/themes

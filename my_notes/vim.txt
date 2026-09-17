@@ -76,7 +76,7 @@ https://xaizek.github.io/2016-08-13/big-list-of-vim-like-software/
 - tmate               : 在TMUX的基础上增加共享的功能
 - ngrok               : Reverse proxy for sharing localhost
 - tmux                : 终端复用工具，替代screen、nohup。TMUXP保存tmux的布局用于重启之后使用。
-- tokei               : 代码统计工具(rust写的，速度更快，会比较智能的统计go项目，直接忽略vendor文件夹）
+- tokei               : 代码统计工具(rust写的，速度更快，会比较智能的统计go项目，直接忽略vendor文件夹）: 后续新出更快的：scc，mezura
 - trash/empty-trash/rip : rm files/dirs and put them in your system Trash, rather than rm -rf (or rimraf)
 - vmail               : = Vim + Gmail
 - wifi-password       : print wifi-password
